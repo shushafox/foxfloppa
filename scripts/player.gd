@@ -3,9 +3,14 @@ signal hit
 
 @export var speed = 400
 
+signal onNpcInterract()
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
+	
+	if Input.is_action_pressed("ui_accept"):
+		onNpcInterract.emit()
 
 func _physics_process(delta):
 	get_input()

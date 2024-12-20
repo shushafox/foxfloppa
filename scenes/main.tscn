@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://c3eej3xyhm2xt"]
+[gd_scene load_steps=13 format=4 uid="uid://c3eej3xyhm2xt"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_78c3c"]
 [ext_resource type="Texture2D" uid="uid://c6w4ybxylm7hi" path="res://assets/grass.png" id="1_qx0dj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://pr23gpb8t4r1" path="res://assets/plains.png" id="2_mfyqt"]
 [ext_resource type="Texture2D" uid="uid://b3p5uouycvor" path="res://assets/decor_8x8.png" id="3_gclsh"]
 [ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://assets/fences.png" id="4_5a7fh"]
+[ext_resource type="PackedScene" uid="uid://dscx3h8dkh6sm" path="res://scenes/NPC.tscn" id="7_oe57d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yrkvc"]
 texture = ExtResource("2_mfyqt")
@@ -739,3 +740,9 @@ z_index = -1
 position = Vector2(16, 26)
 tile_map_data = PackedByteArray("AADn/wUAAwAAAAAAAAAAAAUAAwAAAAAAAAAZAAUAAwAAAAAAAAAaAOz/AwAAAAAAAADn/+z/AwAAAAAAAAAAAOz/AwAAAAAAAAAZAOz/AwAAAAAAAAAvAAUAAwAAAAAAAAAvAOz/AwAAAAAAAAAvANP/AwAAAAAAAAAWANP/AwAAAAAAAAD+/9P/AwAAAAAAAADl/9P/AwAAAAAAAADM/9P/AwAAAAAAAADO/+z/AwAAAAAAAADM/+z/AwAAAAAAAADO/wUAAwAAAAAAAADM/wUAAwAAAAAAAADM/x4AAwAAAAAAAADl/x4AAwAAAAAAAAD9/x4AAwAAAAAAAAAWAB4AAwAAAAAAAAAvAB0AAwAAAAAAAADX/wsAAwAAAAAAAAAeABYAAwAAAAAAAAAPAP//AwAAAAAAAADy/xUAAwAAAAAAAAAcABsAAwAAAAAAAAArAPj/AwAAAAAAAAArAPf/AwAAAAAAAADf//D/AwAAAAAAAAAvABsAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_oed07")
+
+[node name="Npc" parent="." instance=ExtResource("7_oe57d")]
+position = Vector2(-407, 38)
+scale = Vector2(4, 4)
+sprite = "res://assets/angry.png"
+timeline = "testOne"
