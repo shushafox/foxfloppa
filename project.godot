@@ -27,6 +27,7 @@ directories/dtl_directory={
 }
 glossary/default_case_sensitive=true
 variables={
+"Counter": 0,
 "Dialogue_liked": "",
 "PC_name": ""
 }

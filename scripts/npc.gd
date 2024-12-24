@@ -28,3 +28,13 @@ func _onNpcInterract() -> void:
 	
 	if isPlayer:	
 		Dialogic.start(timeline)
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		scale += Vector2(1,1)
+		print("actionable")
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		scale -= Vector2(1,1)
+		print("actionable no more")
