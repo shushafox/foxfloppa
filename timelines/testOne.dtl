@@ -1,2 +1,14 @@
 Aboba
 set {Counter} += 1
+Blobeba
+set {Autoload.GlobalCounter} -= 1
+if {Autoload.IsDay} == true:
+	Switch to night?
+	- Yes
+		set {Autoload.IsDay} = false
+	- No
+else:
+	Switch to day?
+	- Yes
+		set {Autoload.IsDay} = true
+	- No

@@ -27,14 +27,18 @@ func _onNpcInterract() -> void:
 			isPlayer = true
 	
 	if isPlayer:	
-		Dialogic.start(timeline)
+		Dialogic.start(Autoload.EvilGuyTimelinePicker())
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		scale += Vector2(1,1)
 		print("actionable")
+		print("Counter ", Dialogic.VAR.Counter)
+		print("GlobalCounter ", Autoload.GlobalCounter)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		scale -= Vector2(1,1)
 		print("actionable no more")
+		print("Counter ", Dialogic.VAR.Counter)
+		print("GlobalCounter ", Autoload.GlobalCounter)
