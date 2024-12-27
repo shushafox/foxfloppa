@@ -3,14 +3,23 @@ signal hit
 
 @export var speed = 400
 
+@onready var Level = get_parent()
+
 signal onNpcInterract()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
 func get_input():
-	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
-	
-	if Input.is_action_pressed("ui_accept"):
-		onNpcInterract.emit()
+	if(Level.IsPeaceMode):
+		var input_direction = Input.get_vector("left", "right", "up", "down")
+		velocity = input_direction * speed
+		
+		if Input.is_action_pressed("ui_accept"):
+			onNpcInterract.emit()
+	else:
+		velocity = Vector2.ZERO
 
 func _physics_process(delta):
 	get_input()
