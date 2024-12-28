@@ -25,6 +25,8 @@ Autoload="*res://scripts/Autoload.gd"
 directories/dch_directory={}
 directories/dtl_directory={
 "angi": "res://timelines/angi.dtl",
+"corvi_1": "res://timelines/corvi_1.dtl",
+"corvi_2": "res://timelines/corvi_2.dtl",
 "testOne": "res://timelines/testOne.dtl"
 }
 glossary/default_case_sensitive=true

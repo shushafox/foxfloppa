@@ -1,0 +1,5 @@
+You talked to the guy, good job!
+if {Autoload.IsDay} == true:
+	It is very sunny!
+else:
+	Time to mimir...
