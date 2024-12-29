@@ -1,3 +1,4 @@
+set {Autoload.NpcsTalkedTo["Corvi"]} = true
 You talked to the guy, good job!
 if {Autoload.IsDay} == true:
 	It is very sunny!

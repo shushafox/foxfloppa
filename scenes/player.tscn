@@ -1,21 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://gf61d1durb0j"]
+[gd_scene load_steps=6 format=3 uid="uid://gf61d1durb0j"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_01j8v"]
 [ext_resource type="Texture2D" uid="uid://vuspnomxp8gh" path="res://assets/fox.png" id="1_cch6n"]
+[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://assets/fences.png" id="3_j7xrg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xlk03"]
 radius = 14.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cky66"]
+atlas = ExtResource("3_j7xrg")
+region = Rect2(0, 48, 16, 18)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_01j8v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_cch6n")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 23)
 shape = SubResource("CapsuleShape2D_xlk03")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-process_callback = 0
+[node name="MovingSptire" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, 23)
+texture = SubResource("AtlasTexture_cky66")

@@ -1,14 +1,9 @@
 extends Node2D
 
-@onready var Tiles:TileMapLayer = $TileMap
-@onready var OutlineTiles: TileMapLayer = $OutlineMap
+@onready var Tiles:TileMapLayer = get_node("Map/TileMap")
+@onready var OutlineTiles: TileMapLayer = get_node("Map/OutlineMap")
 
 var OutlineTileId: int = 0
-var IsPeaceMode:bool = true
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:	
@@ -17,7 +12,7 @@ func _process(delta: float) -> void:
 	else:
 		Tiles.modulate = Color.BLUE
 	
-	if IsPeaceMode:
+	if Autoload.IsPeaceMode:
 		OutlineTiles.clear()
 		
 		if !Autoload.IsDay:

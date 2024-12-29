@@ -1,8 +1,8 @@
-Aboba
+set {Autoload.NpcsTalkedTo["Evil"]} = true
 set {Counter} += 1
-Blobeba
-set {Autoload.EvilTalkedTo} = true
 set {Autoload.GlobalCounter} -= 1
+Aboba
+Blobeba
 if {Autoload.IsDay} == true:
 	Switch to night?
 	- Yes

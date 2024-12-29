@@ -1,20 +1,15 @@
-extends StaticBody2D
+extends ActorBase
 
-@export var ESprite: String
-@export var EName: String
-
-@onready var Sprite = $Sprite2D
-@onready var Collider = $Area2D
-@onready var Player = $"../Player"
+@onready var Collider = $DetectionArea
+@onready var Player = get_tree().root.get_node("Level").get_node("Player")
 
 var animUp = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Player.onNpcInterract.connect(_onNpcInterract)
+	_set_sprite()
 	
-	var image = load(ESprite)
-	Sprite.texture = image
+	Player.NpcInterract.connect(_on_npc_interract)
 	
 	Animate()
 
@@ -44,7 +39,7 @@ func ResetAnim():
 	
 	Animate()
 
-func _onNpcInterract() -> void:
+func _on_npc_interract() -> void:
 	var bodies:Array[Node2D] = Collider.get_overlapping_bodies()
 	var isPlayer = false
 	
@@ -52,27 +47,17 @@ func _onNpcInterract() -> void:
 		if body.name == "Player":
 			isPlayer = true
 	
-	if isPlayer:	
-		Dialogic.start(Autoload.NpcTimeLineResolver(EName))
+	if isPlayer:
+		Dialogic.start(Autoload.NpcTimeLineResolver(DisplayName))
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		animUp = 0
-		
 		var tween = get_tree().create_tween()
 		tween.tween_property(Sprite,"skew", 0, 1)
-			
 		scale += Vector2(1,1)
-		print("actionable")
-		print("Counter ", Dialogic.VAR.Counter)
-		print("GlobalCounter ", Autoload.GlobalCounter)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		scale -= Vector2(1,1)
-		
 		ResetAnim()
-		
-		print("actionable no more")
-		print("Counter ", Dialogic.VAR.Counter)
-		print("GlobalCounter ", Autoload.GlobalCounter)
