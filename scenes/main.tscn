@@ -194,13 +194,11 @@ IsAutoamted = false
 
 [node name="Amogus" parent="Npcs" instance=ExtResource("7_oe57d")]
 position = Vector2(-367, 50)
-scale = Vector2(4, 4)
 DisplayName = "Evil"
 DisplaySprite = "res://assets/angry.png"
 
 [node name="Corvi" parent="Npcs" instance=ExtResource("7_oe57d")]
 position = Vector2(165, -628)
-scale = Vector2(3, 3)
 DisplayName = "Corvi"
 DisplaySprite = "res://assets/raven.png"
 

@@ -15,6 +15,7 @@ region = Rect2(0, 48, 16, 18)
 script = ExtResource("1_01j8v")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_cch6n")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
