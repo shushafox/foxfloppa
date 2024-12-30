@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var Tiles:TileMapLayer = get_node("Map/TileMap")
 @onready var OutlineTiles: TileMapLayer = get_node("Map/OutlineMap")
+@onready var MovingTile: Sprite2D = get_node("Misc/MovingSprite")
 
 var OutlineTileId: int = 0
 

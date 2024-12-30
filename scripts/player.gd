@@ -2,10 +2,12 @@ extends ActorBase
 
 signal NpcInterract
 
-var isMoving: bool = false
+var IsMoving: bool = false
+var TilePosition: Vector2
+
+const TileOffset: Vector2i = Vector2i(24, 24)
 
 @onready var Level: Node2D = get_parent()
-@onready var MovingSprite: Sprite2D = $MovingSptire
 
 @export var BaseSpeed = 400
 
@@ -20,17 +22,25 @@ func _physics_process(delta: float) -> void:
 	var directions: Vector2 = get_input()
 	
 	if(Autoload.IsPeaceMode):
-		MovingSprite.visible = false
+		Level.MovingTile.visible = false
 		
 		velocity = directions * BaseSpeed
 		move_and_slide()
-		
-		if Input.is_action_pressed("ui_accept"):
-			NpcInterract.emit()
 	else:
 		velocity = Vector2.ZERO
-		MovingSprite.visible = true
-		move(directions)
+		Level.MovingTile.visible = true
+		
+		if(!IsMoving):
+			move(directions)
+		else:
+			if (Level.MovingTile.global_position == self.global_position):
+				IsMoving = false
+				return
+			
+			self.global_position = self.global_position.move_toward(Level.MovingTile.global_position, 10)
+		
+	if Input.is_action_pressed("ui_accept"):
+			NpcInterract.emit()
 
 func get_input() -> Vector2:
 	return Input.get_vector("left", "right", "up", "down")
@@ -46,6 +56,6 @@ func move(direction: Vector2i):
 	if (tileData.get_custom_data("Walkable") == false):
 		return
 	
-	isMoving = true
-	self.global_position = Level.Tiles.map_to_local(targetTile)
-	MovingSprite.global_position = Level.Tiles.map_to_local(currentTile)
+	IsMoving = true
+	self.global_position = Level.Tiles.map_to_local(currentTile)
+	Level.MovingTile.global_position = Level.Tiles.map_to_local(targetTile)
