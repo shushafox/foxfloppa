@@ -23,7 +23,5 @@ process_mode = 4
 
 [node name="RayCast2D" type="RayCast2D" parent="Combat"]
 target_position = Vector2(0, 48)
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="Peace" type="Node2D" parent="."]

@@ -5,6 +5,7 @@ signal NpcInterract
 var IsMoving: bool = false
 
 @onready var Level: Node2D = get_parent()
+@onready var Raycast: RayCast2D = $Combat/RayCast2D
 
 @export var BaseSpeed = 400
 
@@ -47,9 +48,14 @@ func move(direction: Vector2i):
 	)
 	var tileData: TileData = Level.Tiles.get_cell_tile_data(targetTile)
 	
+	Raycast.target_position = direction * 48
+	Raycast.force_raycast_update()
+	
+	if Raycast.is_colliding():
+		return
 	if (tileData.get_custom_data("Walkable") == false):
 		return
-	
+
 	IsMoving = true
 	self.global_position = Level.Tiles.map_to_local(currentTile)
 	Level.MovingTile.global_position = Level.Tiles.map_to_local(targetTile)
