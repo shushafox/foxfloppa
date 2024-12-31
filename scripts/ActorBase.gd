@@ -28,9 +28,19 @@ var Mana: float = MaxMana
 #region PreLoad nodes
 @onready var Sprite: Sprite2D = $Sprite
 @onready var Collision: CollisionShape2D = $Collision
+@onready var Combat: Node2D = $Combat
+@onready var Peace: Node2D = $Peace
 #endregion
 
 #region Base functions
 func _set_sprite() -> void:
 	Sprite.texture = load(DisplaySprite)
+
+func _on_combat_start() -> void:
+	$Peace.process_mode = Node.PROCESS_MODE_DISABLED
+	$Combat.process_mode = Node.PROCESS_MODE_INHERIT
+
+func _on_combat_end() -> void:
+	$Peace.process_mode = Node.PROCESS_MODE_INHERIT
+	$Combat.process_mode = Node.PROCESS_MODE_DISABLED
 #endregion

@@ -1,7 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://eeuf4fuwtejk"]
+[gd_scene load_steps=5 format=3 uid="uid://lgj7evxvbg6i"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_hxr0s"]
 [ext_resource type="Texture2D" uid="uid://dt2nd4jmq6ij5" path="res://assets/angry.png" id="1_lsnl8"]
+
+[sub_resource type="GDScript" id="GDScript_nvpfi"]
+script/source = "extends ActorBase
+
+@export var VisionRadius: int
+
+func _ready() -> void:
+	pass
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p4h1k"]
 
@@ -9,7 +17,7 @@
 radius = 33.3766
 
 [node name="Enemy" type="CharacterBody2D"]
-script = ExtResource("1_hxr0s")
+script = SubResource("GDScript_nvpfi")
 
 [node name="DetectionArea" type="Area2D" parent="."]
 

@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dscx3h8dkh6sm"]
+
+[ext_resource type="Script" path="res://scripts/npc.gd" id="1_tb7cw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70rhu"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0df4"]
+size = Vector2(144, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3mj6"]
+size = Vector2(48, 144)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mw00"]
+radius = 24.0
+
+[node name="Npc" type="CharacterBody2D"]
+script = ExtResource("1_tb7cw")
+MaxHealth = null
+MaxMana = null
+Armor = null
+Aim = null
+Evasion = null
+Speed = null
+Damage = null
+IsAlly = null
+IsAutoamted = null
+DisplayName = null
+DisplaySprite = null
+DisplayPortrait = null
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_70rhu")
+
+[node name="Combat" type="Node2D" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="Combat"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Combat/DetectionArea"]
+shape = SubResource("RectangleShape2D_c0df4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Combat/DetectionArea"]
+shape = SubResource("RectangleShape2D_h3mj6")
+
+[node name="Peace" type="Node2D" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="Peace"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Peace/DetectionArea"]
+shape = SubResource("CircleShape2D_0mw00")
+
+[connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]

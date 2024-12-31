@@ -1,7 +1,9 @@
 extends ActorBase
 
-@onready var Collider = $DetectionArea
-@onready var Player = get_tree().root.get_node("Level").get_node("Player")
+@onready var PeaceCollider = $Peace/DetectionArea
+@onready var CombatCollider = $Combat/DetectionArea
+
+@onready var Player = get_parent().get_parent().get_node("Player")
 
 var animUp = 1
 
@@ -39,8 +41,14 @@ func ResetAnim():
 	
 	Animate()
 
+func GetCurrentCollider() -> Area2D:
+	if $Combat.process_mode == Node.ProcessMode.PROCESS_MODE_DISABLED:
+		return PeaceCollider
+	else:
+		return CombatCollider
+
 func _on_npc_interract() -> void:
-	var bodies:Array[Node2D] = Collider.get_overlapping_bodies()
+	var bodies:Array[Node2D] = GetCurrentCollider().get_overlapping_bodies()
 	var isPlayer = false
 	
 	for body in bodies:
@@ -50,14 +58,14 @@ func _on_npc_interract() -> void:
 	if isPlayer:
 		Dialogic.start(Autoload.NpcTimeLineResolver(DisplayName))
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		animUp = 0
 		var tween = get_tree().create_tween()
 		tween.tween_property(Sprite,"skew", 0, 1)
-		scale += Vector2(1,1)
+		Sprite.scale += Vector2(0.5, 0.5)
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		scale -= Vector2(1,1)
+		Sprite.scale -= Vector2(0.5, 0.5)
 		ResetAnim()

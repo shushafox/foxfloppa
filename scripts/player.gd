@@ -3,9 +3,6 @@ extends ActorBase
 signal NpcInterract
 
 var IsMoving: bool = false
-var TilePosition: Vector2
-
-const TileOffset: Vector2i = Vector2i(24, 24)
 
 @onready var Level: Node2D = get_parent()
 
@@ -19,9 +16,9 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
 
 func _physics_process(delta: float) -> void:
-	var directions: Vector2 = get_input()
+	var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
 	
-	if(Autoload.IsPeaceMode):
+	if(!Level.IsCombat):
 		Level.MovingTile.visible = false
 		
 		velocity = directions * BaseSpeed
@@ -41,9 +38,6 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("ui_accept"):
 			NpcInterract.emit()
-
-func get_input() -> Vector2:
-	return Input.get_vector("left", "right", "up", "down")
 
 func move(direction: Vector2i):
 	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
