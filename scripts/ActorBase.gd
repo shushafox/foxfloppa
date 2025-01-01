@@ -26,7 +26,7 @@ var Mana: float = MaxMana
 #endregion
 
 #region PreLoad nodes
-@onready var Sprite: Sprite2D = $Sprite
+@onready var AnimatedSprite: AnimatedSprite2D = $AnimatedSprite
 @onready var Collision: CollisionShape2D = $Collision
 @onready var Combat: Node2D = $Combat
 @onready var Peace: Node2D = $Peace
@@ -34,7 +34,7 @@ var Mana: float = MaxMana
 
 #region Base functions
 func _set_sprite() -> void:
-	Sprite.texture = load(DisplaySprite)
+	pass
 
 func _on_combat_start() -> void:
 	$Peace.process_mode = Node.PROCESS_MODE_DISABLED

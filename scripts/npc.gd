@@ -23,12 +23,12 @@ func Animate():
 	if(animUp == 1):
 		animUp = 2
 		var tween = get_tree().create_tween()
-		tween.tween_property(Sprite,"skew", 0.5, 1)
+		tween.tween_property(AnimatedSprite,"skew", 0.5, 1)
 		tween.finished.connect(Animate)
 	elif(animUp == 2):
 		animUp = 1
 		var tween = get_tree().create_tween()
-		tween.tween_property(Sprite,"skew", -0.5, 1)
+		tween.tween_property(AnimatedSprite,"skew", -0.5, 1)
 		tween.finished.connect(Animate)
 
 func ResetAnim():
@@ -62,10 +62,10 @@ func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		animUp = 0
 		var tween = get_tree().create_tween()
-		tween.tween_property(Sprite,"skew", 0, 1)
-		Sprite.scale += Vector2(0.5, 0.5)
+		tween.tween_property(AnimatedSprite,"skew", 0, 1)
+		#AnimatedSprite.scale += Vector2(0.5, 0.5)
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		Sprite.scale -= Vector2(0.5, 0.5)
+		#AnimatedSprite.scale -= Vector2(0.5, 0.5)
 		ResetAnim()
