@@ -5,6 +5,8 @@ class_name LevelBase
 #region Signals
 signal CombatStarted
 signal CombatEnded
+
+signal TurnStarted(node: ActorBase)
 #endregion
 
 #region Base nodes
@@ -15,6 +17,7 @@ signal CombatEnded
 #Misc
 @onready var OverworldCamera: Camera2D = get_node("Misc/OverworldCamera")
 @onready var MovingTile: Sprite2D = get_node("Misc/MovingSprite")
+@onready var UI: Control = get_node("Misc/OverworldCamera/UI")
 #Folders
 @onready var Npcs: Node2D = get_node("Npcs")
 @onready var Triggers: Node2D = get_node("Triggers")
@@ -24,6 +27,9 @@ signal CombatEnded
 @export var LevelName: String = ""
 
 var IsCombat: bool = false
+var IsPlayersTurn: bool = false
+var TurnOrder: Array[ActorBase] = []
+var TurnNumber: int = 0
 #endregion
 
 #region Functions
@@ -31,19 +37,41 @@ func bind_signals() -> void:
 	for child: ActorBase in Npcs.get_children():
 		CombatEnded.connect(child._on_combat_end)
 		CombatStarted.connect(child._on_combat_start)
+		TurnStarted.connect(child._on_turn_start)
+		child.EndTurn.connect(_on_turn_end)
 	
 	CombatEnded.connect(Player._on_combat_end)
 	CombatStarted.connect(Player._on_combat_start)
+	TurnStarted.connect(Player._on_turn_start)
+	Player.EndTurn.connect(_on_turn_end)
+	
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func end_combat() -> void:
+	IsCombat = false
 	CombatEnded.emit()
+	
+	TurnOrder.clear()
 	
 	_remove_tile_outline()
 
 func start_combat() -> void:
+	IsCombat = true
 	CombatStarted.emit()
 	
+	# Gather everyone for combat
+	for child: ActorBase in Npcs.get_children():
+		if child.IsAutoamted:
+			TurnOrder.append(child)
+	
+	# Randomize enemy order
+	randomize()
+	TurnOrder.shuffle()
+	
 	_add_tile_outline()
+	
+	TurnStarted.emit(Player)
+	OverworldCamera.focus(Player)
 
 func _add_tile_outline() -> void:
 	OutlineTiles.clear()
@@ -52,4 +80,11 @@ func _add_tile_outline() -> void:
 
 func _remove_tile_outline() -> void:
 	OutlineTiles.clear()
+
+func _on_dialogic_signal(argument: String):
+	if argument == "StartCombat":
+		start_combat()
+
+func _on_turn_end() -> void:
+	UI.get_node("Label").Text = "Turn: " + str(TurnNumber) 
 #endregion

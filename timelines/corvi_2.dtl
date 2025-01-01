@@ -2,5 +2,7 @@ set {Autoload.NpcsTalkedTo["Corvi"]} = true
 You talked to the guy, good job!
 if {Autoload.IsDay} == true:
 	It is very sunny!
+	NOW GO AND KILL HIM HAR HAR HAR HAR HAR
+	[signal arg="StartCombat"]
 else:
 	Time to mimir...
