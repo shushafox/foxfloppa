@@ -128,28 +128,28 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_t11gd")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_t6s7n")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_xo5w7")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_yrpgv")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_5xwdt")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_o4vkw")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_chrps")
 }, {
-"duration": 1.0,
+"duration": 0.6,
 "texture": SubResource("AtlasTexture_nyv8b")
 }],
 "loop": true,
@@ -165,8 +165,9 @@ script = ExtResource("1_01j8v")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_vb75e")
-animation = &"idle"
+animation = &"running"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(1, 8)

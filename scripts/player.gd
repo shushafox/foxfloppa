@@ -6,8 +6,7 @@ var IsMoving: bool = false
 
 @onready var Level: Node2D = get_parent()
 @onready var Raycast: RayCast2D = $Combat/RayCast2D
-
-@export var BaseSpeed = 400
+@export var BaseSpeed = 250
 
 func _ready() -> void:
 	Dialogic.timeline_started.connect(set_physics_process.bind(false))
@@ -18,7 +17,16 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
-	
+	if velocity > Vector2.ZERO:
+		AnimatedSprite.flip_h = false
+		AnimatedSprite.play("running")
+	elif velocity < Vector2.ZERO:
+		AnimatedSprite.flip_h = true
+		AnimatedSprite.play("running")
+	else:
+		AnimatedSprite.play("idle")
+		
+		
 	if(!Level.IsCombat):
 		Level.MovingTile.visible = false
 		
@@ -59,3 +67,7 @@ func move(direction: Vector2i):
 	IsMoving = true
 	self.global_position = Level.Tiles.map_to_local(currentTile)
 	Level.MovingTile.global_position = Level.Tiles.map_to_local(targetTile)
+
+
+func _animate() -> void:
+	pass
