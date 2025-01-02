@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_calculate_turn_abilities()
-	$"../Misc/OverworldCamera/UI/VBoxContainer/Label".text ="Speed: " + str(Speed) + "/" + str(RemainingSpeed)
+	#$"../Misc/OverworldCamera/UI/VBoxContainer/Label".text ="Speed: " + str(Speed) + "/" + str(RemainingSpeed)
 	
 	var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
 	if velocity > Vector2.ZERO:
