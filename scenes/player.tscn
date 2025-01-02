@@ -158,16 +158,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndpdf"]
-size = Vector2(16, 16)
+size = Vector2(24, 24)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_01j8v")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(2, 2)
+position = Vector2(1, 8)
 sprite_frames = SubResource("SpriteFrames_vb75e")
-animation = &"running"
+animation = &"idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(1, 8)
