@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chm4e4feyfkiq"
-path="res://.godot/imported/raven.png-b1ad2ec50e200978f28687a6089c5a90.ctex"
+path="res://.godot/imported/raven.png-b534de5521dc0ce12ced7e7123f48504.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/raven.png"
-dest_files=["res://.godot/imported/raven.png-b1ad2ec50e200978f28687a6089c5a90.ctex"]
+source_file="res://Assets/raven.png"
+dest_files=["res://.godot/imported/raven.png-b534de5521dc0ce12ced7e7123f48504.ctex"]
 
 [params]
 

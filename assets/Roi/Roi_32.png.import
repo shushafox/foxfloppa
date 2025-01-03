@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cadkytex8m4gk"
-path="res://.godot/imported/Roi_32.png-b393c0eab267ffb7030cda1ae7936aa3.ctex"
+path="res://.godot/imported/Roi_32.png-b040b4e64f0f57312ed228ac9c7a47a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Roi/Roi_32.png"
-dest_files=["res://.godot/imported/Roi_32.png-b393c0eab267ffb7030cda1ae7936aa3.ctex"]
+source_file="res://Assets/Roi/Roi_32.png"
+dest_files=["res://.godot/imported/Roi_32.png-b040b4e64f0f57312ed228ac9c7a47a3.ctex"]
 
 [params]
 

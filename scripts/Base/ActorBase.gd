@@ -46,6 +46,8 @@ func _set_sprite() -> void:
 func _on_combat_start() -> void:
 	$Peace.process_mode = Node.PROCESS_MODE_DISABLED
 	$Combat.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	self.velocity = Vector2.ZERO
 
 func _on_combat_end() -> void:
 	$Peace.process_mode = Node.PROCESS_MODE_INHERIT

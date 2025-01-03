@@ -15,33 +15,20 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(set_physics_process.bind(true))
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
 
-func _physics_process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_calculate_turn_abilities()
-	#$"../Misc/OverworldCamera/UI/VBoxContainer/Label".text ="Speed: " + str(Speed) + "/" + str(RemainingSpeed)
 	
 	var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
-	if velocity > Vector2.ZERO:
-		AnimatedSprite.flip_h = false
-		AnimatedSprite.play("running")
-	elif velocity < Vector2.ZERO:
-		AnimatedSprite.flip_h = true
-		AnimatedSprite.play("running")
-	else:
-		AnimatedSprite.play("idle")
-		
-		
-	if(!Level.IsCombat):
-		Level.MovingTile.visible = false
-		
+	
+	if(!Level.IsCombat):		
 		velocity = directions * BaseSpeed
 		move_and_slide()
 	else:
-		velocity = Vector2.ZERO
-		Level.MovingTile.visible = true
+		if directions == Vector2.ZERO:
+			return
 		
 		if(!IsMoving):
-			if directions == Vector2.ZERO:
-				return
+			
 			if RemainingSpeed > 0:
 				move(directions)
 		else:
@@ -50,6 +37,8 @@ func _physics_process(delta: float) -> void:
 				return
 			
 			self.global_position = self.global_position.move_toward(Level.MovingTile.global_position, 10)
+	
+	_animate()
 	
 	if Input.is_action_pressed("ui_accept"):
 		NpcInterract.emit()
@@ -91,4 +80,11 @@ func _snap_to_grid() -> void:
 	self.global_position = Level.Tiles.map_to_local(currentTile)
 
 func _animate() -> void:
-	pass
+	if velocity > Vector2.ZERO:
+		AnimatedSprite.flip_h = false
+		AnimatedSprite.play("running")
+	elif velocity < Vector2.ZERO:
+		AnimatedSprite.flip_h = true
+		AnimatedSprite.play("running")
+	else:
+		AnimatedSprite.play("idle")

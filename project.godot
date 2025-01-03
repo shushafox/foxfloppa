@@ -11,25 +11,25 @@ config_version=5
 [application]
 
 config/name="Daybreak_test"
-run/main_scene="res://scenes/Level1.tscn"
+run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-Autoload="*res://scripts/Autoload.gd"
+Autoload="*res://Scripts/Singletons/Autoload.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogic]
 
 directories/dch_directory={}
 directories/dtl_directory={
-"angi": "res://timelines/angi.dtl",
-"corvi_1": "res://timelines/corvi_1.dtl",
-"corvi_2": "res://timelines/corvi_2.dtl",
-"sign_2_1": "res://sign_2_1.dtl",
-"testOne": "res://timelines/testOne.dtl"
+"angi": "res://Timelines/angi.dtl",
+"corvi_1": "res://Timelines/corvi_1.dtl",
+"corvi_2": "res://Timelines/corvi_2.dtl",
+"sign_2_1": "res://Timelines/sign_2_1.dtl",
+"testOne": "res://Timelines/testOne.dtl"
 }
 glossary/default_case_sensitive=true
 variables={

@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://rfnu6xw8urng"]
+
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_m6rnc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_fvtl6"]
+[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://Assets/fences.png" id="3_xkn7r"]
+[ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="4_d4kt5"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_u13ml"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="6_s8qoa"]
+
+[sub_resource type="Resource" id="Resource_w0djv"]
+script = ExtResource("2_fvtl6")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3cop"]
+atlas = ExtResource("3_xkn7r")
+region = Rect2(0, 48, 16, 16)
+
+[node name="LevelTemplate" type="Node2D"]
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+script = ExtResource("1_m6rnc")
+tween_resource = SubResource("Resource_w0djv")
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMapLayer" parent="Map"]
+
+[node name="OutlineMap" type="TileMapLayer" parent="Map"]
+
+[node name="Misc" type="Node2D" parent="."]
+
+[node name="MovingSprite" type="Sprite2D" parent="Misc"]
+visible = false
+texture = SubResource("AtlasTexture_g3cop")
+
+[node name="OverworldCamera" type="Camera2D" parent="Misc"]
+script = ExtResource("4_d4kt5")
+
+[node name="PhantomCameraHost" type="Node" parent="Misc/OverworldCamera"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_u13ml")
+
+[node name="UI" type="Control" parent="Misc/OverworldCamera"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Npcs" type="Node2D" parent="."]
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("6_s8qoa")]

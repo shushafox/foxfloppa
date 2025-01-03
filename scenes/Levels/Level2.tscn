@@ -1,25 +1,25 @@
-[gd_scene load_steps=18 format=4 uid="uid://dftakksfdtt7q"]
+[gd_scene load_steps=17 format=4 uid="uid://dftakksfdtt7q"]
 
-[ext_resource type="Script" path="res://scripts/level2.gd" id="1_6kaik"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_mgwoy"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_wooqb"]
-[ext_resource type="Texture2D" uid="uid://b2dlcjwdcg8cm" path="res://assets/tiles.png" id="3_7m0ff"]
-[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://assets/fences.png" id="3_ib4wg"]
-[ext_resource type="Script" path="res://scripts/overworld_camera.gd" id="4_jfdep"]
-[ext_resource type="Texture2D" uid="uid://dxdwbja24te2v" path="res://assets/Props/objects.png" id="5_adjjy"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_hi62t"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="6_0em3u"]
-[ext_resource type="Script" path="res://scripts/movetoLv2_trigger.gd" id="8_06bhv"]
-[ext_resource type="PackedScene" uid="uid://dscx3h8dkh6sm" path="res://scenes/NPC.tscn" id="9_cf6oo"]
+[ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_68jvd"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_xoo07"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_supx1"]
+[ext_resource type="Texture2D" uid="uid://b2dlcjwdcg8cm" path="res://Assets/tiles.png" id="4_0s6j2"]
+[ext_resource type="Texture2D" uid="uid://dxdwbja24te2v" path="res://Assets/Props/objects.png" id="5_vcjlx"]
+[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://Assets/fences.png" id="6_ume35"]
+[ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="7_vi0vv"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_ysf4q"]
+[ext_resource type="PackedScene" uid="uid://dscx3h8dkh6sm" path="res://Scenes/Templates/NpcTemplate.tscn" id="9_xs08v"]
+[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="11_8cpoj"]
 
 [sub_resource type="Resource" id="Resource_w0djv"]
-script = ExtResource("2_wooqb")
+script = ExtResource("3_supx1")
 duration = 1.0
 transition = 0
 ease = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eoo66"]
-texture = ExtResource("3_7m0ff")
+texture = ExtResource("4_0s6j2")
 texture_region_size = Vector2i(32, 32)
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.625, -16, -3.375, -9.75, 3.875, -5.5, 16, -4, 16, 16, -16, 16, -16, -16)
@@ -204,7 +204,7 @@ texture_region_size = Vector2i(32, 32)
 12:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gx5xa"]
-texture = ExtResource("5_adjjy")
+texture = ExtResource("5_vcjlx")
 texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.75, 12.25, 4.5, 13.5, 12.25, 9.75, 11.5, -4.25, 6.75, -10, -1.25, -14, -8.25, -9.25, -13.75, -0.5, -10.75, 9.25)
@@ -235,18 +235,15 @@ sources/0 = SubResource("TileSetAtlasSource_eoo66")
 sources/1 = SubResource("TileSetAtlasSource_gx5xa")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3cop"]
-atlas = ExtResource("3_ib4wg")
+atlas = ExtResource("6_ume35")
 region = Rect2(0, 48, 16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0af8o"]
-size = Vector2(64, 60.5)
-
 [node name="Level2" type="Node2D"]
-script = ExtResource("1_6kaik")
+script = ExtResource("1_68jvd")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-script = ExtResource("1_mgwoy")
+script = ExtResource("2_xoo07")
 follow_mode = 5
 follow_target = NodePath("../Player")
 zoom = Vector2(2, 2)
@@ -277,16 +274,22 @@ texture = SubResource("AtlasTexture_g3cop")
 physics_interpolation_mode = 1
 zoom = Vector2(2, 2)
 process_callback = 0
-script = ExtResource("4_jfdep")
+script = ExtResource("7_vi0vv")
 
 [node name="PhantomCameraHost" type="Node" parent="Misc/OverworldCamera"]
 process_priority = 300
 process_physics_priority = 300
-script = ExtResource("5_hi62t")
+script = ExtResource("8_ysf4q")
+
+[node name="UI" type="Control" parent="Misc/OverworldCamera"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Npcs" type="Node2D" parent="."]
 
-[node name="Sign" parent="Npcs" instance=ExtResource("9_cf6oo")]
+[node name="Sign" parent="Npcs" instance=ExtResource("9_xs08v")]
 visibility_layer = 3
 z_index = -1
 position = Vector2(-168, -144)
@@ -295,13 +298,9 @@ DisplaySprite = "res://assets/Props/Sign.png"
 
 [node name="Triggers" type="Node2D" parent="."]
 
-[node name="MovetoLv1Trigger" type="Area2D" parent="Triggers"]
-script = ExtResource("8_06bhv")
+[node name="LevelChangeTrigger" parent="Triggers" instance=ExtResource("10_ga5ur")]
+position = Vector2(-129, -230)
+scale = Vector2(5, 5)
+Destination = "res://Scenes/Levels/Level1.tscn"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/MovetoLv1Trigger"]
-position = Vector2(-128, -224.25)
-shape = SubResource("RectangleShape2D_0af8o")
-
-[node name="Player" parent="." instance=ExtResource("6_0em3u")]
-
-[connection signal="body_entered" from="Triggers/MovetoLv1Trigger" to="Triggers/MovetoLv1Trigger" method="_on_body_entered"]
+[node name="Player" parent="." instance=ExtResource("11_8cpoj")]

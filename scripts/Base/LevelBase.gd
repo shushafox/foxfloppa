@@ -49,6 +49,7 @@ func bind_signals() -> void:
 
 func end_combat() -> void:
 	IsCombat = false
+	MovingTile.visible = false
 	CombatEnded.emit()
 	
 	TurnOrder.clear()
@@ -57,6 +58,7 @@ func end_combat() -> void:
 
 func start_combat() -> void:
 	IsCombat = true
+	MovingTile.visible = true
 	CombatStarted.emit()
 	
 	# Gather everyone for combat

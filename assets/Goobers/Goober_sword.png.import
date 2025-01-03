@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dg5vmm4g87g21"
-path="res://.godot/imported/Goober_sword.png-f421669ba0c1aea55c48f4da67d7b9f6.ctex"
+path="res://.godot/imported/Goober_sword.png-1091fd44cbfff0e665684ad6d77db19a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Goobers/Goober_sword.png"
-dest_files=["res://.godot/imported/Goober_sword.png-f421669ba0c1aea55c48f4da67d7b9f6.ctex"]
+source_file="res://Assets/Goobers/Goober_sword.png"
+dest_files=["res://.godot/imported/Goober_sword.png-1091fd44cbfff0e665684ad6d77db19a.ctex"]
 
 [params]
 

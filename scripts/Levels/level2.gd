@@ -1,7 +1,6 @@
 extends LevelBase
 
 func _ready() -> void:
-	
 	bind_signals()
 
 func _process(delta: float) -> void:	
