@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://gf61d1durb0j"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_01j8v"]
-[ext_resource type="Texture2D" uid="uid://b3stih744va1j" path="res://Assets/Roi/Roi_Idle-Sheet.png" id="3_cu0vt"]
-[ext_resource type="Texture2D" uid="uid://bnnx1rodbl6or" path="res://Assets/Roi/Roi_Run-Sheet.png" id="3_kbe3n"]
+[ext_resource type="Texture2D" uid="uid://b3stih744va1j" path="res://assets/Roi/Roi_Idle-Sheet.png" id="3_cu0vt"]
+[ext_resource type="Texture2D" uid="uid://bnnx1rodbl6or" path="res://assets/Roi/Roi_Run-Sheet.png" id="3_kbe3n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx08j"]
 atlas = ExtResource("3_cu0vt")

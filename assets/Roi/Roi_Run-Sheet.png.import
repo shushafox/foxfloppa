@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnnx1rodbl6or"
-path="res://.godot/imported/Roi_Run-Sheet.png-dd84e2fb8f35b2b20f0a6f5676b2c519.ctex"
+path="res://.godot/imported/Roi_Run-Sheet.png-849d41c7c609f94a1ea12f8197d53821.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Roi/Roi_Run-Sheet.png"
-dest_files=["res://.godot/imported/Roi_Run-Sheet.png-dd84e2fb8f35b2b20f0a6f5676b2c519.ctex"]
+source_file="res://assets/Roi/Roi_Run-Sheet.png"
+dest_files=["res://.godot/imported/Roi_Run-Sheet.png-849d41c7c609f94a1ea12f8197d53821.ctex"]
 
 [params]
 

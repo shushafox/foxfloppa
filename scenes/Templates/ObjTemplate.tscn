@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1q2v801ir7ng"]
+
+[ext_resource type="Script" path="res://scripts/Templates/ObjTemplate.gd" id="1_hwwy8"]
+[ext_resource type="Texture2D" uid="uid://bh5ppyv78h8xl" path="res://assets/Props/Sign.png" id="2_gvlqc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gvlqc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70rhu"]
+size = Vector2(24, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mw00"]
+radius = 28.0713
+
+[node name="Obj" type="CharacterBody2D"]
+script = ExtResource("1_hwwy8")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gla6c")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_70rhu")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_0mw00")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

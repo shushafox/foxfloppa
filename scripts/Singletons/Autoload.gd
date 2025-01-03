@@ -19,7 +19,8 @@ var NpcsTalkedTo = {
 #region Resolvers
 func NpcTimeLineResolver(name: String) -> String:
 	match name:
-		"Sign_2_1": return _Sign_2_1()
+		"Sign_1_1": return "Sign_1_1"
+		"Sign_2_1": return "Sign_2_1"
 		"Evil": return _EvilGuy()
 		"Corvi": return _Corvi()
 		_: return "" # defaut
@@ -36,6 +37,4 @@ func _Corvi() -> String:
 	else:
 		return "corvi_1"
 		
-func _Sign_2_1():
-	return "sign_2_1"
 #endregion

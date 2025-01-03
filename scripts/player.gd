@@ -1,6 +1,7 @@
 extends ActorBase
 
 signal NpcInterract
+signal ObjInterract
 
 var IsMoving: bool = false
 
@@ -42,6 +43,7 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_accept"):
 		NpcInterract.emit()
+		ObjInterract.emit()
 	if Input.is_action_pressed("End"):
 		EndTurn.emit()
 	elif !CanMove && !CanAct:
