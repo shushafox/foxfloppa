@@ -56,5 +56,5 @@ shape = SubResource("CircleShape2D_0mw00")
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]

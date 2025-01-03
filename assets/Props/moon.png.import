@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cev23wsm7yvvj"
-path="res://.godot/imported/sword.png-95f2475a1c94b517c0dc8c8a23b270ed.ctex"
+uid="uid://c27utkp846vd4"
+path="res://.godot/imported/moon.png-4b7b4f9f6a754e16f4b692a7c67d89d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sword.png"
-dest_files=["res://.godot/imported/sword.png-95f2475a1c94b517c0dc8c8a23b270ed.ctex"]
+source_file="res://assets/Props/moon.png"
+dest_files=["res://.godot/imported/moon.png-4b7b4f9f6a754e16f4b692a7c67d89d2.ctex"]
 
 [params]
 
