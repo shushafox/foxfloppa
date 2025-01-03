@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkk6h2os2fp6k"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_nn8kv"]
-[ext_resource type="Texture2D" uid="uid://chm4e4feyfkiq" path="res://assets/raven.png" id="2_iktbd"]
+[ext_resource type="Texture2D" uid="uid://chm4e4feyfkiq" path="res://Assets/raven.png" id="2_iktbd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -58,5 +58,5 @@ shape = SubResource("CircleShape2D_0mw00")
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]

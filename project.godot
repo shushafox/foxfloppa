@@ -25,17 +25,12 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 
 directories/dch_directory={}
 directories/dtl_directory={
-"Sign_1_1": "res://timelines/Sign_1_1.dtl",
-"Sign_2_1": "res://Timelines/sign_2_1.dtl",
+"Sign_1_1": "res://Timelines/Sign_1_1.dtl",
 "angi": "res://Timelines/angi.dtl",
 "corvi_1": "res://Timelines/corvi_1.dtl",
 "corvi_2": "res://Timelines/corvi_2.dtl",
-"testOne": "res://Timelines/testOne.dtl",
-"timelines/angi": "res://timelines/angi.dtl",
-"timelines/corvi_1": "res://timelines/corvi_1.dtl",
-"timelines/corvi_2": "res://timelines/corvi_2.dtl",
-"timelines/sign_2_1": "res://timelines/Sign_2_1.dtl",
-"timelines/testOne": "res://timelines/testOne.dtl"
+"sign_2_1": "res://Timelines/sign_2_1.dtl",
+"testOne": "res://Timelines/testOne.dtl"
 }
 glossary/default_case_sensitive=true
 variables={

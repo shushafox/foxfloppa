@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://Scripts/Levels/level1.gd" id="1_cy0xy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ll34m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_e4317"]
-[ext_resource type="Texture2D" uid="uid://pr23gpb8t4r1" path="res://assets/plains.png" id="4_vjjoi"]
-[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://assets/fences.png" id="5_4trq1"]
-[ext_resource type="Texture2D" uid="uid://dbi4wopt8llvl" path="res://assets/outline.png" id="6_jrqj1"]
+[ext_resource type="Texture2D" uid="uid://pr23gpb8t4r1" path="res://Assets/plains.png" id="4_vjjoi"]
+[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://Assets/fences.png" id="5_4trq1"]
+[ext_resource type="Texture2D" uid="uid://dbi4wopt8llvl" path="res://Assets/outline.png" id="6_jrqj1"]
 [ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="7_d7f0m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_eimch"]
-[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
-[ext_resource type="PackedScene" uid="uid://dscx3h8dkh6sm" path="res://scenes/Templates/NpcTemplate.tscn" id="9_p1i8f"]
-[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
-[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="12_6myqq"]
-[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
+[ext_resource type="PackedScene" path="res://scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
+[ext_resource type="PackedScene" uid="uid://dscx3h8dkh6sm" path="res://Scenes/Templates/NpcTemplate.tscn" id="9_p1i8f"]
+[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://Scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
+[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="12_6myqq"]
+[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://Scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
 
 [sub_resource type="Resource" id="Resource_rthbw"]
 script = ExtResource("3_e4317")
@@ -199,7 +199,7 @@ script = ExtResource("1_cy0xy")
 top_level = true
 position = Vector2(-103, 23)
 script = ExtResource("2_ll34m")
-follow_mode = 5
+follow_mode = 1
 follow_target = NodePath("../Player")
 zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_rthbw")
