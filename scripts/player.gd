@@ -9,10 +9,10 @@ var IsMoving: bool = false
 @export var BaseSpeed = 250
 
 func _ready() -> void:
-	Dialogic.timeline_started.connect(set_physics_process.bind(false))
+	Dialogic.timeline_started.connect(set_process.bind(false))
 	Dialogic.timeline_started.connect(set_process_input.bind(false))
 
-	Dialogic.timeline_ended.connect(set_physics_process.bind(true))
+	Dialogic.timeline_ended.connect(set_process.bind(true))
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
 
 func _process(_delta: float) -> void:
