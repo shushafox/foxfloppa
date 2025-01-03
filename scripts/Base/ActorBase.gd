@@ -58,7 +58,13 @@ func _calculate_turn_abilities() -> void:
 		CanMove = false
 
 func _on_turn_start(node: ActorBase) -> void:
-	pass
+	if node != self:
+		return
+	
+	await get_tree().create_timer(1).timeout
+	
+	EndTurn.emit()
+
 func _on_turn_end(node: ActorBase)  -> void:
-	pass
+	return
 #endregion
