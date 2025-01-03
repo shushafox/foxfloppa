@@ -7,6 +7,10 @@ extends Control
 @onready var Damage: Label = $Stats/Damage
 @onready var Tooltip: Label = $ToolTip
 
+func _process(delta: float) -> void:
+	size = get_window().size / 2
+	position = -(size / 2)
+
 func reset_turns() -> void:
 	Title.text = ""
 
