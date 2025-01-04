@@ -90,7 +90,6 @@ func _on_dialogic_signal(argument: String):
 
 func _on_turn_end() -> void:
 	TurnNumber += 1
-	UI.set_turns(TurnNumber)
 	
 	var Actor: ActorBase = TurnOrder[TurnNumber % TurnOrder.size()]
 

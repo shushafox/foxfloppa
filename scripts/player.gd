@@ -23,9 +23,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			self.global_position = self.global_position.move_toward(Level.MovingTile.global_position, 1)
 
-func _process(_delta: float) -> void:
-	Level.UI.set_stat("speed", Speed, RemainingSpeed)
-	
+func _process(_delta: float) -> void:	
 	var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
 	
 	if(!Level.IsCombat):		
@@ -39,7 +37,6 @@ func _process(_delta: float) -> void:
 				move(directions)
 	
 	_animate()
-	Level.UI.set_stat("speed", Speed, RemainingSpeed)
 	
 	if Input.is_action_pressed("ui_accept"):
 		NpcInterract.emit()
