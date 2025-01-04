@@ -9,7 +9,6 @@ extends ActorBase
 var CurrentTurn: bool = false
 
 var animUp = 1
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_sprite()
@@ -76,8 +75,10 @@ func move(direction: Vector2i) -> void:
 		currentTile.y + direction.y
 	)
 	var tileData: TileData = Level.Tiles.get_cell_tile_data(targetTile)
-	
-	self.global_position = Level.Tiles.map_to_local(targetTile)
+	var tween = create_tween()
+	tween.tween_property(AnimatedSprite, "global_position", Level.Tiles.map_to_local(targetTile), 0.5)
+	await get_tree().create_timer(1).timeout
+	#self.global_position = Level.Tiles.map_to_local(targetTile)
 	
 	RemainingSpeed -= 1
 

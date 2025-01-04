@@ -89,10 +89,13 @@ func _on_dialogic_signal(argument: String):
 		start_combat()
 
 func _on_turn_end() -> void:
+	await get_tree().create_timer(1).timeout
 	TurnNumber += 1
 	
 	var Actor: ActorBase = TurnOrder[TurnNumber % TurnOrder.size()]
 
-	TurnStarted.emit(Actor)
+	
 	Camera.follow_target = Actor
+	await get_tree().create_timer(1).timeout
+	TurnStarted.emit(Actor)
 #endregion

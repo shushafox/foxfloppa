@@ -1,7 +1,7 @@
 extends LevelBase
 
 func _ready() -> void:
-	bind_signals()
+		bind_signals()
 
 func _process(delta: float) -> void:	
 	if(Autoload.IsDay):

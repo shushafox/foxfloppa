@@ -2,7 +2,7 @@ extends TextureRect
 
 @export var Rim: String
 @export var Portrait: String
-@export var MaxHealt: int
+@export var MaxHealth: int
 @export var MaxMana: int
 @export var Health: int
 @export var Mana: int
@@ -12,7 +12,7 @@ extends TextureRect
 @onready var PortraitNode: TextureRect = $HBoxContainer/Portrait
 
 func _ready() -> void:
-	HealthBar.max_value = MaxHealt
+	HealthBar.max_value = MaxHealth
 	HealthBar.value = Health
 	ManaBar.max_value = MaxMana
 	ManaBar.value = Mana
