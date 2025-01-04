@@ -22,6 +22,7 @@ var RemainingSpeed: int = Speed
 @export var IsAlly: bool = true
 @export var IsAutoamted: bool = true
 
+var IsMoving: bool = false
 var CanAct: bool = true
 var CanMove: bool = true
 #endregion
@@ -30,6 +31,7 @@ var CanMove: bool = true
 @export var DisplayName: String = ""
 @export var DisplaySprite: String = ""
 @export var DisplayPortrait: String = "" 
+@export var DisplayPortraitRim: String = ""
 #endregion
 
 #region PreLoad nodes

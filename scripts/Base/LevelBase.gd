@@ -92,9 +92,7 @@ func _on_turn_end() -> void:
 	TurnNumber += 1
 	UI.set_turns(TurnNumber)
 	
-	print((TurnNumber) % TurnOrder.size())
-	
-	var Actor: ActorBase = TurnOrder[(TurnNumber) % TurnOrder.size()]
+	var Actor: ActorBase = TurnOrder[TurnNumber % TurnOrder.size()]
 
 	TurnStarted.emit(Actor)
 	Camera.follow_target = Actor

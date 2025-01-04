@@ -48,6 +48,8 @@ shape = SubResource("RectangleShape2D_c0df4")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Combat/DetectionArea"]
 shape = SubResource("RectangleShape2D_h3mj6")
 
+[node name="NavigationAgent" type="NavigationAgent2D" parent="Combat"]
+
 [node name="Peace" type="Node2D" parent="."]
 
 [node name="DetectionArea" type="Area2D" parent="Peace"]

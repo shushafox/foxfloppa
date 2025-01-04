@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dubpu0kexxt2x"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ActorCard.gd" id="1_jabap"]
+[ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://Scenes/UI/Portrait.tscn" id="2_y7vno"]
+
+[sub_resource type="Gradient" id="Gradient_8uky6"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_egom5"]
+gradient = SubResource("Gradient_8uky6")
+
+[node name="ActorCard" type="TextureRect"]
+custom_minimum_size = Vector2(250, 80)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -896.0
+offset_bottom = -563.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_egom5")
+script = ExtResource("1_jabap")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Portrait" parent="HBoxContainer" instance=ExtResource("2_y7vno")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Health" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Mana" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2

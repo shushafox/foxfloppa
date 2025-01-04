@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm8now0ny2t7x"]
+
+[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_n08on"]
+[ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="2_v7as4"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n08on")
+
+[node name="Objective" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -197.0
+offset_bottom = 48.0
+grow_horizontal = 0
+texture = ExtResource("2_v7as4")
+
+[node name="Label" type="Label" parent="Objective"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Спасти рядового жопу"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TurnOrder" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TurnOrderPortraits" type="HBoxContainer" parent="TurnOrder"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TurnOrderCards" type="VBoxContainer" parent="TurnOrder"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 256.0
+grow_vertical = 2
+
+[node name="BaseActions" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Menu" type="Button" parent="BaseActions"]
+layout_mode = 2
+text = "Menu"
+
+[node name="Inventory" type="Button" parent="BaseActions"]
+layout_mode = 2
+text = "Inv."
+
+[node name="Journal" type="Button" parent="BaseActions"]
+layout_mode = 2
+text = "Jrn."
+
+[node name="Skill" type="Button" parent="BaseActions"]
+layout_mode = 2
+text = "Skill"
+
+[node name="CombatActios" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Move" type="Button" parent="CombatActios"]
+layout_mode = 2
+text = "Move"
+
+[node name="Attack" type="Button" parent="CombatActios"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Ability" type="Button" parent="CombatActios"]
+layout_mode = 2
+text = "Ability"
+
+[node name="Item" type="Button" parent="CombatActios"]
+layout_mode = 2
+text = "Item"
+
+[node name="EndTurn" type="Button" parent="CombatActios"]
+layout_mode = 2
+text = "End Turn"

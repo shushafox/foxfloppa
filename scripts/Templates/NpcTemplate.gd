@@ -2,8 +2,11 @@ extends ActorBase
 
 @onready var PeaceCollider = $Peace/DetectionArea
 @onready var CombatCollider = $Combat/DetectionArea
+@onready var Level: LevelBase = get_parent().get_parent()
+@onready var NavAgent: NavigationAgent2D = $Combat/NavigationAgent
+@onready var Player: ActorBase = get_parent().get_parent().get_node("Player")
 
-@onready var Player = get_parent().get_parent().get_node("Player")
+var CurrentTurn: bool = false
 
 var animUp = 1
 
@@ -17,7 +20,17 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if CurrentTurn:
+		if NavAgent.is_navigation_finished():
+			return
+		
+		var direction = to_local(NavAgent.get_next_path_position()).clamp(-Vector2.ONE,Vector2.ONE).round()
+		
+		if RemainingSpeed > 0:
+			move(direction)
+		else:
+			CurrentTurn = false
+			EndTurn.emit()
 
 func Animate():
 	if(animUp == 1):
@@ -46,6 +59,27 @@ func GetCurrentCollider() -> Area2D:
 		return PeaceCollider
 	else:
 		return CombatCollider
+
+func _on_turn_start(node: ActorBase) -> void:
+	if node != self:
+		return
+	
+	NavAgent.target_position = Player.global_position
+	
+	CurrentTurn = true
+	RemainingSpeed = Speed
+
+func move(direction: Vector2i) -> void:
+	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
+	var targetTile: Vector2i = Vector2(
+		currentTile.x + direction.x,
+		currentTile.y + direction.y
+	)
+	var tileData: TileData = Level.Tiles.get_cell_tile_data(targetTile)
+	
+	self.global_position = Level.Tiles.map_to_local(targetTile)
+	
+	RemainingSpeed -= 1
 
 func _on_npc_interract() -> void:
 	var bodies:Array[Node2D] = GetCurrentCollider().get_overlapping_bodies()

@@ -3,8 +3,6 @@ extends ActorBase
 signal NpcInterract
 signal ObjInterract
 
-var IsMoving: bool = false
-
 @onready var Level: LevelBase = get_parent()
 @onready var Raycast: RayCast2D = $Combat/RayCast2D
 
@@ -52,7 +50,7 @@ func _process(_delta: float) -> void:
 		set_process(false)
 		EndTurn.emit()
 
-func move(direction: Vector2i):
+func move(direction: Vector2i) -> void:
 	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
 	var targetTile: Vector2i = Vector2(
 		currentTile.x + direction.x,
@@ -67,11 +65,11 @@ func move(direction: Vector2i):
 		return
 	if (tileData.get_custom_data("Walkable") == false):
 		return
-
+	
 	IsMoving = true
 	self.global_position = Level.Tiles.map_to_local(currentTile)
 	Level.MovingTile.global_position = Level.Tiles.map_to_local(targetTile)
-
+	
 	RemainingSpeed -= 1
 
 func _on_turn_start(node: ActorBase) -> void:
