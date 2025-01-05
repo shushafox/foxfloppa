@@ -23,6 +23,7 @@ var RemainingSpeed: int = Speed
 @export var IsAutoamted: bool = true
 
 var IsMoving: bool = false
+var IsActing: bool = false
 var CanAct: bool = true
 var CanMove: bool = true
 #endregion
@@ -39,13 +40,21 @@ var CanMove: bool = true
 @onready var Collision: CollisionShape2D = $Collision
 @onready var Combat: Node2D = $Combat
 @onready var Peace: Node2D = $Peace
+@onready var Raycast: RayCast2D = $Combat/RayCast
+@onready var Level: LevelBase #Npcs and Player load it differently
 #endregion
 
 #region Base functions
 func _set_sprite() -> void:
 	pass
 
+func _snap_to_grid() -> void:
+	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
+	self.global_position = Level.Tiles.map_to_local(currentTile)
+
 func _on_combat_start() -> void:
+	_snap_to_grid()
+	
 	$Peace.process_mode = Node.PROCESS_MODE_DISABLED
 	$Combat.process_mode = Node.PROCESS_MODE_INHERIT
 	
@@ -58,6 +67,8 @@ func _on_combat_end() -> void:
 func _calculate_turn_abilities() -> void:
 	if RemainingSpeed == 0:
 		CanMove = false
+	else:
+		CanMove = true
 
 func _on_turn_start(node: ActorBase) -> void:
 	if node != self:

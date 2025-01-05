@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm8now0ny2t7x"]
+[gd_scene load_steps=5 format=3 uid="uid://bm8now0ny2t7x"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_n08on"]
 [ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://Scenes/UI/ActorCard.tscn" id="2_n68o6"]
 [ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://Assets/UI/UI_button.png" id="4_mkoec"]
-[ext_resource type="Script" path="res://Scripts/UI/menu.gd" id="5_acm20"]
 
 [sub_resource type="Theme" id="Theme_ppved"]
 
@@ -17,7 +16,159 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n08on")
 
-[node name="ActorCard" parent="." instance=ExtResource("2_n68o6")]
+[node name="Combat" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TurnOrder" type="Control" parent="Combat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TurnOrderPortraits" type="HBoxContainer" parent="Combat/TurnOrder"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="TurnOrderCards" type="VBoxContainer" parent="Combat/TurnOrder"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 256.0
+grow_vertical = 2
+
+[node name="CombatActios" type="VBoxContainer" parent="Combat"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -171.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Move" type="Button" parent="Combat/CombatActios"]
+layout_mode = 2
+text = "Move"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Combat/CombatActios/Move"]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Attack" type="Button" parent="Combat/CombatActios"]
+layout_mode = 2
+text = "Attack"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Combat/CombatActios/Attack"]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Ability" type="Button" parent="Combat/CombatActios"]
+layout_mode = 2
+text = "Ability"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Combat/CombatActios/Ability"]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Item" type="Button" parent="Combat/CombatActios"]
+layout_mode = 2
+text = "Item"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Combat/CombatActios/Item"]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="EndTurn" type="Button" parent="Combat/CombatActios"]
+layout_mode = 2
+text = "End Turn"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Combat/CombatActios/EndTurn"]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Peace" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ActorCard" parent="Peace" instance=ExtResource("2_n68o6")]
 custom_minimum_size = Vector2(250, 60)
 layout_mode = 0
 anchors_preset = 0
@@ -30,19 +181,27 @@ grow_vertical = 1
 Rim = "res://Assets/outline.png"
 Portrait = "res://Assets/Roi/Roi_Portrait.png"
 
-[node name="Objective" type="Label" parent="."]
+[node name="Base" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Objective" type="Label" parent="Base"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -70.0
+offset_left = -182.0
 offset_bottom = 23.0
 grow_horizontal = 0
 text = "Спасти рядового жопу"
 horizontal_alignment = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Objective"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/Objective"]
 show_behind_parent = true
 texture_filter = 1
 layout_mode = 1
@@ -58,149 +217,110 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="TurnOrder" type="Control" parent="."]
-visible = false
+[node name="Actions" type="HBoxContainer" parent="Base"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 177.0
+grow_vertical = 0
+theme = SubResource("Theme_ppved")
+
+[node name="Menu" type="Button" parent="Base/Actions"]
+texture_filter = 1
+layout_mode = 2
+text = "Menu"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/Actions/Menu"]
+show_behind_parent = true
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TurnOrderPortraits" type="HBoxContainer" parent="TurnOrder"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-
-[node name="TurnOrderCards" type="VBoxContainer" parent="TurnOrder"]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 256.0
-grow_vertical = 2
-
-[node name="CombatActios" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -171.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Move" type="Button" parent="CombatActios"]
-layout_mode = 2
-text = "Move"
-
-[node name="Attack" type="Button" parent="CombatActios"]
-layout_mode = 2
-text = "Attack"
-
-[node name="Ability" type="Button" parent="CombatActios"]
-layout_mode = 2
-text = "Ability"
-
-[node name="Item" type="Button" parent="CombatActios"]
-layout_mode = 2
-text = "Item"
-
-[node name="EndTurn" type="Button" parent="CombatActios"]
-layout_mode = 2
-text = "End Turn"
-
-[node name="BaseActions" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_right = 40.0
-grow_vertical = 0
-theme = SubResource("Theme_ppved")
-
-[node name="Menu" type="Button" parent="BaseActions"]
-texture_filter = 1
-layout_mode = 2
-text = "Menu"
-
-[node name="NinePatchRect" type="NinePatchRect" parent="BaseActions/Menu"]
-show_behind_parent = true
-texture_filter = 1
-layout_mode = 0
-offset_left = -2.0
-offset_top = -4.0
-offset_right = 55.0
-offset_bottom = 35.0
 texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Inventory" type="Button" parent="BaseActions"]
+[node name="Inventory" type="Button" parent="Base/Actions"]
 layout_mode = 2
 text = "Inv."
 
-[node name="NinePatchRect" type="NinePatchRect" parent="BaseActions/Inventory"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/Actions/Inventory"]
 show_behind_parent = true
 texture_filter = 1
-layout_mode = 0
-offset_left = -2.0
-offset_top = -4.0
-offset_right = 39.0
-offset_bottom = 35.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Journal" type="Button" parent="BaseActions"]
+[node name="Journal" type="Button" parent="Base/Actions"]
 layout_mode = 2
 text = "Jrn."
 
-[node name="NinePatchRect" type="NinePatchRect" parent="BaseActions/Journal"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/Actions/Journal"]
 show_behind_parent = true
 texture_filter = 1
-layout_mode = 0
-offset_left = -2.0
-offset_top = -4.0
-offset_right = 37.0
-offset_bottom = 35.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Skill" type="Button" parent="BaseActions"]
+[node name="Skill" type="Button" parent="Base/Actions"]
 layout_mode = 2
 text = "Skill"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="BaseActions/Skill"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Base/Actions/Skill"]
 show_behind_parent = true
 texture_filter = 1
-layout_mode = 0
-offset_left = -2.0
-offset_top = -4.0
-offset_right = 42.0
-offset_bottom = 35.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_mkoec")
+region_rect = Rect2(2, 4, 28, 24)
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Menu" type="Control" parent="."]
+[node name="SubMenus" type="Control" parent="Base"]
 visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EscMenu" type="NinePatchRect" parent="Base/SubMenus"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -213,25 +333,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_acm20")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-grow_horizontal = 2
-grow_vertical = 2
 texture = ExtResource("4_mkoec")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
 
-[connection signal="pressed" from="BaseActions/Menu" to="Menu" method="_on_menu_pressed"]
+[connection signal="pressed" from="Base/Actions/Menu" to="." method="_on_menu_pressed"]

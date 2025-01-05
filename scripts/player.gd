@@ -3,12 +3,11 @@ extends ActorBase
 signal NpcInterract
 signal ObjInterract
 
-@onready var Level: LevelBase = get_parent()
-@onready var Raycast: RayCast2D = $Combat/RayCast2D
-
 @export var BaseSpeed = 250
 
 func _ready() -> void:
+	Level = get_parent()
+	
 	Dialogic.timeline_started.connect(set_process.bind(false))
 	Dialogic.timeline_started.connect(set_process_input.bind(false))
 
@@ -74,13 +73,8 @@ func _on_turn_start(node: ActorBase) -> void:
 		return
 	
 	RemainingSpeed = Speed
-	_snap_to_grid()
 	
 	set_process(true)
-
-func _snap_to_grid() -> void:
-	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
-	self.global_position = Level.Tiles.map_to_local(currentTile)
 
 func _animate() -> void:
 	if velocity != Vector2.ZERO:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dscx3h8dkh6sm"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_tb7cw"]
-[ext_resource type="Texture2D" uid="uid://xqul8i1ken8s" path="res://Assets/angry.png" id="2_cvg4p"]
+[ext_resource type="Texture2D" uid="uid://j4t4y0iyj3m5" path="res://Assets/angry.png" id="2_cvg4p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -47,6 +47,9 @@ shape = SubResource("RectangleShape2D_c0df4")
 shape = SubResource("RectangleShape2D_h3mj6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Combat"]
+
+[node name="RayCast" type="RayCast2D" parent="Combat"]
+target_position = Vector2(0, 48)
 
 [node name="Peace" type="Node2D" parent="."]
 

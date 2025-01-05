@@ -18,6 +18,11 @@ func _ready() -> void:
 	RimNode.texture = load(Rim)
 	PortraitNode.texture = load(Portrait)
 
-func reload() -> void:	
+func reload() -> void:
+	if Portrait.is_empty():
+		Portrait = DefaultPortrait
+	if Rim.is_empty():
+		Rim = DefaultRim
+	
 	RimNode.texture = load(Rim)
 	PortraitNode.texture = load(Portrait)

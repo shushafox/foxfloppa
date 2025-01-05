@@ -2,31 +2,31 @@ extends ActorBase
 
 @onready var PeaceCollider = $Peace/DetectionArea
 @onready var CombatCollider = $Combat/DetectionArea
-@onready var Level: LevelBase = get_parent().get_parent()
 @onready var NavAgent: NavigationAgent2D = $Combat/NavigationAgent
 @onready var Player: ActorBase = get_parent().get_parent().get_node("Player")
 
 var CurrentTurn: bool = false
 
 var animUp = 1
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	_set_sprite()
 	
+	Level = get_parent().get_parent()
 	Player.NpcInterract.connect(_on_npc_interract)
 	
 	Animate()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if CurrentTurn:
-		if NavAgent.is_navigation_finished():
-			return
+	if CurrentTurn && !IsActing && !IsMoving:
+		_calculate_turn_abilities()
 		
-		var direction = to_local(NavAgent.get_next_path_position()).clamp(-Vector2.ONE,Vector2.ONE).round()
-		
-		if RemainingSpeed > 0:
-			move(direction)
+		if CanMove:
+			if NavAgent.is_navigation_finished():
+				CanMove = false
+			if RemainingSpeed > 0:
+				var direction = to_local(NavAgent.get_next_path_position()).normalized().round()
+				move(direction)
 		else:
 			CurrentTurn = false
 			EndTurn.emit()
@@ -59,6 +59,34 @@ func GetCurrentCollider() -> Area2D:
 	else:
 		return CombatCollider
 
+func move(direction: Vector2i) -> void:
+	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
+	var targetTile: Vector2i = Vector2(
+		currentTile.x + direction.x,
+		currentTile.y + direction.y
+	)
+	var tileData: TileData = Level.Tiles.get_cell_tile_data(targetTile)
+	
+	Raycast.target_position = direction * 48
+	Raycast.force_raycast_update()
+	
+	if Raycast.is_colliding():
+		CanMove = false
+		RemainingSpeed = 0
+		return
+	if (tileData.get_custom_data("Walkable") == false):
+		CanMove = false
+		RemainingSpeed = 0
+		return
+	
+	IsMoving = true
+	
+	var tween = create_tween()
+	tween.tween_property(self, "position", Level.Tiles.map_to_local(targetTile), 0.5)
+	tween.finished.connect(func(): IsMoving = false)
+	
+	RemainingSpeed -= 1
+
 func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
 		return
@@ -67,20 +95,6 @@ func _on_turn_start(node: ActorBase) -> void:
 	
 	CurrentTurn = true
 	RemainingSpeed = Speed
-
-func move(direction: Vector2i) -> void:
-	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
-	var targetTile: Vector2i = Vector2(
-		currentTile.x + direction.x,
-		currentTile.y + direction.y
-	)
-	var tileData: TileData = Level.Tiles.get_cell_tile_data(targetTile)
-	var tween = create_tween()
-	tween.tween_property(AnimatedSprite, "global_position", Level.Tiles.map_to_local(targetTile), 0.5)
-	await get_tree().create_timer(1).timeout
-	#self.global_position = Level.Tiles.map_to_local(targetTile)
-	
-	RemainingSpeed -= 1
 
 func _on_npc_interract() -> void:
 	var bodies:Array[Node2D] = GetCurrentCollider().get_overlapping_bodies()

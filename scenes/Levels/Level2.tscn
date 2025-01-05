@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://Scenes/UI/UI.tscn" id="9_rt4hv"]
 [ext_resource type="PackedScene" uid="uid://dscx3h8dkh6sm" path="res://Scenes/Templates/NpcTemplate.tscn" id="9_xs08v"]
 [ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="11_8cpoj"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/player.tscn" id="11_8cpoj"]
 
 [sub_resource type="Resource" id="Resource_w0djv"]
 script = ExtResource("3_supx1")
@@ -242,10 +242,10 @@ region = Rect2(0, 48, 16, 16)
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_68jvd")
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+[node name="PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 script = ExtResource("2_xoo07")
-follow_mode = 5
+follow_mode = 1
 follow_target = NodePath("../Player")
 zoom = Vector2(2, 2)
 tween_resource = SubResource("Resource_w0djv")

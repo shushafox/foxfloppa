@@ -1,10 +1,11 @@
 extends Control
 
-@onready var Objective: Label = $Objective
-@onready var Portraits: HBoxContainer = $TurnOrder/TurnOrderPortraits
-@onready var Cards: VBoxContainer = $TurnOrder/TurnOrderCards
-@onready var TurnOrder: Control = $TurnOrder
-@onready var CombatActions: VBoxContainer = $CombatActios
+@onready var Objective: Label = $Base/Objective
+@onready var EscapeMenu = $Base/SubMenus/EscMenu
+@onready var Combat: Control = $Combat
+@onready var Peace: Control = $Peace
+@onready var Portraits: HBoxContainer = $Combat/TurnOrder/TurnOrderPortraits
+@onready var Cards: VBoxContainer = $Combat/TurnOrder/TurnOrderCards
 
 const PortraitNodePath: String = "res://Scenes/UI/Portrait.tscn"
 const ActorCardNodePath: String = "res://Scenes/UI/ActorCard.tscn"
@@ -16,9 +17,13 @@ func _process(_delta: float) -> void:
 	size = get_window().size / 2
 	position = -(size / 2)
 
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("Open Menu"):
+		EscapeMenu.visible = !EscapeMenu.visible
+
 func end_combat() -> void:
-	TurnOrder.visible = false
-	CombatActions.visible = false
+	Combat.visible = false
+	Peace.visible = true
 	
 	var cards = Cards.get_children()
 	var portraits = Portraits.get_children()
@@ -29,8 +34,8 @@ func end_combat() -> void:
 		portrait.queue_free()
 
 func start_combat(actors: Array[ActorBase]) -> void:
-	TurnOrder.visible = true
-	CombatActions.visible = true
+	Combat.visible = true
+	Peace.visible = false
 	
 	var portrait = load(PortraitNodePath)
 	var card = load(ActorCardNodePath)
@@ -63,3 +68,6 @@ func advance_turns() -> void:
 	
 	var card = Cards.get_child(0)
 	Cards.move_child(card, Cards.get_child_count() - 1)
+
+func _on_menu_pressed() -> void:
+	EscapeMenu.visible = !EscapeMenu.visible
