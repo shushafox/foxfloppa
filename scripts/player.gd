@@ -15,7 +15,7 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(set_process.bind(true))
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Level.IsCombat && IsMoving:
 		if (Level.MovingTile.global_position == self.global_position):
 			IsMoving = false

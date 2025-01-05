@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=4 uid="uid://c3eej3xyhm2xt"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_78c3c"]
-[ext_resource type="Texture2D" uid="uid://c6w4ybxylm7hi" path="res://assets/grass.png" id="1_qx0dj"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="2_3assb"]
-[ext_resource type="Texture2D" uid="uid://pr23gpb8t4r1" path="res://assets/plains.png" id="2_mfyqt"]
-[ext_resource type="Texture2D" uid="uid://b3p5uouycvor" path="res://assets/decor_8x8.png" id="3_gclsh"]
-[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://assets/fences.png" id="4_5a7fh"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_78c3c"]
+[ext_resource type="Texture2D" uid="uid://c6w4ybxylm7hi" path="res://Assets/grass.png" id="1_qx0dj"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/player.tscn" id="2_3assb"]
+[ext_resource type="Texture2D" uid="uid://pr23gpb8t4r1" path="res://Assets/plains.png" id="2_mfyqt"]
+[ext_resource type="Texture2D" uid="uid://b3p5uouycvor" path="res://Assets/decor_8x8.png" id="3_gclsh"]
+[ext_resource type="Texture2D" uid="uid://nxdamlg8jdaf" path="res://Assets/fences.png" id="4_5a7fh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yrkvc"]
 texture = ExtResource("2_mfyqt")

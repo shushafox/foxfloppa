@@ -18,7 +18,7 @@ func _ready() -> void:
 	Animate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if CurrentTurn:
 		if NavAgent.is_navigation_finished():
 			return

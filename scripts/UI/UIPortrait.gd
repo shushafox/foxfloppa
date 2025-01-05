@@ -6,9 +6,18 @@ extends TextureRect
 @onready var RimNode: TextureRect = $"."
 @onready var PortraitNode: TextureRect = $Portrait
 
+const DefaultRim: String = "res://Assets/outline.png"
+const DefaultPortrait: String = "res://Assets/angry.png"
+
 func _ready() -> void:
-	var rimTexture = load(Rim) as Texture
-	var portraitTexture = load(Portrait) as Texture
+	if Portrait.is_empty():
+		Portrait = DefaultPortrait
+	if Rim.is_empty():
+		Rim = DefaultRim
 	
-	RimNode.texture = rimTexture
-	PortraitNode.texture = portraitTexture
+	RimNode.texture = load(Rim)
+	PortraitNode.texture = load(Portrait)
+
+func reload() -> void:	
+	RimNode.texture = load(Rim)
+	PortraitNode.texture = load(Portrait)

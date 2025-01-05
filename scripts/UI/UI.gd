@@ -1,6 +1,6 @@
 extends Control
 
-@onready var Objective: Label = $Objective/Label
+@onready var Objective: Label = $Objective
 @onready var Portraits: HBoxContainer = $TurnOrder/TurnOrderPortraits
 @onready var Cards: VBoxContainer = $TurnOrder/TurnOrderCards
 @onready var TurnOrder: Control = $TurnOrder
@@ -12,7 +12,7 @@ const ActorCardNodePath: String = "res://Scenes/UI/ActorCard.tscn"
 const DefaultRim: String = "res://Assets/outline.png"
 const DefaultPortrait: String = "res://Assets/angry.png"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	size = get_window().size / 2
 	position = -(size / 2)
 

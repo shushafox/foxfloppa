@@ -19,3 +19,4 @@ func _ready() -> void:
 	
 	PortraitNode.Portrait = Portrait
 	PortraitNode.Rim = Rim
+	PortraitNode.reload()

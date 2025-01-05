@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dubpu0kexxt2x"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ActorCard.gd" id="1_jabap"]
-[ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://scenes/UI/Portrait.tscn" id="2_y7vno"]
+[ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://Scenes/UI/Portrait.tscn" id="2_y7vno"]
 
 [sub_resource type="Gradient" id="Gradient_8uky6"]
 

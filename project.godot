@@ -13,7 +13,7 @@ config_version=5
 config/name="Daybreak_test"
 run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://assets/Roi/Roi_Portrait.png"
+config/icon="res://Assets/Roi/Roi_Portrait.png"
 
 [autoload]
 

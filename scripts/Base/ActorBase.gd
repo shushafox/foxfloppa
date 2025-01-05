@@ -65,6 +65,6 @@ func _on_turn_start(node: ActorBase) -> void:
 		
 	EndTurn.emit()
 
-func _on_turn_end(node: ActorBase)  -> void:
+func _on_turn_end(_node: ActorBase)  -> void:
 	return
 #endregion

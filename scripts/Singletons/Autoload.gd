@@ -17,8 +17,8 @@ var NpcsTalkedTo = {
 #endregion
 
 #region Resolvers
-func NpcTimeLineResolver(name: String) -> String:
-	match name:
+func NpcTimeLineResolver(npcName: String) -> String:
+	match npcName:
 		"Sign_1_1": return "Sign_1_1"
 		"Sign_2_1": return "Sign_2_1"
 		"Evil": return _EvilGuy()

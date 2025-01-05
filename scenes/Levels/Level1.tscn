@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://Scripts/Levels/level1.gd" id="1_cy0xy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ll34m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_e4317"]
-[ext_resource type="Texture2D" uid="uid://b5bxu38wuiqr6" path="res://assets/plains.png" id="4_vjjoi"]
-[ext_resource type="Texture2D" uid="uid://drkbsqx1mluu6" path="res://assets/fences.png" id="5_4trq1"]
-[ext_resource type="Texture2D" uid="uid://bha306v5u4lkc" path="res://assets/outline.png" id="6_jrqj1"]
+[ext_resource type="Texture2D" uid="uid://c06ednk2pb68b" path="res://Assets/plains.png" id="4_5728d"]
+[ext_resource type="Texture2D" uid="uid://dtu3la8io3l51" path="res://Assets/fences.png" id="5_4trq1"]
+[ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="6_kwc70"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_eimch"]
-[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="8_yw6rv"]
-[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
-[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
-[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="12_6myqq"]
-[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
-[ext_resource type="PackedScene" uid="uid://byyxxxfsu3rmg" path="res://scenes/Npcs/Amogus.tscn" id="14_k74xa"]
+[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://Scenes/UI/UI.tscn" id="8_yw6rv"]
+[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://Scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
+[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://Scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
+[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/player.tscn" id="12_6myqq"]
+[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://Scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
+[ext_resource type="PackedScene" uid="uid://byyxxxfsu3rmg" path="res://Scenes/Npcs/Amogus.tscn" id="14_k74xa"]
 
 [sub_resource type="Resource" id="Resource_rthbw"]
 script = ExtResource("3_e4317")
@@ -22,7 +22,7 @@ transition = 0
 ease = 2
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_33esx"]
-texture = ExtResource("4_vjjoi")
+texture = ExtResource("4_5728d")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 0:0/0/custom_data_0 = true
@@ -180,7 +180,7 @@ sources/0 = SubResource("TileSetAtlasSource_33esx")
 sources/1 = SubResource("TileSetAtlasSource_sps5y")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l6w6c"]
-texture = ExtResource("6_jrqj1")
+texture = ExtResource("6_kwc70")
 texture_region_size = Vector2i(48, 48)
 0:0/0 = 0
 
