@@ -3,17 +3,17 @@
 [ext_resource type="Script" path="res://Scripts/Levels/level1.gd" id="1_cy0xy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ll34m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_e4317"]
-[ext_resource type="Texture2D" uid="uid://c06ednk2pb68b" path="res://Assets/plains.png" id="4_5728d"]
-[ext_resource type="Texture2D" uid="uid://dtu3la8io3l51" path="res://Assets/fences.png" id="5_4trq1"]
-[ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="6_kwc70"]
+[ext_resource type="Texture2D" uid="uid://b5bxu38wuiqr6" path="res://assets/plains.png" id="4_5728d"]
+[ext_resource type="Texture2D" uid="uid://drkbsqx1mluu6" path="res://assets/fences.png" id="5_4trq1"]
+[ext_resource type="Texture2D" uid="uid://bha306v5u4lkc" path="res://assets/outline.png" id="6_kwc70"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_eimch"]
-[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://Scenes/UI/UI.tscn" id="8_yw6rv"]
-[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://Scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
-[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://Scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
-[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/player.tscn" id="12_6myqq"]
-[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://Scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
-[ext_resource type="PackedScene" uid="uid://byyxxxfsu3rmg" path="res://Scenes/Npcs/Amogus.tscn" id="14_k74xa"]
+[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="8_yw6rv"]
+[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
+[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
+[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="12_6myqq"]
+[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
+[ext_resource type="PackedScene" uid="uid://byyxxxfsu3rmg" path="res://scenes/Npcs/Amogus.tscn" id="14_k74xa"]
 
 [sub_resource type="Resource" id="Resource_rthbw"]
 script = ExtResource("3_e4317")
@@ -71,51 +71,51 @@ texture_region_size = Vector2i(48, 48)
 0:4/0 = 0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 1:4/0 = 0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, -3.875, 3.0625, 24, -24, 24)
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(24, -6, 6, -6, 0, 0, -6, 18, -6, 24, -24, 24, -24, -24, 24, -24)
 1:4/0/custom_data_0 = true
 2:4/0 = 0
-2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, -2.875, -24, -2.875)
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, -6, -24, -6)
 2:4/0/custom_data_0 = true
 3:4/0 = 0
-3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, 5.6875, 24, -24, -3)
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, 12, 24, 12, 18, 6, 6, -6, -6, -24, -6)
 3:4/0/custom_data_0 = true
 4:4/0 = 0
-4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(12.0625, 0.375, 24, -9.25, 24, 24, 8.6875, 24)
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(12, 0, 24, -12, 24, 24, 12, 24)
 4:4/0/custom_data_0 = true
 5:4/0 = 0
-5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 24, -24, -9.25, -11.8125, -2.75, -5.1875, 24)
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 24, -24, -12, -18, -12, -12, -6, -12, 6, -12, 12, -12, 24)
 5:4/0/custom_data_0 = true
 0:5/0 = 0
 0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 1:5/0 = 0
-1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 2.9375, -24, 3.0625, 24, -24, 24)
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, -6, -24, -6, 24, -24, 24)
 1:5/0/custom_data_0 = true
 2:5/0 = 0
 2:5/0/custom_data_0 = true
 3:5/0 = 0
-3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(5.9375, -24, 24, -24, 24, 24, 5.6875, 24)
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(12, -24, 24, -24, 24, 24, 12, 24)
 3:5/0/custom_data_0 = true
 4:5/0 = 0
-4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(24, -24, 9.1875, -24, 15.5625, -15, 24, -12)
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(24, -24, 12, -24, 15.5625, -15, 24, -12)
 4:5/0/custom_data_0 = true
 5:5/0 = 0
-5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, -24, -11.625, -10.1875, -12.875, -5.6875, -24)
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, -24, -11.625, -12, -12, -12, -24)
 5:5/0/custom_data_0 = true
 0:6/0 = 0
 0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 1:6/0 = 0
-1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, -6, -24, -6, -18, 6, -12, 24, -12, 24, 24, -24, 24)
 2:6/0 = 0
-2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, 24, -12, 24, 24, -24, 24)
 3:6/0 = 0
-3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -12, -6, -12, 6, -18, 12, -24, 24, -24, 24, 24, -24, 24)
 4:6/0 = 0
-4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(24, 24, 24, -8.5, 12.0625, 0.375, 8.8125, 24)
-4:6/0/physics_layer_0/polygon_1/points = PackedVector2Array(-9.5625, -15.75, -6.1875, -24, -24, -24, -24, -12.375)
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(24, 24, 24, -12, 12, 0, 12, 24)
+4:6/0/physics_layer_0/polygon_1/points = PackedVector2Array(-12, -12, -12, -24, -24, -24, -24, -12)
 4:6/0/custom_data_0 = true
 5:6/0 = 0
-5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 24, -24, -9.125, -11.5625, -8.625, 0.1875, 24)
-5:6/0/physics_layer_0/polygon_1/points = PackedVector2Array(14.9375, -15.5, 24, -12, 24, -24, 12.4375, -24)
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, 24, -24, -12, -18, -12, -12, -6, -12, 12, -12, 24)
+5:6/0/physics_layer_0/polygon_1/points = PackedVector2Array(18, -18, 24, -12, 24, -24, 12, -24)
 5:6/0/custom_data_0 = true
 0:7/0 = 0
 0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
@@ -150,7 +150,9 @@ texture_region_size = Vector2i(48, 48)
 4:11/0 = 0
 5:11/0 = 0
 4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sps5y"]
 texture = ExtResource("5_4trq1")
