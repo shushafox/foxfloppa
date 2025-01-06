@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b81srhj5i5bh0"]
+
+[ext_resource type="Script" path="res://Scenes/Abilities/CrossStrike.gd" id="1_lb40c"]
+
+[node name="CrossStrike" type="Node"]
+script = ExtResource("1_lb40c")
+DamageModifier = 3

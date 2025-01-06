@@ -40,11 +40,29 @@ var CanMove: bool = true
 @onready var Collision: CollisionShape2D = $Collision
 @onready var Combat: Node2D = $Combat
 @onready var Peace: Node2D = $Peace
+@onready var Abilities: Node2D = $Abilities
 @onready var Raycast: RayCast2D = $Combat/RayCast
 @onready var Level: LevelBase #Npcs and Player load it differently
 #endregion
 
 #region Base functions
+func hurt(value: int) -> void:
+	value -= Armor
+	
+	if value < 0:
+		value = 0
+	
+	Health -= value
+	
+	if Health <= 0:
+		self.queue_free()
+
+func heal(value: int) -> void:
+	Health += value
+	
+	if Health > MaxHealth:
+		Health = MaxHealth
+
 func _set_sprite() -> void:
 	pass
 

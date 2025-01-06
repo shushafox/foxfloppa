@@ -17,7 +17,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70rhu"]
 size = Vector2(24, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0df4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnq2p"]
 size = Vector2(144, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3mj6"]
@@ -41,7 +41,7 @@ process_mode = 4
 [node name="DetectionArea" type="Area2D" parent="Combat"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Combat/DetectionArea"]
-shape = SubResource("RectangleShape2D_c0df4")
+shape = SubResource("RectangleShape2D_nnq2p")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Combat/DetectionArea"]
 shape = SubResource("RectangleShape2D_h3mj6")
@@ -60,8 +60,10 @@ target_position = Vector2(0, 48)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peace/DetectionArea"]
 shape = SubResource("CircleShape2D_0mw00")
 
+[node name="Abilities" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
