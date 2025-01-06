@@ -13,7 +13,7 @@ func _ready() -> void:
 	_set_sprite()
 	
 	Level = get_parent().get_parent()
-	Player.NpcInterract.connect(_on_npc_interract)
+	Player.Interract.connect(_on_npc_interract)
 	
 	Animate()
 
@@ -53,13 +53,24 @@ func ResetAnim():
 	
 	Animate()
 
-func GetCurrentCollider() -> Area2D:
-	if $Combat.process_mode == Node.ProcessMode.PROCESS_MODE_DISABLED:
+func get_collider() -> Area2D:
+	if Combat.process_mode == Node.ProcessMode.PROCESS_MODE_DISABLED:
 		return PeaceCollider
 	else:
 		return CombatCollider
 
 func move(direction: Vector2i) -> void:
+	if (direction.x != 0 && direction.y != 0):
+		var vertical = Vector2(direction.x, 0)
+		
+		Raycast.target_position = direction * 48
+		Raycast.force_raycast_update()
+		
+		if !Raycast.is_colliding():
+			direction = vertical
+		else:
+			direction = Vector2(0, direction.y)
+	
 	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
 	var targetTile: Vector2i = Vector2(
 		currentTile.x + direction.x,
@@ -97,15 +108,11 @@ func _on_turn_start(node: ActorBase) -> void:
 	RemainingSpeed = Speed
 
 func _on_npc_interract() -> void:
-	var bodies:Array[Node2D] = GetCurrentCollider().get_overlapping_bodies()
-	var isPlayer = false
+	var bodies:Array[Node2D] = get_collider().get_overlapping_bodies()
 	
 	for body in bodies:
 		if body.name == "Player":
-			isPlayer = true
-	
-	if isPlayer:
-		Dialogic.start(Autoload.NpcTimeLineResolver(DisplayName))
+			Dialogic.start(Autoload.NpcTimeLineResolver(DisplayName))
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

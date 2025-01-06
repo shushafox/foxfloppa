@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_68jvd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_xoo07"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_supx1"]
-[ext_resource type="Texture2D" uid="uid://di5lovfspt0cc" path="res://assets/tiles.png" id="4_0s6j2"]
-[ext_resource type="Texture2D" uid="uid://c2ruyi6cy7bv8" path="res://assets/Props/objects.png" id="5_vcjlx"]
-[ext_resource type="Texture2D" uid="uid://drkbsqx1mluu6" path="res://assets/fences.png" id="6_ume35"]
+[ext_resource type="Texture2D" uid="uid://dnvbxtmffmka4" path="res://Assets/tiles.png" id="4_0s6j2"]
+[ext_resource type="Texture2D" uid="uid://cv21rbtewbye0" path="res://Assets/Props/objects.png" id="5_vcjlx"]
+[ext_resource type="Texture2D" uid="uid://dtu3la8io3l51" path="res://Assets/fences.png" id="6_ume35"]
 [ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="7_vi0vv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_ysf4q"]
-[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="9_rt4hv"]
-[ext_resource type="PackedScene" uid="uid://dscx3h8dkh6sm" path="res://scenes/Templates/NpcTemplate.tscn" id="9_xs08v"]
-[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="11_8cpoj"]
+[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://Scenes/UI/UI.tscn" id="9_rt4hv"]
+[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="11_8cpoj"]
+[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://Scenes/Templates/ObjTemplate.tscn" id="12_37lia"]
 
 [sub_resource type="Resource" id="Resource_w0djv"]
 script = ExtResource("3_supx1")
@@ -306,7 +306,7 @@ tile_set = SubResource("TileSet_qwvpv")
 [node name="TileMap2" type="TileMapLayer" parent="Map"]
 texture_filter = 1
 position = Vector2(40, 8)
-tile_map_data = PackedByteArray("AADy//7/AQAAAAEAAADw/wEAAQAAAAEAAAD1/wUAAQAAAAEAAAD4/wcAAQAAAAEAAAD//wsAAQAAAAEAAAAEAA4AAQAAAAEAAAAFAAoAAQAAAAEAAAAAAA4AAQAAAAEAAAAAAAUAAQAAAAEAAAAEAP//AQAAAAEAAAD5//v/AQAAAAAAAADw/wIAAQABAAAAAADx/wIAAQABAAAAAAD2/wYAAQABAAAAAAD1/wYAAQADAAAAAAD3/wUAAQADAAAAAAAAAAsAAQADAAAAAAAGAAkAAQADAAAAAAAFAAkAAQADAAAAAAABAAQAAQADAAAAAAD8/wUAAQAAAAIAAAD1/wAAAQAAAAIAAAABAP7/AQAAAAIAAAAJAP7/AQAAAAIAAAANAAYAAQAAAAIAAAAJAAwAAQAAAAIAAAACAAwAAQADAAIAAAAGABAAAQADAAIAAAANAAoAAQADAAIAAAABABIAAQAAAAEAAAALABAAAQAAAAEAAAAAABAAAQABAAAAAAAGABIAAQABAAAAAADz//7/AQABAAAAAADw////AQABAAAAAAD+/wYAAQABAAAAAAD8/wcAAQABAAAAAAA=")
+tile_map_data = PackedByteArray("AADy//7/AQAAAAEAAADw/wEAAQAAAAEAAAD1/wUAAQAAAAEAAAD4/wcAAQAAAAEAAAD//wsAAQAAAAEAAAAEAA4AAQAAAAEAAAAFAAoAAQAAAAEAAAAAAA4AAQAAAAEAAAAAAAUAAQAAAAEAAAAEAP//AQAAAAEAAADw/wIAAQABAAAAAADx/wIAAQABAAAAAAD2/wYAAQABAAAAAAD1/wYAAQADAAAAAAD3/wUAAQADAAAAAAAAAAsAAQADAAAAAAAGAAkAAQADAAAAAAAFAAkAAQADAAAAAAABAAQAAQADAAAAAAD8/wUAAQAAAAIAAAD1/wAAAQAAAAIAAAABAP7/AQAAAAIAAAAJAP7/AQAAAAIAAAANAAYAAQAAAAIAAAAJAAwAAQAAAAIAAAACAAwAAQADAAIAAAAGABAAAQADAAIAAAANAAoAAQADAAIAAAABABIAAQAAAAEAAAALABAAAQAAAAEAAAAAABAAAQABAAAAAAAGABIAAQABAAAAAADz//7/AQABAAAAAADw////AQABAAAAAAD+/wYAAQABAAAAAAD8/wcAAQABAAAAAAA=")
 tile_set = SubResource("TileSet_qwvpv")
 
 [node name="OutlineMap" type="TileMapLayer" parent="Map"]
@@ -332,18 +332,17 @@ script = ExtResource("8_ysf4q")
 
 [node name="Npcs" type="Node2D" parent="."]
 
-[node name="Sign" parent="Npcs" instance=ExtResource("9_xs08v")]
-visibility_layer = 3
-z_index = -1
-position = Vector2(-168, -144)
-DisplayName = "Sign_2_1"
-DisplaySprite = "res://Assets/Props/Sign.png"
-
 [node name="Triggers" type="Node2D" parent="."]
 
 [node name="LevelChangeTrigger" parent="Triggers" instance=ExtResource("10_ga5ur")]
 position = Vector2(-129, -230)
 scale = Vector2(5, 5)
 Destination = "res://Scenes/Levels/Level1.tscn"
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Obj" parent="Objects" instance=ExtResource("12_37lia")]
+position = Vector2(-159, -135)
+DisplayName = "Sign_2_1"
 
 [node name="Player" parent="." instance=ExtResource("11_8cpoj")]

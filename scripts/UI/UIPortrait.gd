@@ -7,7 +7,7 @@ extends TextureRect
 @onready var PortraitNode: TextureRect = $Portrait
 
 const DefaultRim: String = "res://Assets/outline.png"
-const DefaultPortrait: String = "res://Assets/angry.png"
+const DefaultPortrait: String = "res://Assets/Roi/Roi_Portrait.png"
 
 func _ready() -> void:
 	if Portrait.is_empty():

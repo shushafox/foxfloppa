@@ -47,6 +47,8 @@ shape = SubResource("RectangleShape2D_c0df4")
 shape = SubResource("RectangleShape2D_h3mj6")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Combat"]
+simplify_path = true
+simplify_epsilon = 10.0
 
 [node name="RayCast" type="RayCast2D" parent="Combat"]
 target_position = Vector2(0, 48)
@@ -61,5 +63,5 @@ shape = SubResource("CircleShape2D_0mw00")
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]

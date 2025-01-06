@@ -1,7 +1,6 @@
 extends ActorBase
 
-signal NpcInterract
-signal ObjInterract
+signal Interract
 
 @export var BaseSpeed = 250
 
@@ -38,8 +37,7 @@ func _process(_delta: float) -> void:
 	_animate()
 	
 	if Input.is_action_pressed("ui_accept"):
-		NpcInterract.emit()
-		ObjInterract.emit()
+		Interract.emit()
 	if Input.is_action_pressed("End"):
 		EndTurn.emit()
 	if RemainingSpeed == 0:

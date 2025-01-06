@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bm8now0ny2t7x"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_n08on"]
-[ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://scenes/UI/ActorCard.tscn" id="2_n68o6"]
-[ext_resource type="Texture2D" uid="uid://b5yd7cw5mj5rn" path="res://assets/UI/UI_button.png" id="4_mkoec"]
+[ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://Scenes/UI/ActorCard.tscn" id="2_n68o6"]
+[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://assets/UI/UI_button.png" id="4_mkoec"]
 
 [sub_resource type="Theme" id="Theme_ppved"]
 
@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_n08on")
 
 [node name="Combat" type="Control" parent="."]
@@ -24,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TurnOrder" type="Control" parent="Combat"]
 layout_mode = 1
@@ -32,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="TurnOrderPortraits" type="HBoxContainer" parent="Combat/TurnOrder"]
 layout_mode = 1
@@ -167,6 +170,7 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="ActorCard" parent="Peace" instance=ExtResource("2_n68o6")]
 custom_minimum_size = Vector2(250, 60)
@@ -188,6 +192,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Objective" type="Label" parent="Base"]
 texture_filter = 1
@@ -311,13 +316,12 @@ patch_margin_bottom = 6
 [node name="SubMenus" type="Control" parent="Base"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="EscMenu" type="NinePatchRect" parent="Base/SubMenus"]
 texture_filter = 1

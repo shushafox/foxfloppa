@@ -1,87 +1,87 @@
 [gd_scene load_steps=26 format=3 uid="uid://gf61d1durb0j"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_01j8v"]
-[ext_resource type="Texture2D" uid="uid://cd6b7iljhcxau" path="res://Assets/Roi/Roi_Idle-Sheet.png" id="3_cu0vt"]
-[ext_resource type="Texture2D" uid="uid://d0iwsh36avgy5" path="res://Assets/Roi/Roi_Run-Sheet.png" id="3_kbe3n"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_81tla"]
+[ext_resource type="Texture2D" uid="uid://cd6b7iljhcxau" path="res://Assets/Roi/Roi_Idle-Sheet.png" id="2_odb2r"]
+[ext_resource type="Texture2D" uid="uid://d0iwsh36avgy5" path="res://Assets/Roi/Roi_Run-Sheet.png" id="3_docd5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx08j"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3er30"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qlb58"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_waarx"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dkf3p"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rgwhq"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ge24k"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rubhy"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjxgi"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1s5q"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwpmm"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tkw58"]
-atlas = ExtResource("3_cu0vt")
+atlas = ExtResource("2_odb2r")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t11gd"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t6s7n"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xo5w7"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrpgv"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5xwdt"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4vkw"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chrps"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyv8b"]
-atlas = ExtResource("3_kbe3n")
+atlas = ExtResource("3_docd5")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vb75e"]
@@ -161,7 +161,7 @@ animations = [{
 size = Vector2(24, 24)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_01j8v")
+script = ExtResource("1_81tla")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
