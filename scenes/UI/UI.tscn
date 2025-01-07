@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_n08on"]
 [ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://Scenes/UI/ActorCard.tscn" id="2_n68o6"]
-[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://assets/UI/UI_button.png" id="4_mkoec"]
+[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://Assets/UI/UI_button.png" id="4_mkoec"]
 
 [sub_resource type="Theme" id="Theme_ppved"]
 
@@ -166,7 +166,6 @@ patch_margin_right = 6
 patch_margin_bottom = 6
 
 [node name="Peace" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -314,7 +313,6 @@ patch_margin_right = 6
 patch_margin_bottom = 6
 
 [node name="SubMenus" type="Control" parent="Base"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,6 +322,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="EscMenu" type="NinePatchRect" parent="Base/SubMenus"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
@@ -339,4 +338,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_mkoec")
 
+[connection signal="pressed" from="Combat/CombatActios/Ability" to="." method="_on_ability_pressed"]
+[connection signal="pressed" from="Combat/CombatActios/EndTurn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="Base/Actions/Menu" to="." method="_on_menu_pressed"]

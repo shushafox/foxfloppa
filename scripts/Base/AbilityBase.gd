@@ -44,7 +44,7 @@ func can_hit(targetEvasion: int) -> bool:
 func get_damage() -> int:
 	match DamageModifier:
 		_Stats.Aim:
-			return BaseDamage * (((Actor.Aim / 10) - 5))
+			return BaseDamage * ((Actor.Aim / 10) - 5)
 		_Stats.Armor:
 			return BaseDamage * Actor.Armor
 		_Stats.Speed:

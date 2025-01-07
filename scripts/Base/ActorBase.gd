@@ -23,6 +23,7 @@ var RemainingSpeed: int = Speed
 @export var IsAlly: bool = true
 @export var IsAutoamted: bool = true
 
+var IsCurrentTurn: bool = false
 var IsMoving: bool = false
 var IsActing: bool = false
 var CanAct: bool = true
@@ -65,6 +66,13 @@ func heal(value: int) -> void:
 	if Health > MaxHealth:
 		Health = MaxHealth
 
+func get_ability_list() -> Array[AbilityBase]:
+	var result: Array[AbilityBase]
+	for ability in Abilities.get_children():
+		if ability is AbilityBase:
+			result.append(ability)
+	return result
+
 func _set_targeting_area() -> void:
 	TargetArea.get_node("CollisionShape").shape.radius = 46 * VisionRadius
 
@@ -102,7 +110,7 @@ func _on_turn_start(node: ActorBase) -> void:
 func _on_turn_end(_node: ActorBase)  -> void:
 	return
 
-func _create_shape(shape_type: String, size: Vector2, position: Vector2 = Vector2.ZERO) -> CollisionShape2D:
+func _create_shape(shape_type: String, size: Vector2, location: Vector2 = Vector2.ZERO) -> CollisionShape2D:
 	var shape: Shape2D
 	match shape_type:
 		"circle":
@@ -114,7 +122,7 @@ func _create_shape(shape_type: String, size: Vector2, position: Vector2 = Vector
 	
 	var collider: CollisionShape2D = CollisionShape2D.new()
 	collider.shape = shape
-	collider.position = position
+	collider.position = location
 	return collider
 
 func _get_target() -> ActorBase:

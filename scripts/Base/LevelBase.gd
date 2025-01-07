@@ -5,7 +5,6 @@ class_name LevelBase
 #region Signals
 signal CombatStarted
 signal CombatEnded
-
 signal TurnStarted(node: ActorBase)
 #endregion
 
@@ -45,12 +44,15 @@ func bind_signals() -> void:
 	TurnStarted.connect(Player._on_turn_start)
 	Player.EndTurn.connect(_on_turn_end)
 	
+	UI.EndTurn.connect(_on_turn_end)
+	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 
 func end_combat() -> void:
 	IsCombat = false
 	MovingTile.visible = false
 	CombatEnded.emit()
+	UI.end_combat()
 	
 	TurnOrder.clear()
 	
@@ -65,6 +67,8 @@ func start_combat() -> void:
 	for child: ActorBase in Npcs.get_children():
 		if child.IsAutoamted:
 			TurnOrder.append(child)
+	
+	UI.start_combat(TurnOrder)
 	
 	# Randomize enemy order
 	randomize()

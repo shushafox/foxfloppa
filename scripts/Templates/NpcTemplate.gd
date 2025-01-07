@@ -5,8 +5,6 @@ extends ActorBase
 @onready var NavAgent: NavigationAgent2D = $Combat/NavigationAgent
 @onready var Player: ActorBase = get_parent().get_parent().get_node("Player")
 
-var CurrentTurn: bool = false
-
 var animUp = 1
 
 func _ready() -> void:
@@ -19,7 +17,7 @@ func _ready() -> void:
 	Animate()
 
 func _process(_delta: float) -> void:
-	if CurrentTurn && !IsActing && !IsMoving:
+	if IsCurrentTurn && !IsActing && !IsMoving:
 		_calculate_turn_abilities()
 		
 		if CanMove:
@@ -29,7 +27,7 @@ func _process(_delta: float) -> void:
 				var direction = to_local(NavAgent.get_next_path_position()).normalized().round()
 				move(direction)
 		else:
-			CurrentTurn = false
+			IsCurrentTurn = false
 			EndTurn.emit()
 
 func Animate():
@@ -109,7 +107,7 @@ func _on_turn_start(node: ActorBase) -> void:
 	
 	NavAgent.target_position = target.global_position
 	
-	CurrentTurn = true
+	IsCurrentTurn = true
 	RemainingSpeed = Speed
 
 func _on_npc_interract() -> void:

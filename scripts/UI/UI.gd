@@ -1,11 +1,14 @@
 extends Control
 
+signal EndTurn
+
 @onready var Objective: Label = $Base/Objective
 @onready var EscapeMenu = $Base/SubMenus/EscMenu
 @onready var Combat: Control = $Combat
 @onready var Peace: Control = $Peace
 @onready var Portraits: HBoxContainer = $Combat/TurnOrder/TurnOrderPortraits
 @onready var Cards: VBoxContainer = $Combat/TurnOrder/TurnOrderCards
+@onready var Level: LevelBase = get_parent().get_parent().get_parent()
 
 const PortraitNodePath: String = "res://Scenes/UI/Portrait.tscn"
 const ActorCardNodePath: String = "res://Scenes/UI/ActorCard.tscn"
@@ -37,10 +40,9 @@ func start_combat(actors: Array[ActorBase]) -> void:
 	Combat.visible = true
 	Peace.visible = false
 	
-	var portrait = load(PortraitNodePath)
-	var card = load(ActorCardNodePath)
-	
 	for actor in actors:
+		var portrait = load(PortraitNodePath).instantiate()
+		var card = load(ActorCardNodePath).instantiate()
 		var portraitPath = actor.DisplayPortrait
 		var rimPath = actor.DisplayPortraitRim
 		
@@ -59,8 +61,8 @@ func start_combat(actors: Array[ActorBase]) -> void:
 		card.Health = actor.Health
 		card.Mana = actor.Mana
 		
-		Portraits.add_child(portrait.instantiate())
-		Cards.add_child(card.instantiate())
+		Portraits.add_child(portrait)
+		Cards.add_child(card)
 
 func advance_turns() -> void:
 	var portrait = Portraits.get_child(0)
@@ -71,3 +73,10 @@ func advance_turns() -> void:
 
 func _on_menu_pressed() -> void:
 	EscapeMenu.visible = !EscapeMenu.visible
+
+func _on_end_turn_pressed() -> void:
+	if Level.Player.IsCurrentTurn == true:
+		EndTurn.emit()
+
+func _on_ability_pressed() -> void:
+	pass

@@ -38,10 +38,9 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("ui_accept"):
 		Interract.emit()
-	if Input.is_action_pressed("End"):
-		EndTurn.emit()
 	if RemainingSpeed == 0:
 		set_process(false)
+		IsCurrentTurn = false
 		EndTurn.emit()
 
 func move(direction: Vector2i) -> void:
@@ -70,6 +69,7 @@ func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
 		return
 	
+	IsCurrentTurn = true
 	RemainingSpeed = Speed
 	
 	set_process(true)
