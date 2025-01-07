@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://gf61d1durb0j"]
+[gd_scene load_steps=27 format=3 uid="uid://gf61d1durb0j"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_81tla"]
 [ext_resource type="Texture2D" uid="uid://cd6b7iljhcxau" path="res://Assets/Roi/Roi_Idle-Sheet.png" id="2_odb2r"]
@@ -160,6 +160,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qe4v"]
 size = Vector2(24, 24)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bxvjx"]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_81tla")
 
@@ -181,4 +183,11 @@ process_mode = 4
 [node name="RayCast" type="RayCast2D" parent="Combat"]
 target_position = Vector2(0, 48)
 
+[node name="TargetArea" type="Area2D" parent="Combat"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Combat/TargetArea"]
+shape = SubResource("CircleShape2D_bxvjx")
+
 [node name="Peace" type="Node2D" parent="."]
+
+[node name="Abilities" type="Node2D" parent="."]

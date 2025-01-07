@@ -14,6 +14,7 @@ signal EndTurn
 @export var Evasion: int = 0
 @export var Speed: int = 3
 @export var Damage: int = 4
+@export var VisionRadius: int = 10
 
 var Health: float = MaxHealth
 var Mana: float = MaxMana
@@ -38,9 +39,10 @@ var CanMove: bool = true
 #region PreLoad nodes
 @onready var AnimatedSprite: AnimatedSprite2D = $AnimatedSprite
 @onready var Collision: CollisionShape2D = $Collision
+@onready var Abilities: Node2D = $Abilities
 @onready var Combat: Node2D = $Combat
 @onready var Peace: Node2D = $Peace
-@onready var Abilities: Node2D = $Abilities
+@onready var TargetArea: Area2D = $Combat/TargetArea
 @onready var Raycast: RayCast2D = $Combat/RayCast
 @onready var Level: LevelBase #Npcs and Player load it differently
 #endregion
@@ -62,6 +64,9 @@ func heal(value: int) -> void:
 	
 	if Health > MaxHealth:
 		Health = MaxHealth
+
+func _set_targeting_area() -> void:
+	TargetArea.get_node("CollisionShape").shape.radius = 46 * VisionRadius
 
 func _set_sprite() -> void:
 	pass
@@ -96,4 +101,30 @@ func _on_turn_start(node: ActorBase) -> void:
 
 func _on_turn_end(_node: ActorBase)  -> void:
 	return
+
+func _create_shape(shape_type: String, size: Vector2, position: Vector2 = Vector2.ZERO) -> CollisionShape2D:
+	var shape: Shape2D
+	match shape_type:
+		"circle":
+			shape = CircleShape2D.new()
+			shape.radius = size.x / 2
+		"rectangle":
+			shape = RectangleShape2D.new()
+			shape.size = size
+	
+	var collider: CollisionShape2D = CollisionShape2D.new()
+	collider.shape = shape
+	collider.position = position
+	return collider
+
+func _get_target() -> ActorBase:
+	var result: ActorBase
+	
+	TargetArea.get_node("CollisionShape").shape.radius = 46 * VisionRadius
+	
+	for body in TargetArea.get_overlapping_bodies():
+		if body is ActorBase && body.IsAlly != self.IsAlly:
+			result = body
+	
+	return result
 #endregion

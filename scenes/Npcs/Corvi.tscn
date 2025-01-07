@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bkk6h2os2fp6k"]
+[gd_scene load_steps=9 format=3 uid="uid://bkk6h2os2fp6k"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_nn8kv"]
-[ext_resource type="Texture2D" uid="uid://cc0ajpg2kware" path="res://assets/raven.png" id="2_iktbd"]
+[ext_resource type="Texture2D" uid="uid://cc0ajpg2kware" path="res://Assets/raven.png" id="2_iktbd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -22,6 +22,8 @@ size = Vector2(144, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3mj6"]
 size = Vector2(48, 144)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wk1fh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mw00"]
 radius = 24.0
@@ -52,8 +54,16 @@ shape = SubResource("RectangleShape2D_h3mj6")
 path_max_distance = 96.0
 simplify_path = true
 simplify_epsilon = 10.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 1, 1)
 
 [node name="RayCast" type="RayCast2D" parent="Combat"]
+
+[node name="TargetArea" type="Area2D" parent="Combat"]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Combat/TargetArea"]
+shape = SubResource("CircleShape2D_wk1fh")
 
 [node name="Peace" type="Node2D" parent="."]
 
@@ -62,8 +72,10 @@ simplify_epsilon = 10.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Peace/DetectionArea"]
 shape = SubResource("CircleShape2D_0mw00")
 
+[node name="Abilities" type="Node2D" parent="."]
+
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]

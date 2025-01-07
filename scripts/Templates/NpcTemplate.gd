@@ -11,6 +11,7 @@ var animUp = 1
 
 func _ready() -> void:
 	_set_sprite()
+	_set_targeting_area()
 	
 	Level = get_parent().get_parent()
 	Player.Interract.connect(_on_npc_interract)
@@ -102,7 +103,11 @@ func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
 		return
 	
-	NavAgent.target_position = Player.global_position
+	var target = _get_target()
+	if target == null:
+		target = Player
+	
+	NavAgent.target_position = target.global_position
 	
 	CurrentTurn = true
 	RemainingSpeed = Speed

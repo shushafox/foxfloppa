@@ -20,14 +20,39 @@ enum _Stats {Armor, Aim, Evasion, Speed}
 @onready var Actor: ActorBase = get_parent().get_parent()
 
 #region Functions
-func affect(target: ActorBase) -> void: #Should be overwriten by extending class
-	pass
-
 func use_on_self() -> void:
 	_use(Actor.global_position)
 
 func use_on_target(targetPosition: Vector2i) -> void:
 	_use(targetPosition)
+
+func affect(target: ActorBase) -> void:
+	if !can_hit(target.Evasion):
+		return
+	
+	target.hurt(get_damage())
+
+func can_hit(targetEvasion: int) -> bool:
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
+	var chance = Actor.Aim - targetEvasion
+	var resultChance = rng.randf_range(0, 100)
+	
+	return resultChance <= chance
+
+func get_damage() -> int:
+	match DamageModifier:
+		_Stats.Aim:
+			return BaseDamage * (((Actor.Aim / 10) - 5))
+		_Stats.Armor:
+			return BaseDamage * Actor.Armor
+		_Stats.Speed:
+			return BaseDamage * Actor.Speed
+		_Stats.Evasion:
+			return BaseDamage * (Actor.Evasion / 5)
+		_:
+			return BaseDamage
 
 func _use(targetPosition: Vector2i) -> void:
 	var actors: Array[ActorBase] = _get_targets(targetPosition)
