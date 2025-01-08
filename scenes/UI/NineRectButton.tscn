@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bndguoypgqp7u"]
+
+[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://Assets/UI/UI_button.png" id="1_aoa3r"]
+
+[node name="NineRectButton" type="Button"]
+text = "ButtonText"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aoa3r")
+region_rect = Rect2(2, 4, 28, 24)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6

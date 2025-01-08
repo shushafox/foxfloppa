@@ -1,12 +1,14 @@
 extends Area2D
 
+signal ChangeScene(path: String)
+
 @onready var Level: LevelBase = get_parent().get_parent()
 
 @export var Destination: String
 
+func _ready() -> void:
+	ChangeScene.connect(LevelManager.change_scene)
+
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		_change_level()
-
-func _change_level() -> void:
-	get_tree().change_scene_to_file(Destination)
+		ChangeScene.emit(Destination)

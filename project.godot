@@ -20,6 +20,7 @@ config/icon="res://Assets/Roi/Roi_Portrait.png"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 Autoload="*res://Scripts/Singletons/Autoload.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+LevelManager="*res://Scripts/Singletons/LevelManager.gd"
 
 [dialogic]
 
