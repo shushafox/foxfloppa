@@ -45,8 +45,8 @@ variables={
 "Dialogue_liked": "",
 "PC_name": ""
 }
-layout/style_list=[]
-layout/default_style=""
+layout/style_list=["res://dialogic_styles/New_File.tres"]
+layout/default_style="res://dialogic_styles/New_File.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -68,6 +68,8 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 choices/hotkey_behaviour=1
 text/autopauses={}
+history/simple_history_enabled=true
+history/full_history_enabled=false
 
 [editor_plugins]
 

@@ -26,7 +26,7 @@ func NpcTimeLineResolver(npcName: String) -> String:
 		_: return "" # defaut
 
 func _EvilGuy() -> String:
-	if (GlobalCounter < -2):
+	if (GlobalCounter < -11112):
 		return "angi"
 	else:
 		return "testOne"
