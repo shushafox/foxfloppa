@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bm8now0ny2t7x"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_n08on"]
-[ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://Scenes/UI/ActorCard.tscn" id="2_n68o6"]
-[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://Assets/UI/UI_button.png" id="4_mkoec"]
+[ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://scenes/UI/ActorCard.tscn" id="2_n68o6"]
+[ext_resource type="Texture2D" uid="uid://b5yd7cw5mj5rn" path="res://Assets/UI/UI_button.png" id="4_mkoec"]
 
 [sub_resource type="Theme" id="Theme_ppved"]
 

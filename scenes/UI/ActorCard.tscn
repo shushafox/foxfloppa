@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dubpu0kexxt2x"]
 
-[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://Assets/UI/UI_button.png" id="1_ia8st"]
+[ext_resource type="Texture2D" uid="uid://b5yd7cw5mj5rn" path="res://Assets/UI/UI_button.png" id="1_ia8st"]
 [ext_resource type="Script" path="res://Scripts/UI/ActorCard.gd" id="1_jabap"]
-[ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://Scenes/UI/Portrait.tscn" id="2_y7vno"]
+[ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://scenes/UI/Portrait.tscn" id="2_y7vno"]
 
 [node name="ActorCard" type="NinePatchRect"]
 texture_filter = 1
