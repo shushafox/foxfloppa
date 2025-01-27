@@ -3,7 +3,8 @@ extends Control
 signal EndTurn
 
 @onready var Objective: Label = $Base/Objective
-@onready var EscapeMenu = $Base/SubMenus/EscMenu
+@onready var EscapeMenu = $Base/EscMenu
+@onready var ListMenu = $Base/ListMenu
 @onready var Combat: Control = $Combat
 @onready var Peace: Control = $Peace
 @onready var Portraits: HBoxContainer = $Combat/TurnOrder/TurnOrderPortraits
@@ -79,4 +80,28 @@ func _on_end_turn_pressed() -> void:
 		EndTurn.emit()
 
 func _on_ability_pressed() -> void:
-	pass
+	ListMenu.visible = !ListMenu.visible
+	
+	var List = ListMenu.get_node("Scroll/Vbox")
+	for child in List.get_children():
+		child.free()
+	
+	var abilities = Level.Player.get_ability_list()
+	
+	for ability in abilities:
+		var button = Button.new()
+		button.text = ability.AbilityName
+		button.pressed.connect(_trigger_ability.bind(button.text))
+		List.add_child(button)
+
+func _trigger_ability(AbilityName: String) -> void:
+	var abilities = Level.Player.get_ability_list()
+	var result: AbilityBase
+	
+	for ability in abilities:
+		if ability.name == AbilityName:
+			result = ability
+	
+	Level.start_aiming(result)
+	
+	ListMenu.visible = !ListMenu.visible

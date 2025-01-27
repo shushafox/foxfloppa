@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://gf61d1durb0j"]
+[gd_scene load_steps=28 format=3 uid="uid://gf61d1durb0j"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_81tla"]
 [ext_resource type="Texture2D" uid="uid://cd6b7iljhcxau" path="res://Assets/Roi/Roi_Idle-Sheet.png" id="2_odb2r"]
 [ext_resource type="Texture2D" uid="uid://d0iwsh36avgy5" path="res://Assets/Roi/Roi_Run-Sheet.png" id="3_docd5"]
+[ext_resource type="PackedScene" uid="uid://b81srhj5i5bh0" path="res://Scenes/Abilities/CrossStrike.tscn" id="4_isi1r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx08j"]
 atlas = ExtResource("2_odb2r")
@@ -191,3 +192,5 @@ shape = SubResource("CircleShape2D_bxvjx")
 [node name="Peace" type="Node2D" parent="."]
 
 [node name="Abilities" type="Node2D" parent="."]
+
+[node name="CrossStrike" parent="Abilities" instance=ExtResource("4_isi1r")]

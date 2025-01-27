@@ -43,6 +43,7 @@ offset_bottom = -57.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1hdvb")
 horizontal_scroll_mode = 0
 
@@ -52,6 +53,7 @@ layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="ShowHistory" type="Button" parent="."]
 layout_mode = 1

@@ -27,8 +27,16 @@ signal TurnStarted(node: ActorBase)
 
 var IsCombat: bool = false
 var IsPlayersTurn: bool = false
+var IsAiming: bool = false
+
 var TurnOrder: Array[ActorBase] = []
+
 var TurnNumber: int = 0
+
+var TempAbility: AbilityBase = null
+var AbilityRange: Node2D = null
+
+const RangeTemplate: String = "res://Scenes/Templates/Ability/Range.tscn"
 #endregion
 
 #region Functions
@@ -79,6 +87,36 @@ func start_combat() -> void:
 	
 	TurnStarted.emit(Player)
 	Camera.follow_target = Player
+
+func aim() -> void:
+	if !TempAbility:
+		return
+	
+	if AbilityRange:
+		var mouse_pos = get_local_mouse_position()
+		var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(mouse_pos))
+		AbilityRange.position = snapped_pos + Vector2(-20,-20)
+	else:
+		AbilityRange = load(RangeTemplate).instantiate()
+		match TempAbility.RangeType:
+			AbilityBase._RangeType.Cross:
+				AbilityRange.use("cross", TempAbility.RangeValue)
+				add_child(AbilityRange)
+			AbilityBase._RangeType.Circle:
+				AbilityRange.use("circle", TempAbility.RangeValue)
+				add_child(AbilityRange)
+			AbilityBase._RangeType.Square:
+				AbilityRange.use("square", TempAbility.RangeValue)
+				add_child(AbilityRange)
+			AbilityBase._RangeType.Line:
+				AbilityRange.use("line", TempAbility.RangeValue)
+				add_child(AbilityRange)
+			_:
+				print("ERROR: unrecognized ability range type")
+
+func start_aiming(ability: AbilityBase) -> void:
+	IsAiming = true
+	TempAbility = ability
 
 func _add_tile_outline() -> void:
 	OutlineTiles.clear()

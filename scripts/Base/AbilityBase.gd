@@ -9,6 +9,7 @@ enum _Stats {Armor, Aim, Evasion, Speed}
 #endregion
 
 #region Exports
+@export var AbilityName: String = ""
 @export var IsDetached: bool = false
 @export var TargetType: _TargetType = _TargetType.Enemy
 @export var RangeType: _RangeType = _RangeType.Cross
