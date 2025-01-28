@@ -11,11 +11,10 @@ signal EndTurn
 @onready var Cards: VBoxContainer = $Combat/TurnOrder/TurnOrderCards
 @onready var Level: LevelBase = get_parent().get_parent().get_parent()
 
-const PortraitNodePath: String = "res://Scenes/UI/Portrait.tscn"
-const ActorCardNodePath: String = "res://Scenes/UI/ActorCard.tscn"
-
-const DefaultRim: String = "res://Assets/outline.png"
-const DefaultPortrait: String = "res://Assets/angry.png"
+var PortraitNode: PackedScene = load("res://Scenes/UI/Portrait.tscn")
+var ActorCardNode: PackedScene = load("res://Scenes/UI/ActorCard.tscn")
+var DefaultRim: Texture2D = load("res://Assets/outline.png")
+var DefaultPortrait: Texture2D = load("res://Assets/Roi/Roi_Portrait.png")
 
 func _process(_delta: float) -> void:
 	size = get_window().size / 2
@@ -42,21 +41,14 @@ func start_combat(actors: Array[ActorBase]) -> void:
 	Peace.visible = false
 	
 	for actor in actors:
-		var portrait = load(PortraitNodePath).instantiate()
-		var card = load(ActorCardNodePath).instantiate()
-		var portraitPath = actor.DisplayPortrait
-		var rimPath = actor.DisplayPortraitRim
+		var portrait = PortraitNode.instantiate()
+		var card = ActorCardNode.instantiate()
 		
-		if portraitPath.is_empty():
-			portraitPath = DefaultPortrait
-		if rimPath.is_empty():
-			rimPath = DefaultRim
+		portrait.Rim = actor.DisplayPortraitRim if !actor.DisplayPortraitRim == null else DefaultPortrait
+		portrait.Portrait = actor.DisplayPortrait if !actor.DisplayPortrait == null else DefaultRim
 		
-		portrait.Rim = rimPath
-		portrait.Portrait = portraitPath
-		
-		card.Rim = rimPath
-		card.Portrait = portraitPath
+		card.Rim = portrait.Rim
+		card.Portrait = portrait.Portrait
 		card.MaxHealth = actor.MaxHealth
 		card.MaxMana = actor.MaxMana
 		card.Health = actor.Health

@@ -204,7 +204,7 @@ script = ExtResource("1_cy0xy")
 
 [node name="PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-103, 23)
+position = Vector2(-73, 22)
 script = ExtResource("2_ll34m")
 follow_mode = 1
 follow_target = NodePath("../Player")
@@ -249,7 +249,7 @@ texture = SubResource("AtlasTexture_4d2lx")
 
 [node name="OverworldCamera" type="Camera2D" parent="Misc"]
 physics_interpolation_mode = 1
-position = Vector2(-103, 23)
+position = Vector2(-73, 22)
 zoom = Vector2(2, 2)
 process_callback = 0
 
@@ -274,6 +274,18 @@ position = Vector2(120, -641)
 [node name="Amogus" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-442, 20)
 
+[node name="Amogus2" parent="Npcs" instance=ExtResource("14_k74xa")]
+position = Vector2(-24, -24)
+
+[node name="Amogus3" parent="Npcs" instance=ExtResource("14_k74xa")]
+position = Vector2(24, 24)
+
+[node name="Amogus4" parent="Npcs" instance=ExtResource("14_k74xa")]
+position = Vector2(24, -24)
+
+[node name="Amogus5" parent="Npcs" instance=ExtResource("14_k74xa")]
+position = Vector2(-24, 24)
+
 [node name="Triggers" type="Node2D" parent="."]
 
 [node name="CombarTrigger" parent="Triggers" instance=ExtResource("11_gtgde")]
@@ -292,6 +304,6 @@ position = Vector2(-185, -190)
 DisplayName = "Sign_1_1"
 
 [node name="Player" parent="." instance=ExtResource("12_6myqq")]
-position = Vector2(-103, 23)
+position = Vector2(-73, 22)
 IsAutoamted = false
 DisplayName = "Roi"

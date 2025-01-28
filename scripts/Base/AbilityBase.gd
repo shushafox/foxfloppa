@@ -82,36 +82,60 @@ func _create_shape(shape_type: String, size: Vector2, position: Vector2 = Vector
 	return collider
 
 func _get_targets(target: Vector2i) -> Array[ActorBase]:
-	var collider_position: Vector2 = Actor.Level.Tiles.map_to_local(target)
-	var area: Area2D = Area2D.new()
-	var shape_size: Vector2
-	var position_offset: Vector2 = Vector2.ZERO
-
+	var collider_position: Vector2 = target
+	var space_state: PhysicsDirectSpaceState2D = Actor.get_world_2d().direct_space_state
+	
+	var shape: Shape2D
+	var shape_transform: Transform2D
+	var query = PhysicsShapeQueryParameters2D.new()
+	
 	match RangeType:
 		_RangeType.Circle:
-			shape_size = Vector2(RangeValue * 48, RangeValue * 48)
-			area.add_child(_create_shape("circle", shape_size))
+			shape = CircleShape2D.new()
+			shape.radius = RangeValue * 24
+			shape_transform = Transform2D.IDENTITY.translated(collider_position)
 		_RangeType.Square:
-			shape_size = Vector2(RangeValue * 48, RangeValue * 48)
-			area.add_child(_create_shape("rectangle", shape_size))
+			shape = RectangleShape2D.new()
+			shape.size = Vector2((RangeValue + 1) * 48, (RangeValue + 1) * 48)
+			shape_transform = Transform2D.IDENTITY.translated(collider_position)
 		_RangeType.Line:
-			position_offset = (collider_position - Actor.global_position).normalized().round() * 48 * (RangeValue - 1)
-			shape_size = Vector2(48, 48) + position_offset.abs()
-			area.add_child(_create_shape("rectangle", shape_size, position_offset))
+			shape = RectangleShape2D.new()
+			var direction = (collider_position - Actor.global_position).normalized()
+			var length = 48 * RangeValue
+			shape.size = Vector2(length, 48)
+			shape_transform = Transform2D.IDENTITY.rotated(direction.angle()).translated(collider_position + direction * length/2)
 		_RangeType.Cross:
-			var shape_size_v = Vector2(48, (RangeValue + 2) * 48)
-			var shape_size_h = Vector2((RangeValue + 2) * 48, 48)
-			area.add_child(_create_shape("rectangle", shape_size_v))
-			area.add_child(_create_shape("rectangle", shape_size_h))
-
-	Actor.add_child(area)
-	area.force_update_transform()
+			var cross_shape = ConvexPolygonShape2D.new()
+			var arm_length = RangeValue * 24
+			var arm_width = 24  # Half of 48px tile size
+			
+			# Cross points (thick + shape)
+			cross_shape.points = PackedVector2Array([
+				Vector2(-arm_width, -arm_length),  # Top left
+				Vector2(arm_width, -arm_length),   # Top right
+				Vector2(arm_width, -arm_width),    # Right top
+				Vector2(arm_length, -arm_width),   # Right end
+				Vector2(arm_length, arm_width),    # Right bottom
+				Vector2(arm_width, arm_width),     # Bottom right
+				Vector2(arm_width, arm_length),    # Bottom end
+				Vector2(-arm_width, arm_length),   # Bottom left
+				Vector2(-arm_width, arm_width),    # Left bottom
+				Vector2(-arm_length, arm_width),   # Left end
+				Vector2(-arm_length, -arm_width),  # Left top
+				Vector2(-arm_width, -arm_width)    # Top left inner
+			])
+			shape = cross_shape
+			query.transform = Transform2D.IDENTITY.translated(collider_position)
+	
+	query.shape = shape
+	query.transform = shape_transform
+	query.collision_mask = 0b1  # Only first layer
+	query.exclude = [self]  # Dont hit yourself
 	
 	var actors: Array[ActorBase] = []
-	for body in area.get_overlapping_bodies():
-		if body is ActorBase:
-			actors.append(body)
+	for result in space_state.intersect_shape(query):
+		if result.collider is ActorBase:
+			actors.append(result.collider)
 	
-	area.queue_free() 
 	return actors
 #endregion

@@ -1,7 +1,7 @@
 extends NinePatchRect
 
-@export var Rim: String
-@export var Portrait: String
+@export var Rim: Texture2D
+@export var Portrait: Texture2D
 @export var MaxHealth: int
 @export var MaxMana: int
 @export var Health: int

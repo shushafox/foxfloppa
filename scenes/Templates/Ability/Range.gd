@@ -18,13 +18,17 @@ func use(type: String, range: int) -> void:
 		"cross":
 			_get_tiles(_get_cross(range))
 		"line":
-			pass
+			_get_tiles(_get_line(range))
 		"circle":
 			_get_tiles(_get_circle(range))
 		"square":
 			_get_tiles(_get_square(range))
 		_:
 			print("ERROR: unrecognized range type")
+	
+	if RECT_SIZE % 2 == 0 && type == "line":
+		for rect in rects:
+			rect.position = rect.position + Vector2(-CELL_SIZE,0)
 	
 	for rect in rects:
 		add_child(rect)
@@ -98,13 +102,11 @@ func _get_line(lenght: int) -> Array:
 		for j in range(RECT_SIZE):
 			raster[i].append(0)
 	
-	# Calculate line direction and length
-	var direction = Vector2(0,1) # right
-	
 	# Fill the line
 	for i in range(RECT_SIZE):
 		for j in range(RECT_SIZE):
-			var point = Vector2(j, i)
+			if i == RECT_SIZE / 2 && j - RECT_SIZE / 2 > 0 && j - RECT_SIZE / 2 <= lenght:
+				raster[i][j] = 1
 	
 	return raster
 

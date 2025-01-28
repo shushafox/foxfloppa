@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkk6h2os2fp6k"]
+[gd_scene load_steps=10 format=3 uid="uid://bkk6h2os2fp6k"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_nn8kv"]
-[ext_resource type="Texture2D" uid="uid://boaxx184scrtt" path="res://Assets/raven.png" id="2_iktbd"]
+[ext_resource type="Texture2D" uid="uid://cc0ajpg2kware" path="res://Assets/raven.png" id="2_iktbd"]
+[ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="3_gjgqn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -31,6 +32,9 @@ radius = 24.0
 [node name="Corvi" type="CharacterBody2D"]
 script = ExtResource("1_nn8kv")
 DisplayName = "Corvi"
+DisplaySprite = ExtResource("2_iktbd")
+DisplayPortrait = ExtResource("2_iktbd")
+DisplayPortraitRim = ExtResource("3_gjgqn")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

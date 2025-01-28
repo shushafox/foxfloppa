@@ -92,7 +92,7 @@ func aim() -> void:
 	if !TempAbility:
 		return
 	
-	if AbilityRange:
+	if AbilityRange != null:
 		var mouse_pos = get_local_mouse_position()
 		var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(mouse_pos))
 		AbilityRange.position = snapped_pos + Vector2(-20,-20)

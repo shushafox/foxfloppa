@@ -32,9 +32,9 @@ var CanMove: bool = true
 
 #region Non Combat attributes
 @export var DisplayName: String = ""
-@export var DisplaySprite: String = ""
-@export var DisplayPortrait: String = "" 
-@export var DisplayPortraitRim: String = ""
+@export var DisplaySprite: Texture2D
+@export var DisplayPortrait: Texture2D
+@export var DisplayPortraitRim: Texture2D
 #endregion
 
 #region PreLoad nodes

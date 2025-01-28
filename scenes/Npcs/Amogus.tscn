@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://byyxxxfsu3rmg"]
+[gd_scene load_steps=10 format=3 uid="uid://byyxxxfsu3rmg"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_klf2f"]
 [ext_resource type="Texture2D" uid="uid://j4t4y0iyj3m5" path="res://Assets/angry.png" id="2_h0tkm"]
+[ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="3_63k06"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -32,6 +33,9 @@ radius = 24.0
 script = ExtResource("1_klf2f")
 IsAlly = false
 DisplayName = "Evil"
+DisplaySprite = ExtResource("2_h0tkm")
+DisplayPortrait = ExtResource("2_h0tkm")
+DisplayPortraitRim = ExtResource("3_63k06")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gla6c")
