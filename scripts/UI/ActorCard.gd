@@ -24,3 +24,12 @@ func _ready() -> void:
 	PortraitNode.Portrait = Portrait
 	PortraitNode.Rim = Rim
 	PortraitNode.reload()
+
+func refresh(actor: ActorBase) -> void:
+	HealthBar.value = actor.Health
+	HealthBar.max_value = actor.MaxHealth
+	HealthLabel.text = str(actor.Health) + "/" + str(actor.MaxHealth)
+	
+	ManaBar.value = actor.Mana
+	ManaBar.max_value = actor.MaxMana
+	ManaLabel.text = str(actor.Mana) + "/" + str(actor.MaxMana)

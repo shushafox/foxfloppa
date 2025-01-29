@@ -36,13 +36,17 @@ func end_combat() -> void:
 	for portrait in portraits:
 		portrait.queue_free()
 
-func start_combat(actors: Array[ActorBase]) -> void:
+func start_combat(elements: Array[LevelBase.TurnElement]) -> void:
 	Combat.visible = true
 	Peace.visible = false
 	
-	for actor in actors:
+	for element in elements:
 		var portrait = PortraitNode.instantiate()
 		var card = ActorCardNode.instantiate()
+		var actor = element.Actor
+		
+		element.Portrait = portrait
+		element.Card = card
 		
 		portrait.Rim = actor.DisplayPortraitRim if !actor.DisplayPortraitRim == null else DefaultPortrait
 		portrait.Portrait = actor.DisplayPortrait if !actor.DisplayPortrait == null else DefaultRim
@@ -63,6 +67,12 @@ func advance_turns() -> void:
 	
 	var card = Cards.get_child(0)
 	Cards.move_child(card, Cards.get_child_count() - 1)
+
+func update_actor(element: LevelBase.TurnElement) -> void:
+	if element.Actor.name == "Player":
+		Peace.get_node("ActorCard").refresh(element.Actor)
+	else:
+		element.Card.refresh(element.Actor)
 
 func _on_menu_pressed() -> void:
 	EscapeMenu.visible = !EscapeMenu.visible

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://c3eej3xyhm2xt"]
+[gd_scene load_steps=26 format=4 uid="uid://c3eej3xyhm2xt"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level1.gd" id="1_cy0xy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ll34m"]
@@ -9,11 +9,14 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_eimch"]
 [ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://Scenes/UI/UI.tscn" id="8_yw6rv"]
 [ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://Scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
+[ext_resource type="Texture2D" uid="uid://b8rtcmv2gkd80" path="res://Assets/outline(le evil).png" id="11_6mk6w"]
 [ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://Scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
 [ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
 [ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="12_6myqq"]
 [ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://Scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
 [ext_resource type="PackedScene" uid="uid://byyxxxfsu3rmg" path="res://Scenes/Npcs/Amogus.tscn" id="14_k74xa"]
+[ext_resource type="Texture2D" uid="uid://r3uenuwfrdxh" path="res://Assets/Roi/Roi_32.png" id="15_kxo26"]
+[ext_resource type="Texture2D" uid="uid://b0f2yd52crde1" path="res://Assets/Roi/Roi_Portrait.png" id="16_7kn55"]
 
 [sub_resource type="Resource" id="Resource_rthbw"]
 script = ExtResource("3_e4317")
@@ -273,18 +276,23 @@ position = Vector2(120, -641)
 
 [node name="Amogus" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-442, 20)
+DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus2" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-24, -24)
+DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus3" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(24, 24)
+DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus4" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(24, -24)
+DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus5" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-24, 24)
+DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Triggers" type="Node2D" parent="."]
 
@@ -307,3 +315,6 @@ DisplayName = "Sign_1_1"
 position = Vector2(-73, 22)
 IsAutoamted = false
 DisplayName = "Roi"
+DisplaySprite = ExtResource("15_kxo26")
+DisplayPortrait = ExtResource("16_7kn55")
+DisplayPortraitRim = ExtResource("6_kwc70")

@@ -29,7 +29,7 @@ var IsCombat: bool = false
 var IsPlayersTurn: bool = false
 var IsAiming: bool = false
 
-var TurnOrder: Array[ActorBase] = []
+var TurnOrder: Array[TurnElement] = []
 
 var TurnNumber: int = 0
 
@@ -45,11 +45,15 @@ func bind_signals() -> void:
 		CombatEnded.connect(child._on_combat_end)
 		CombatStarted.connect(child._on_combat_start)
 		TurnStarted.connect(child._on_turn_start)
+		child.ActorRemoved.connect(_on_actor_removed)
+		child.ActorUpdated.connect(_on_actor_updated)
 		child.EndTurn.connect(_on_turn_end)
 	
 	CombatEnded.connect(Player._on_combat_end)
 	CombatStarted.connect(Player._on_combat_start)
 	TurnStarted.connect(Player._on_turn_start)
+	Player.ActorRemoved.connect(_on_actor_removed)
+	Player.ActorUpdated.connect(_on_actor_updated)
 	Player.EndTurn.connect(_on_turn_end)
 	
 	UI.EndTurn.connect(_on_turn_end)
@@ -74,14 +78,20 @@ func start_combat() -> void:
 	# Gather everyone for combat
 	for child: ActorBase in Npcs.get_children():
 		if child.IsAutoamted:
-			TurnOrder.append(child)
-	
-	UI.start_combat(TurnOrder)
+			var turnElement = TurnElement.new()
+			turnElement.Actor = child
+			TurnOrder.append(turnElement)
 	
 	# Randomize enemy order
 	randomize()
 	TurnOrder.shuffle()
-	TurnOrder.push_front(Player)
+	
+	# Add player
+	var playerElem = TurnElement.new()
+	playerElem.Actor = Player	
+	TurnOrder.push_front(playerElem)
+	
+	UI.start_combat(TurnOrder)
 	
 	_add_tile_outline()
 	
@@ -134,10 +144,44 @@ func _on_turn_end() -> void:
 	await get_tree().create_timer(1).timeout
 	TurnNumber += 1
 	
-	var Actor: ActorBase = TurnOrder[TurnNumber % TurnOrder.size()]
-
+	var Actor: ActorBase = TurnOrder[TurnNumber % TurnOrder.size()].Actor
 	
 	Camera.follow_target = Actor
 	await get_tree().create_timer(1).timeout
 	TurnStarted.emit(Actor)
+
+func _on_actor_removed(node: ActorBase) -> void:
+	if IsCombat:
+		var element: TurnElement
+		
+		for turnElement in TurnOrder:
+			if turnElement.Actor == node:
+				element = turnElement
+		
+		element.Portrait.queue_free()
+		element.Card.queue_free()
+
+func _on_actor_updated(node: ActorBase) -> void:
+	if IsCombat:
+		var element: TurnElement
+		
+		for turnElement in TurnOrder:
+			if turnElement.Actor == node:
+				element = turnElement
+		
+		UI.update_actor(element)
+	else:
+		var element: TurnElement
+		element.Actor = node
+		UI.update_actor(element)
+
+#endregion
+
+#region Classes
+
+class TurnElement:
+	var Actor: ActorBase
+	var Portrait: TextureRect
+	var Card: NinePatchRect
+
 #endregion

@@ -4,6 +4,8 @@ class_name ActorBase
 
 #region Signals
 signal EndTurn
+signal ActorRemoved(node: ActorBase)
+signal ActorUpdated(node: ActorBase)
 #endregion
 
 #region Combat stats
@@ -58,13 +60,18 @@ func hurt(value: int) -> void:
 	Health -= value
 	
 	if Health <= 0:
+		ActorRemoved.emit(self)
 		self.queue_free()
+	else:
+		ActorUpdated.emit(self)
 
 func heal(value: int) -> void:
 	Health += value
 	
 	if Health > MaxHealth:
 		Health = MaxHealth
+	
+	ActorUpdated.emit(self)
 
 func get_ability_list() -> Array[AbilityBase]:
 	var result: Array[AbilityBase]
