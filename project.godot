@@ -26,18 +26,12 @@ LevelManager="*res://Scripts/Singletons/LevelManager.gd"
 
 directories/dch_directory={}
 directories/dtl_directory={
-"Sign_1_1": "res://Timelines/Sign_1_1.dtl",
-"Sign_2_1": "res://timelines/Sign_2_1.dtl",
-"angi": "res://Timelines/angi.dtl",
-"corvi_1": "res://Timelines/corvi_1.dtl",
-"corvi_2": "res://Timelines/corvi_2.dtl",
-"sign_2_1": "res://Timelines/sign_2_1.dtl",
-"testOne": "res://Timelines/testOne.dtl",
-"timelines/Sign_1_1": "res://timelines/Sign_1_1.dtl",
-"timelines/angi": "res://timelines/angi.dtl",
-"timelines/corvi_1": "res://timelines/corvi_1.dtl",
-"timelines/corvi_2": "res://timelines/corvi_2.dtl",
-"timelines/testOne": "res://timelines/testOne.dtl"
+"Sign_1_1": "res://timelines/Sign_1_1.dtl",
+"angi": "res://timelines/angi.dtl",
+"corvi_1": "res://timelines/corvi_1.dtl",
+"corvi_2": "res://timelines/corvi_2.dtl",
+"sign_2_1": "res://timelines/sign_2_1.dtl",
+"testOne": "res://timelines/testOne.dtl"
 }
 glossary/default_case_sensitive=true
 variables={
@@ -45,8 +39,8 @@ variables={
 "Dialogue_liked": "",
 "PC_name": ""
 }
-layout/style_list=["res://dialogic_styles/New_File.tres"]
-layout/default_style="res://dialogic_styles/New_File.tres"
+layout/style_list=["res://dialogic_styles/DefaultVN_Style.tres"]
+layout/default_style=""
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -73,7 +67,7 @@ history/full_history_enabled=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [input]
 

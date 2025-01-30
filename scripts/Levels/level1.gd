@@ -1,7 +1,6 @@
 extends LevelBase
 
 func _ready() -> void:
-	Dialogic.Styles.change_style("New_File")
 	bind_signals()
 
 func _process(_delta: float) -> void:	
