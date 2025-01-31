@@ -16,6 +16,10 @@ var ActorCardNode: PackedScene = load("res://Scenes/UI/ActorCard.tscn")
 var DefaultRim: Texture2D = load("res://Assets/outline.png")
 var DefaultPortrait: Texture2D = load("res://Assets/Roi/Roi_Portrait.png")
 
+var bebe: bool = false
+var shape_transform
+var shape
+
 func _process(_delta: float) -> void:
 	size = get_window().size / 2
 	position = -(size / 2)

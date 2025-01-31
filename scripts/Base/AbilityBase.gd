@@ -59,35 +59,19 @@ func _use(targetPosition: Vector2i) -> void:
 	var actors: Array[ActorBase] = _get_targets(targetPosition)
 	
 	if TargetType == _TargetType.Ally:
-		actors.filter(func(a: ActorBase): a.IsAlly)
+		actors.filter(func(a: ActorBase): return a.IsAlly)
 	if TargetType == _TargetType.Enemy:
-		actors.filter(func(a: ActorBase): !a.IsAlly)
+		actors.filter(func(a: ActorBase): return !a.IsAlly)
 	
 	for actor in actors:
 		affect(actor)
 
-func _create_shape(shape_type: String, size: Vector2, position: Vector2 = Vector2.ZERO) -> CollisionShape2D:
-	var shape: Shape2D
-	match shape_type:
-		"circle":
-			shape = CircleShape2D.new()
-			shape.radius = size.x / 2
-		"rectangle":
-			shape = RectangleShape2D.new()
-			shape.size = size
-	
-	var collider: CollisionShape2D = CollisionShape2D.new()
-	collider.shape = shape
-	collider.position = position
-	return collider
-
 func _get_targets(target: Vector2i) -> Array[ActorBase]:
-	var collider_position: Vector2 = target
-	var space_state: PhysicsDirectSpaceState2D = Actor.get_world_2d().direct_space_state
-	
 	var shape: Shape2D
 	var shape_transform: Transform2D
 	var query = PhysicsShapeQueryParameters2D.new()
+	var collider_position: Vector2 = (target / 48) * 48 + Vector2i(24, 24)  # Ensuring snapping to the center of a tile
+	var space_state: PhysicsDirectSpaceState2D = Actor.get_world_2d().direct_space_state
 	
 	match RangeType:
 		_RangeType.Circle:
@@ -103,39 +87,30 @@ func _get_targets(target: Vector2i) -> Array[ActorBase]:
 			var direction = (collider_position - Actor.global_position).normalized()
 			var length = 48 * RangeValue
 			shape.size = Vector2(length, 48)
-			shape_transform = Transform2D.IDENTITY.rotated(direction.angle()).translated(collider_position + direction * length/2)
+			shape_transform = Transform2D.IDENTITY.rotated(direction.angle()).translated(collider_position + direction * length / 2)
 		_RangeType.Cross:
-			var cross_shape = ConvexPolygonShape2D.new()
-			var arm_length = RangeValue * 24
-			var arm_width = 24  # Half of 48px tile size
-			
-			# Cross points (thick + shape)
-			cross_shape.points = PackedVector2Array([
-				Vector2(-arm_width, -arm_length),  # Top left
-				Vector2(arm_width, -arm_length),   # Top right
-				Vector2(arm_width, -arm_width),    # Right top
-				Vector2(arm_length, -arm_width),   # Right end
-				Vector2(arm_length, arm_width),    # Right bottom
-				Vector2(arm_width, arm_width),     # Bottom right
-				Vector2(arm_width, arm_length),    # Bottom end
-				Vector2(-arm_width, arm_length),   # Bottom left
-				Vector2(-arm_width, arm_width),    # Left bottom
-				Vector2(-arm_length, arm_width),   # Left end
-				Vector2(-arm_length, -arm_width),  # Left top
-				Vector2(-arm_width, -arm_width)    # Top left inner
-			])
-			shape = cross_shape
-			query.transform = Transform2D.IDENTITY.translated(collider_position)
+			var arm_length = RangeValue * 48
+			var arm_width = 48
+			shape = RectangleShape2D.new()
+			shape.size = Vector2(arm_length * 2 + arm_width, arm_length * 2 + arm_width)
+			shape_transform = Transform2D.IDENTITY.translated(collider_position)
 	
 	query.shape = shape
 	query.transform = shape_transform
 	query.collision_mask = 0b1  # Only first layer
-	query.exclude = [self]  # Dont hit yourself
+	query.exclude = [self]  # Don't hit yourself
 	
 	var actors: Array[ActorBase] = []
 	for result in space_state.intersect_shape(query):
 		if result.collider is ActorBase:
+			
+			if RangeType == _RangeType.Cross:
+				var offset: Vector2 = result.collider.global_position - collider_position
+				if offset != Vector2.ZERO && abs(offset.x) == abs(offset.y):  
+					continue
+			
 			actors.append(result.collider)
 	
 	return actors
+
 #endregion

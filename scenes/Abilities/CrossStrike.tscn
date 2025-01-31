@@ -5,3 +5,4 @@
 [node name="CrossStrike" type="Node"]
 script = ExtResource("1_rqna7")
 AbilityName = "CrossStrike"
+IsDetached = true

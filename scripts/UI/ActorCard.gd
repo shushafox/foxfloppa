@@ -4,8 +4,8 @@ extends NinePatchRect
 @export var Portrait: Texture2D
 @export var MaxHealth: int
 @export var MaxMana: int
-@export var Health: int
-@export var Mana: int
+@export var Health: float
+@export var Mana: float
 
 @onready var HealthBar: ProgressBar = $HBoxContainer/VBoxContainer/Health/ProgressBar
 @onready var HealthLabel: Label = $HBoxContainer/VBoxContainer/Health
@@ -25,11 +25,15 @@ func _ready() -> void:
 	PortraitNode.Rim = Rim
 	PortraitNode.reload()
 
-func refresh(actor: ActorBase) -> void:
+func refresh(actor: ActorBase) -> void:	
 	HealthBar.value = actor.Health
 	HealthBar.max_value = actor.MaxHealth
 	HealthLabel.text = str(actor.Health) + "/" + str(actor.MaxHealth)
+	MaxHealth = actor.MaxHealth
+	Health = actor.Health
 	
 	ManaBar.value = actor.Mana
 	ManaBar.max_value = actor.MaxMana
 	ManaLabel.text = str(actor.Mana) + "/" + str(actor.MaxMana)
+	MaxMana = actor.MaxMana
+	Mana = actor.Mana

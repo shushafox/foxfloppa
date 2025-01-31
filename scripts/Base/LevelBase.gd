@@ -57,6 +57,7 @@ func bind_signals() -> void:
 	Player.EndTurn.connect(_on_turn_end)
 	
 	UI.EndTurn.connect(_on_turn_end)
+	UI.update_actor(TurnElement.newElement(Player))
 	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 
@@ -163,7 +164,7 @@ func _on_actor_removed(node: ActorBase) -> void:
 
 func _on_actor_updated(node: ActorBase) -> void:
 	if IsCombat:
-		var element: TurnElement
+		var element: TurnElement = TurnElement.new()
 		
 		for turnElement in TurnOrder:
 			if turnElement.Actor == node:
@@ -171,7 +172,7 @@ func _on_actor_updated(node: ActorBase) -> void:
 		
 		UI.update_actor(element)
 	else:
-		var element: TurnElement
+		var element: TurnElement = TurnElement.new()
 		element.Actor = node
 		UI.update_actor(element)
 
@@ -183,5 +184,10 @@ class TurnElement:
 	var Actor: ActorBase
 	var Portrait: TextureRect
 	var Card: NinePatchRect
+	
+	static func newElement(node: ActorBase) -> TurnElement:
+		var result: TurnElement = new()
+		result.Actor = node
+		return result
 
 #endregion

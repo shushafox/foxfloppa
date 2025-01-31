@@ -45,6 +45,7 @@ shape = SubResource("RectangleShape2D_70rhu")
 
 [node name="Combat" type="Node2D" parent="."]
 process_mode = 4
+visible = false
 
 [node name="DetectionArea" type="Area2D" parent="Combat"]
 
@@ -67,6 +68,7 @@ simplify_epsilon = 10.0
 shape = SubResource("CircleShape2D_ubq48")
 
 [node name="Peace" type="Node2D" parent="."]
+visible = false
 
 [node name="DetectionArea" type="Area2D" parent="Peace"]
 
@@ -78,5 +80,5 @@ shape = SubResource("CircleShape2D_0mw00")
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
