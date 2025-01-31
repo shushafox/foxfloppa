@@ -4,6 +4,7 @@ signal EndTurn
 
 @onready var Objective: Label = $Base/Objective
 @onready var EscapeMenu = $Base/EscMenu
+@onready var InventoryMenu = $Base/InventoryMenu
 @onready var ListMenu = $Base/ListMenu
 @onready var Combat: Control = $Combat
 @onready var Peace: Control = $Peace
@@ -81,6 +82,9 @@ func update_actor(element: LevelBase.TurnElement) -> void:
 func _on_menu_pressed() -> void:
 	EscapeMenu.visible = !EscapeMenu.visible
 
+func _on_inventory_pressed() -> void:
+	InventoryMenu.visible = !InventoryMenu.visible
+	
 func _on_end_turn_pressed() -> void:
 	if Level.Player.IsCurrentTurn == true:
 		EndTurn.emit()
