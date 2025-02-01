@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dftakksfdtt7q"]
+[gd_scene load_steps=20 format=4 uid="uid://dftakksfdtt7q"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_68jvd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_xoo07"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="9_rt4hv"]
 [ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
 [ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="11_8cpoj"]
+[ext_resource type="PackedScene" uid="uid://dg3nia0uug64o" path="res://scenes/Objs/Level2Box1.tscn" id="12_1rykn"]
 [ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://scenes/Templates/ObjTemplate.tscn" id="12_37lia"]
+[ext_resource type="PackedScene" uid="uid://cf042d66l6pwn" path="res://scenes/Objs/Level2Box2.tscn" id="13_xoc71"]
 
 [sub_resource type="Resource" id="Resource_w0djv"]
 script = ExtResource("3_supx1")
@@ -345,11 +347,19 @@ position = Vector2(747, -666)
 scale = Vector2(5, 5)
 Destination = "res://Scenes/Levels/Level1.tscn"
 
-[node name="Objects" type="Node2D" parent="."]
+[node name="Objs" type="Node2D" parent="."]
 
-[node name="Obj" parent="Objects" instance=ExtResource("12_37lia")]
+[node name="L2Sign1" parent="Objs" instance=ExtResource("12_37lia")]
 position = Vector2(72, -145)
-DisplayName = "Sign_2_1"
+DisplayName = "L2Sign1"
+
+[node name="L2Box1" parent="Objs" instance=ExtResource("12_1rykn")]
+position = Vector2(244, 218)
+DisplayName = "L2Box1"
+
+[node name="L2Box2" parent="Objs" instance=ExtResource("13_xoc71")]
+position = Vector2(550, 96)
+DisplayName = "L2Box2"
 
 [node name="Player" parent="." instance=ExtResource("11_8cpoj")]
 position = Vector2(15, 8)

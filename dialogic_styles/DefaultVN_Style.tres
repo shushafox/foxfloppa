@@ -44,17 +44,17 @@ script = ExtResource("2_8kbit")
 scene = ExtResource("7_ky2t2")
 overrides = {}
 
-[sub_resource type="Resource" id="Resource_bmf3s"]
-script = ExtResource("2_8kbit")
-scene = ExtResource("9_hrmlk")
-overrides = {}
-
 [sub_resource type="Resource" id="Resource_sv3pv"]
 script = ExtResource("2_8kbit")
 scene = ExtResource("8_gdrpr")
 overrides = {
 "boxes_v_separation": "5.0"
 }
+
+[sub_resource type="Resource" id="Resource_bmf3s"]
+script = ExtResource("2_8kbit")
+scene = ExtResource("9_hrmlk")
+overrides = {}
 
 [sub_resource type="Resource" id="Resource_ub54b"]
 script = ExtResource("2_8kbit")

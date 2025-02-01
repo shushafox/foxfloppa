@@ -5,6 +5,7 @@ signal EndTurn
 @onready var Objective: Label = $Base/Objective
 @onready var EscapeMenu = $Base/EscMenu
 @onready var InventoryMenu = $Base/InventoryMenu
+@onready var Items = $Base/InventoryMenu/Items
 @onready var ListMenu = $Base/ListMenu
 @onready var Combat: Control = $Combat
 @onready var Peace: Control = $Peace

@@ -29,6 +29,7 @@ directories/dch_directory={
 "Roi": "res://characters/Roi.dch"
 }
 directories/dtl_directory={
+"L2Box1": "res://timelines/L2Box1.dtl",
 "Sign_1_1": "res://timelines/Sign_1_1.dtl",
 "angi": "res://timelines/angi.dtl",
 "choices": "res://timelines/choices.dtl",
