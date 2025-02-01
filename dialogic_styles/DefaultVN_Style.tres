@@ -7,15 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="5_s2vi8"]
 [ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="6_u5ns6"]
 [ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="7_ky2t2"]
-[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="8_lsv1v"]
+[ext_resource type="PackedScene" uid="uid://bmc4da5nrqc6u" path="res://dialogic_styles/CenteredChoices/custom_centered_choices.tscn" id="8_gdrpr"]
 [ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="9_hrmlk"]
-[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="10_54o6i"]
+[ext_resource type="PackedScene" uid="uid://d2t0w42otui0" path="res://dialogic_styles/OverlayHistory/custom_overlay_history.tscn" id="10_637k5"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="11_8e3ll"]
 
 [sub_resource type="Resource" id="Resource_01akr"]
 script = ExtResource("2_8kbit")
 scene = ExtResource("1_8xjhb")
-overrides = {}
+overrides = {
+"global_font_size": "16.0"
+}
 
 [sub_resource type="Resource" id="Resource_0d5o6"]
 script = ExtResource("2_8kbit")
@@ -42,19 +44,21 @@ script = ExtResource("2_8kbit")
 scene = ExtResource("7_ky2t2")
 overrides = {}
 
-[sub_resource type="Resource" id="Resource_la8r5"]
-script = ExtResource("2_8kbit")
-scene = ExtResource("8_lsv1v")
-overrides = {}
-
 [sub_resource type="Resource" id="Resource_bmf3s"]
 script = ExtResource("2_8kbit")
 scene = ExtResource("9_hrmlk")
 overrides = {}
 
-[sub_resource type="Resource" id="Resource_o2g8d"]
+[sub_resource type="Resource" id="Resource_sv3pv"]
 script = ExtResource("2_8kbit")
-scene = ExtResource("10_54o6i")
+scene = ExtResource("8_gdrpr")
+overrides = {
+"boxes_v_separation": "5.0"
+}
+
+[sub_resource type="Resource" id="Resource_ub54b"]
+script = ExtResource("2_8kbit")
+scene = ExtResource("10_637k5")
 overrides = {}
 
 [resource]
@@ -68,10 +72,10 @@ layer_info = {
 "12": SubResource("Resource_87ka8"),
 "13": SubResource("Resource_c3b1a"),
 "14": SubResource("Resource_y65tr"),
-"15": SubResource("Resource_la8r5"),
+"15": SubResource("Resource_sv3pv"),
 "16": SubResource("Resource_bmf3s"),
-"17": SubResource("Resource_o2g8d")
+"17": SubResource("Resource_ub54b")
 }
 base_overrides = {}
 layers = Array[ExtResource("2_8kbit")]([])
-metadata/_latest_layer = "14"
+metadata/_latest_layer = ""

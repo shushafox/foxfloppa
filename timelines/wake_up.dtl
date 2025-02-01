@@ -1,0 +1,23 @@
+My head..... ouch.
+Maybe it is my fate to stay here...... after all, the sand is warm.......
+- Get up.
+join Roi left [animation="Bounce In"]
+Roi: ...ugh, fine. No rest for the wicked, as they say.
+Roi: By Varrash's palm, where am I? This place ain't port Sundara, that's for sure.
+You take a look at the shipwreck around you. This beach is littered with planks, boxes and other remains of a ship you were sailing on some time ago.
+Roi: I hope my stuff is somewhere around here too.
+- And people responsible for it too. They'll pay for this.
+	set {Personality.Intimidate} += 1
+- And someone who could help. A wink and smile is all I need.
+	set {Personality.Persuade} += 1
+- And some treasure! Surely others don't need it anymore.
+	set {Personality.Cunning} += 1
+- AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	Roi: Now I feel better.
+Roi: After all, there is no point in getting outta here without the Parcel.
+Roi: Time to look around... and find out.
+leave Roi
+do LevelManager.update_objective("Look Around")
+Good job, pal!
+Your current stats are....
+Intimidation\: {Personality.Intimidate}, Persuasion\: {Personality.Persuade}, Cunning\: {Personality.Cunning}

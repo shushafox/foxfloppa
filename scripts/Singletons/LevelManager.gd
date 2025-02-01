@@ -1,5 +1,6 @@
 extends Node
 
+
 func change_scene(levelPath: String) -> void:
 	call_deferred("_deferred_change_scene", levelPath)
 
@@ -10,3 +11,7 @@ func _deferred_change_scene(levelPath: String) -> void:
 	var level_instance = level_resource.instantiate()
 	get_tree().get_root().add_child(level_instance)
 	get_tree().current_scene = level_instance
+	
+func update_objective(newObj: String) -> void:
+	var level_instance = get_tree().current_scene
+	level_instance.UI.Objective.text = newObj

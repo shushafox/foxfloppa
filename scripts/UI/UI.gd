@@ -21,6 +21,8 @@ var bebe: bool = false
 var shape_transform
 var shape
 
+
+
 func _process(_delta: float) -> void:
 	size = get_window().size / 2
 	position = -(size / 2)
@@ -78,6 +80,7 @@ func update_actor(element: LevelBase.TurnElement) -> void:
 		Peace.get_node("ActorCard").refresh(element.Actor)
 	else:
 		element.Card.refresh(element.Actor)
+		
 
 func _on_menu_pressed() -> void:
 	EscapeMenu.visible = !EscapeMenu.visible

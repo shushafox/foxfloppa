@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_68jvd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_xoo07"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_supx1"]
-[ext_resource type="Texture2D" uid="uid://blrlmx6kbhrpd" path="res://assets/tiles.png" id="4_0s6j2"]
-[ext_resource type="Texture2D" uid="uid://2kjspim6jyl1" path="res://assets/Props/objects.png" id="5_vcjlx"]
-[ext_resource type="Texture2D" uid="uid://b3bbva2ayfbrm" path="res://assets/fences.png" id="6_ume35"]
+[ext_resource type="Texture2D" uid="uid://sro4ggijyo3p" path="res://assets/tiles.png" id="4_0s6j2"]
+[ext_resource type="Texture2D" uid="uid://d38knyi6b0kdr" path="res://assets/Props/objects.png" id="5_vcjlx"]
+[ext_resource type="Texture2D" uid="uid://dblun3m4k15nh" path="res://assets/fences.png" id="6_ume35"]
 [ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="7_vi0vv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_ysf4q"]
 [ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="9_rt4hv"]
@@ -290,8 +290,9 @@ sources/1 = SubResource("TileSetAtlasSource_gx5xa")
 atlas = ExtResource("6_ume35")
 region = Rect2(0, 48, 16, 16)
 
-[node name="Level2" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_68jvd")
+LevelName = "Level2"
 
 [node name="PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
@@ -334,7 +335,6 @@ process_physics_priority = 300
 script = ExtResource("8_ysf4q")
 
 [node name="UI" parent="Misc/OverworldCamera" instance=ExtResource("9_rt4hv")]
-visible = false
 
 [node name="Npcs" type="Node2D" parent="."]
 
@@ -348,7 +348,7 @@ Destination = "res://Scenes/Levels/Level1.tscn"
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Obj" parent="Objects" instance=ExtResource("12_37lia")]
-position = Vector2(133, -54)
+position = Vector2(72, -145)
 DisplayName = "Sign_2_1"
 
 [node name="Player" parent="." instance=ExtResource("11_8cpoj")]

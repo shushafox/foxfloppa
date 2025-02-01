@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=22 format=3 uid="uid://icuew80e5yrp"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_cvbem"]
+[ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="3_vhs88"]
+[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="4_jpluy"]
+[ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="5_mpel5"]
+[ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="6_0t5aa"]
+[ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="7_b1vly"]
+[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="8_12xki"]
+[ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="9_vaotf"]
+[ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="10_h6rw5"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="11_avtbj"]
+
+[sub_resource type="GDScript" id="GDScript_ruodh"]
+script/source = "@tool
+extends DialogicLayoutBase
+
+## The default layout base scene.
+
+@export var canvas_layer: int = 1
+@export var follow_viewport: bool = false
+
+@export_subgroup(\"Global\")
+@export var global_bg_color: Color = Color(0, 0, 0, 0.9)
+@export var global_font_color: Color = Color(\"white\")
+@export_file('*.ttf', '*.tres') var global_font: String = \"\"
+@export var global_font_size: int = 18
+
+
+func _apply_export_overrides() -> void:
+	# apply layer
+	set(&'layer', canvas_layer)
+	set(&'follow_viewport_enabled', follow_viewport)
+"
+
+[sub_resource type="PackedScene" id="PackedScene_2qcfh"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Custom", "script", "CanvasLayer", "BackgroundLayer", "apply_overrides_on_ready", "VN_PortraitLayer", "FullAdvanceInputLayer", "VN_TextboxLayer", "Glossary", "VN_ChoiceLayer", "TextInputLayer", "ExampleHistoryScene"),
+"node_count": 9,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 2147483647, 3, 1, 1, 4, 2, 0, 0, 0, 2147483647, 5, 3, 1, 4, 2, 0, 0, 0, 2147483647, 6, 4, 1, 4, 2, 0, 0, 0, 2147483647, 7, 5, 1, 4, 2, 0, 0, 0, 2147483647, 8, 6, 1, 4, 2, 0, 0, 0, 2147483647, 9, 7, 1, 4, 2, 0, 0, 0, 2147483647, 10, 8, 1, 4, 2, 0, 0, 0, 2147483647, 11, 9, 1, 4, 2, 0),
+"variants": [SubResource("GDScript_ruodh"), ExtResource("3_vhs88"), true, ExtResource("4_jpluy"), ExtResource("5_mpel5"), ExtResource("6_0t5aa"), ExtResource("7_b1vly"), ExtResource("8_12xki"), ExtResource("9_vaotf"), ExtResource("10_h6rw5")],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_hnbbw"]
+script = ExtResource("2_cvbem")
+scene = SubResource("PackedScene_2qcfh")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_0twlr"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("3_vhs88")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_31i7x"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("4_jpluy")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_xj6jr"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("5_mpel5")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_738hx"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("6_0t5aa")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_3duv3"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("7_b1vly")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_26esv"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("8_12xki")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_vv2gd"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("9_vaotf")
+overrides = {}
+
+[sub_resource type="Resource" id="Resource_yhy78"]
+script = ExtResource("2_cvbem")
+scene = ExtResource("10_h6rw5")
+overrides = {}
+
+[resource]
+script = ExtResource("11_avtbj")
+name = "ExperimentVN_Style"
+layer_list = Array[String](["10", "11", "12", "13", "14", "15", "16", "17"])
+layer_info = {
+"": SubResource("Resource_hnbbw"),
+"10": SubResource("Resource_0twlr"),
+"11": SubResource("Resource_31i7x"),
+"12": SubResource("Resource_xj6jr"),
+"13": SubResource("Resource_738hx"),
+"14": SubResource("Resource_3duv3"),
+"15": SubResource("Resource_26esv"),
+"16": SubResource("Resource_vv2gd"),
+"17": SubResource("Resource_yhy78")
+}
+base_overrides = {}
+layers = Array[ExtResource("2_cvbem")]([])
+metadata/_latest_layer = "15"

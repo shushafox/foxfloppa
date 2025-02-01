@@ -24,23 +24,33 @@ LevelManager="*res://Scripts/Singletons/LevelManager.gd"
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"De Buggy": "res://characters/De Buggy.dch",
+"Roi": "res://characters/Roi.dch"
+}
 directories/dtl_directory={
 "Sign_1_1": "res://timelines/Sign_1_1.dtl",
 "angi": "res://timelines/angi.dtl",
+"choices": "res://timelines/choices.dtl",
 "corvi_1": "res://timelines/corvi_1.dtl",
 "corvi_2": "res://timelines/corvi_2.dtl",
 "sign_2_1": "res://timelines/sign_2_1.dtl",
-"testOne": "res://timelines/testOne.dtl"
+"testOne": "res://timelines/testOne.dtl",
+"wake_up": "res://timelines/wake_up.dtl"
 }
 glossary/default_case_sensitive=true
 variables={
 "Counter": 0,
 "Dialogue_liked": "",
-"PC_name": ""
+"PC_name": "",
+"Personality": {
+"Cunning": 0,
+"Intimidate": 0,
+"Persuade": 0
 }
-layout/style_list=["res://dialogic_styles/DefaultVN_Style.tres"]
-layout/default_style=""
+}
+layout/style_list=["res://dialogic_styles/DefaultVN_Style.tres", "res://dialogic_styles/ExperimentVN_Style.tres"]
+layout/default_style="res://dialogic_styles/DefaultVN_Style.tres"
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
