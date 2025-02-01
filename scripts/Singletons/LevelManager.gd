@@ -10,3 +10,6 @@ func _deferred_change_scene(levelPath: String) -> void:
 	var level_instance = level_resource.instantiate()
 	get_tree().get_root().add_child(level_instance)
 	get_tree().current_scene = level_instance
+	level_instance.UI.Objective.text = "welcome to " + level_instance.LevelName
+	
+	

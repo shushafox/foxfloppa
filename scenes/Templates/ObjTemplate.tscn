@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c1q2v801ir7ng"]
 
-[ext_resource type="Script" path="res://Scripts/Templates/ObjTemplate.gd" id="1_hwwy8"]
-[ext_resource type="Texture2D" uid="uid://kh7wy4dsnsex" path="res://assets/Props/Sign.png" id="2_gvlqc"]
+[ext_resource type="Script" path="res://scripts/Templates/ObjTemplate.gd" id="1_hwwy8"]
+[ext_resource type="Texture2D" uid="uid://d1562p0jwwfwe" path="res://assets/Props/Sign.png" id="2_gvlqc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{

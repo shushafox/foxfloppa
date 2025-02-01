@@ -1,0 +1,31 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(0.711063, 0.391708, 0.777344, 1),
+"custom_info": {
+"prefix": "",
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "",
+"suffix": ""
+},
+"default_portrait": "Basic",
+"description": "",
+"display_name": "Roi",
+"mirror": false,
+"nicknames": ["Protagonist"],
+"offset": Vector2(0, 0),
+"portraits": {
+"Basic": {
+"export_overrides": {
+"image": "\"res://assets/Portraits/roi.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 45),
+"scale": 0.4,
+"scene": ""
+}
+},
+"scale": 1.0
+}

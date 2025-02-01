@@ -36,5 +36,6 @@ func _Corvi() -> String:
 		return "corvi_2"
 	else:
 		return "corvi_1"
+		#return "wake_up"
 		
 #endregion

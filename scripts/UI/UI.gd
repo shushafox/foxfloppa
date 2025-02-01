@@ -5,6 +5,7 @@ signal EndTurn
 @onready var Objective: Label = $Base/Objective
 @onready var EscapeMenu = $Base/EscMenu
 @onready var InventoryMenu = $Base/InventoryMenu
+@onready var InventoryList = $Base/InventoryMenu/InventoryList
 @onready var ListMenu = $Base/ListMenu
 @onready var Combat: Control = $Combat
 @onready var Peace: Control = $Peace
@@ -84,6 +85,12 @@ func _on_menu_pressed() -> void:
 
 func _on_inventory_pressed() -> void:
 	InventoryMenu.visible = !InventoryMenu.visible
+	var cheeses = 0
+	for i in InventoryList.get_item_count():
+		if InventoryList.get_item_text(i) == "cheese":
+			cheeses += 1
+	if cheeses < 5 and InventoryMenu.visible:
+		InventoryList.add_item("cheese")
 	
 func _on_end_turn_pressed() -> void:
 	if Level.Player.IsCurrentTurn == true:

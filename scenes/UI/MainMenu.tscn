@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnywuvd3iac6d"]
 
-[ext_resource type="Script" path="res://Scripts/UI/MainMenu.gd" id="1_csowq"]
-[ext_resource type="SpriteFrames" uid="uid://bamq365ioc7a" path="res://Assets/3d-cat.gif" id="1_eajig"]
+[ext_resource type="Script" path="res://scripts/UI/MainMenu.gd" id="1_csowq"]
+[ext_resource type="SpriteFrames" uid="uid://bdkswsf60bld6" path="res://assets/3d-cat.gif" id="1_eajig"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3

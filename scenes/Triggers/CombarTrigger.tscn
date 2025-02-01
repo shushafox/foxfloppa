@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgiboq2uf7h68"]
 
-[ext_resource type="Script" path="res://Scripts/Triggers/CombatTrigger.gd" id="1_5qv1i"]
+[ext_resource type="Script" path="res://scripts/Triggers/CombatTrigger.gd" id="1_5qv1i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_akqt0"]
 
