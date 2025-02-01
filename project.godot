@@ -11,41 +11,33 @@ config_version=5
 [application]
 
 config/name="Daybreak_test"
-run/main_scene="res://scenes/Levels/Level1.tscn"
+run/main_scene="res://Scenes/Levels/Level1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://assets/Roi/Roi_Portrait.png"
+config/icon="res://Assets/Roi/Roi_Portrait.png"
 
 [autoload]
 
-Autoload="*res://scripts/Singletons/Autoload.gd"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+Autoload="*res://Scripts/Singletons/Autoload.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-LevelManager="*res://scripts/Singletons/LevelManager.gd"
+LevelManager="*res://Scripts/Singletons/LevelManager.gd"
 
 [dialogic]
 
-directories/dch_directory={
-"De Buggy": "res://characters/De Buggy.dch",
-"Roi": "res://characters/Roi.dch"
-}
+directories/dch_directory={}
 directories/dtl_directory={
 "Sign_1_1": "res://timelines/Sign_1_1.dtl",
-"Sign_2_1": "res://timelines/Sign_2_1.dtl",
 "angi": "res://timelines/angi.dtl",
 "corvi_1": "res://timelines/corvi_1.dtl",
 "corvi_2": "res://timelines/corvi_2.dtl",
-"testOne": "res://timelines/testOne.dtl",
-"wake_up": "res://timelines/wake_up.dtl"
+"sign_2_1": "res://timelines/sign_2_1.dtl",
+"testOne": "res://timelines/testOne.dtl"
 }
 glossary/default_case_sensitive=true
 variables={
 "Counter": 0,
 "Dialogue_liked": "",
-"PC_name": "",
-"Personality": {
-"Cunning": 0,
-"Intimidate": 0,
-"Persuade": 0
-}
+"PC_name": ""
 }
 layout/style_list=["res://dialogic_styles/DefaultVN_Style.tres"]
 layout/default_style=""
@@ -72,6 +64,10 @@ choices/hotkey_behaviour=1
 text/autopauses={}
 history/simple_history_enabled=true
 history/full_history_enabled=false
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 
 [input]
 

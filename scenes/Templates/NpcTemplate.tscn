@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dscx3h8dkh6sm"]
 
-[ext_resource type="Script" path="res://scripts/Templates/NpcTemplate.gd" id="1_tb7cw"]
-[ext_resource type="Texture2D" uid="uid://toq1qsgkplta" path="res://assets/angry.png" id="2_cvg4p"]
+[ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_tb7cw"]
+[ext_resource type="Texture2D" uid="uid://xqul8i1ken8s" path="res://Assets/angry.png" id="2_cvg4p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{

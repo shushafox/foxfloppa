@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bbrdrx30yyqfl"]
 
-[ext_resource type="Script" path="res://scripts/Triggers/LevelChangeTrigger.gd" id="1_h0b8a"]
+[ext_resource type="Script" path="res://Scripts/Triggers/LevelChangeTrigger.gd" id="1_h0b8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxwao"]
 

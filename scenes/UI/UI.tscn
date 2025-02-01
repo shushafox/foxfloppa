@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm8now0ny2t7x"]
 
-[ext_resource type="Script" path="res://scripts/UI/UI.gd" id="1_n08on"]
+[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_n08on"]
 [ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://scenes/UI/ActorCard.tscn" id="2_n68o6"]
 [ext_resource type="Texture2D" uid="uid://b00d82j8j5r8f" path="res://assets/Roi/Roi_Portrait.png" id="4_jufa5"]
 [ext_resource type="Texture2D" uid="uid://b16k8h47nymo7" path="res://assets/UI/UI_button.png" id="4_mkoec"]
@@ -367,13 +367,11 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="InventoryList" type="ItemList" parent="Base/InventoryMenu"]
+[node name="ItemList" type="ItemList" parent="Base/InventoryMenu"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 max_text_lines = 10

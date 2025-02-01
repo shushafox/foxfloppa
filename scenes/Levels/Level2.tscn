@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=4 uid="uid://dftakksfdtt7q"]
+[gd_scene load_steps=18 format=4 uid="uid://dftakksfdtt7q"]
 
-[ext_resource type="Script" path="res://scripts/Levels/level2.gd" id="1_68jvd"]
+[ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_68jvd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_xoo07"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_supx1"]
 [ext_resource type="Texture2D" uid="uid://blrlmx6kbhrpd" path="res://assets/tiles.png" id="4_0s6j2"]
 [ext_resource type="Texture2D" uid="uid://2kjspim6jyl1" path="res://assets/Props/objects.png" id="5_vcjlx"]
 [ext_resource type="Texture2D" uid="uid://b3bbva2ayfbrm" path="res://assets/fences.png" id="6_ume35"]
+[ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="7_vi0vv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_ysf4q"]
 [ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="9_rt4hv"]
 [ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
@@ -289,9 +290,8 @@ sources/1 = SubResource("TileSetAtlasSource_gx5xa")
 atlas = ExtResource("6_ume35")
 region = Rect2(0, 48, 16, 16)
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_68jvd")
-LevelName = "Level2"
 
 [node name="PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
@@ -311,7 +311,6 @@ tile_set = SubResource("TileSet_qwvpv")
 
 [node name="TileMap2" type="TileMapLayer" parent="Map"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD7//r/AQABAAAAAAD7//v/AQABAAAAAAD7//z/AQABAAAAAAD7//3/AQABAAAAAAD4//3/AQABAAAAAAA=")
 tile_set = SubResource("TileSet_qwvpv")
 
 [node name="OutlineMap" type="TileMapLayer" parent="Map"]
@@ -327,6 +326,7 @@ physics_interpolation_mode = 1
 position = Vector2(15, 8)
 zoom = Vector2(2, 2)
 process_callback = 0
+script = ExtResource("7_vi0vv")
 
 [node name="PhantomCameraHost" type="Node" parent="Misc/OverworldCamera"]
 process_priority = 300
@@ -334,13 +334,14 @@ process_physics_priority = 300
 script = ExtResource("8_ysf4q")
 
 [node name="UI" parent="Misc/OverworldCamera" instance=ExtResource("9_rt4hv")]
+visible = false
 
 [node name="Npcs" type="Node2D" parent="."]
 
 [node name="Triggers" type="Node2D" parent="."]
 
 [node name="LevelChangeTrigger" parent="Triggers" instance=ExtResource("10_ga5ur")]
-position = Vector2(-195, -138)
+position = Vector2(747, -666)
 scale = Vector2(5, 5)
 Destination = "res://Scenes/Levels/Level1.tscn"
 

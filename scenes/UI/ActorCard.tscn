@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://dubpu0kexxt2x"]
 
-[ext_resource type="Texture2D" uid="uid://b16k8h47nymo7" path="res://assets/UI/UI_button.png" id="1_ia8st"]
-[ext_resource type="Script" path="res://scripts/UI/ActorCard.gd" id="1_jabap"]
-[ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://scenes/UI/Portrait.tscn" id="2_y7vno"]
-[ext_resource type="Texture2D" uid="uid://toq1qsgkplta" path="res://assets/angry.png" id="3_77jem"]
-[ext_resource type="Texture2D" uid="uid://b00d82j8j5r8f" path="res://assets/Roi/Roi_Portrait.png" id="4_urfh2"]
-[ext_resource type="Texture2D" uid="uid://c25eog5myang0" path="res://assets/outline.png" id="5_ck41u"]
+[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://Assets/UI/UI_button.png" id="1_ia8st"]
+[ext_resource type="Script" path="res://Scripts/UI/ActorCard.gd" id="1_jabap"]
+[ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://Scenes/UI/Portrait.tscn" id="2_y7vno"]
+[ext_resource type="Texture2D" uid="uid://j4t4y0iyj3m5" path="res://Assets/angry.png" id="3_77jem"]
+[ext_resource type="Texture2D" uid="uid://b0f2yd52crde1" path="res://Assets/Roi/Roi_Portrait.png" id="4_urfh2"]
+[ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="5_ck41u"]
 
 [node name="ActorCard" type="NinePatchRect"]
 texture_filter = 1
