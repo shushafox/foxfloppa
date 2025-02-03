@@ -123,6 +123,11 @@ func aim() -> void:
 			AbilityRange.queue_free()
 			TempAbility = null
 			IsAiming = false
+		
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+			AbilityRange.queue_free()
+			TempAbility = null
+			IsAiming = false
 	else:
 		AbilityRange = load(RangeTemplate).instantiate()
 		match TempAbility.RangeType:

@@ -78,7 +78,6 @@ func update_actor(element: LevelBase.TurnElement) -> void:
 			element.Card.refresh(element.Actor)
 	else:
 		element.Card.refresh(element.Actor)
-		
 
 func _on_menu_pressed() -> void:
 	EscapeMenu.visible = !EscapeMenu.visible
@@ -97,6 +96,7 @@ func _on_ability_pressed() -> void:
 	for child in List.get_children():
 		child.free()
 	
+	#TODO: Вот тут надо бы убрать игрока и сделать так чтоб использовался конкретный персонаж на ком сейчас управлене
 	var abilities = Level.Player.get_ability_list()
 	
 	for ability in abilities:
@@ -105,7 +105,11 @@ func _on_ability_pressed() -> void:
 		button.pressed.connect(_trigger_ability.bind(button.text))
 		List.add_child(button)
 
+func _on_attack_pressed() -> void:
+	pass # Replace with function body.
+
 func _trigger_ability(AbilityName: String) -> void:
+	#TODO: тут та же проблема что выше, надо уйти от игрока в общему персонажу (но пока похуй)
 	var abilities = Level.Player.get_ability_list()
 	var result: AbilityBase
 	
