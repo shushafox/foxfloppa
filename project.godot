@@ -31,6 +31,15 @@ directories/dch_directory={
 directories/dtl_directory={
 "L2Box1": "res://timelines/L2Box1.dtl",
 "Sign_1_1": "res://timelines/Sign_1_1.dtl",
+"Timelines/L2Box1": "res://Timelines/L2Box1.dtl",
+"Timelines/Sign_1_1": "res://Timelines/Sign_1_1.dtl",
+"Timelines/angi": "res://Timelines/angi.dtl",
+"Timelines/choices": "res://Timelines/choices.dtl",
+"Timelines/corvi_1": "res://Timelines/corvi_1.dtl",
+"Timelines/corvi_2": "res://Timelines/corvi_2.dtl",
+"Timelines/sign_2_1": "res://Timelines/sign_2_1.dtl",
+"Timelines/testOne": "res://Timelines/testOne.dtl",
+"Timelines/wake_up": "res://Timelines/wake_up.dtl",
 "angi": "res://timelines/angi.dtl",
 "choices": "res://timelines/choices.dtl",
 "corvi_1": "res://timelines/corvi_1.dtl",
@@ -79,6 +88,10 @@ history/full_history_enabled=false
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+
+[global_group]
+
+nav_obj="object that should be avoided when baking nav map"
 
 [input]
 

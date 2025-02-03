@@ -51,6 +51,7 @@ var CanMove: bool = true
 #endregion
 
 #region Base functions
+
 func hurt(value: int) -> void:
 	value -= Armor
 	
@@ -94,13 +95,19 @@ func _on_combat_start() -> void:
 	_snap_to_grid()
 	
 	$Peace.process_mode = Node.PROCESS_MODE_DISABLED
+	$Peace.visible = false
 	$Combat.process_mode = Node.PROCESS_MODE_INHERIT
+	$Combat.visible = true
 	
 	self.velocity = Vector2.ZERO
 
 func _on_combat_end() -> void:
 	$Peace.process_mode = Node.PROCESS_MODE_INHERIT
+	$Peace.visible = true
 	$Combat.process_mode = Node.PROCESS_MODE_DISABLED
+	$Combat.visible = false
+	
+	self.set_process(true)
 
 func _calculate_turn_abilities() -> void:
 	if RemainingSpeed == 0:
@@ -111,7 +118,7 @@ func _calculate_turn_abilities() -> void:
 func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
 		return
-		
+	
 	EndTurn.emit()
 
 func _on_turn_end(_node: ActorBase)  -> void:
@@ -142,4 +149,5 @@ func _get_target() -> ActorBase:
 			result = body
 	
 	return result
+
 #endregion

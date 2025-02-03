@@ -3,7 +3,7 @@ extends Node
 class_name AbilityBase
 
 #region Types
-enum _RangeType {Cross, Circle, Square, Line}
+enum _RangeType {Cross, Circle, Square}
 enum _TargetType {Ally, Enemy, Everyone}
 enum _Stats {Armor, Aim, Evasion, Speed}
 #endregion
@@ -21,6 +21,7 @@ enum _Stats {Armor, Aim, Evasion, Speed}
 @onready var Actor: ActorBase = get_parent().get_parent()
 
 #region Functions
+
 func use_on_self() -> void:
 	_use(Actor.global_position)
 
@@ -59,9 +60,9 @@ func _use(targetPosition: Vector2i) -> void:
 	var actors: Array[ActorBase] = _get_targets(targetPosition)
 	
 	if TargetType == _TargetType.Ally:
-		actors.filter(func(a: ActorBase): return a.IsAlly)
+		actors = actors.filter(func(a: ActorBase): return a.IsAlly)
 	if TargetType == _TargetType.Enemy:
-		actors.filter(func(a: ActorBase): return !a.IsAlly)
+		actors = actors.filter(func(a: ActorBase): return !a.IsAlly)
 	
 	for actor in actors:
 		affect(actor)
@@ -82,12 +83,6 @@ func _get_targets(target: Vector2i) -> Array[ActorBase]:
 			shape = RectangleShape2D.new()
 			shape.size = Vector2((RangeValue + 1) * 48, (RangeValue + 1) * 48)
 			shape_transform = Transform2D.IDENTITY.translated(collider_position)
-		_RangeType.Line:
-			shape = RectangleShape2D.new()
-			var direction = (collider_position - Actor.global_position).normalized()
-			var length = 48 * RangeValue
-			shape.size = Vector2(length, 48)
-			shape_transform = Transform2D.IDENTITY.rotated(direction.angle()).translated(collider_position + direction * length / 2)
 		_RangeType.Cross:
 			var arm_length = RangeValue * 48
 			var arm_width = 48

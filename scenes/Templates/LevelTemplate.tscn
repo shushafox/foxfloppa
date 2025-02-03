@@ -1,16 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://rfnu6xw8urng"]
+[gd_scene load_steps=9 format=3 uid="uid://rfnu6xw8urng"]
 
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_m6rnc"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_fvtl6"]
-[ext_resource type="Texture2D" uid="uid://drkbsqx1mluu6" path="res://Assets/fences.png" id="3_xkn7r"]
+[ext_resource type="Texture2D" uid="uid://dtu3la8io3l51" path="res://Assets/fences.png" id="3_xkn7r"]
 [ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="4_d4kt5"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="6_s8qoa"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="6_s8qoa"]
 
 [sub_resource type="Resource" id="Resource_w0djv"]
 script = ExtResource("2_fvtl6")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wxvha"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3cop"]
 atlas = ExtResource("3_xkn7r")
@@ -27,6 +29,9 @@ tween_resource = SubResource("Resource_w0djv")
 [node name="TileMap" type="TileMapLayer" parent="Map"]
 
 [node name="OutlineMap" type="TileMapLayer" parent="Map"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
+navigation_polygon = SubResource("NavigationPolygon_wxvha")
 
 [node name="Misc" type="Node2D" parent="."]
 

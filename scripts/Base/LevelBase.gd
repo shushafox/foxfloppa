@@ -17,6 +17,7 @@ signal TurnStarted(node: ActorBase)
 #Misc
 @onready var MovingTile: Sprite2D = get_node("Misc/MovingSprite")
 @onready var UI: Control = get_node("Misc/OverworldCamera/UI")
+@onready var NavRegion: NavigationRegion2D = get_node("Map/NavigationRegion2D")
 #Folders
 @onready var Npcs: Node2D = get_node("Npcs")
 @onready var Triggers: Node2D = get_node("Triggers")
@@ -40,6 +41,7 @@ const RangeTemplate: String = "res://Scenes/Templates/Ability/Range.tscn"
 #endregion
 
 #region Functions
+
 func bind_signals() -> void:
 	for child: ActorBase in Npcs.get_children():
 		CombatEnded.connect(child._on_combat_end)
@@ -104,9 +106,23 @@ func aim() -> void:
 		return
 	
 	if AbilityRange != null:
-		var mouse_pos = get_local_mouse_position()
-		var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(mouse_pos))
-		AbilityRange.position = snapped_pos + Vector2(-20,-20)
+		if TempAbility.IsDetached:
+			var mouse_pos = get_local_mouse_position()
+			var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(mouse_pos))
+			AbilityRange.position = snapped_pos + Vector2(-20,-20)
+		else:
+			var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(TempAbility.Actor.position))
+			AbilityRange.position = snapped_pos + Vector2(-20,-20)
+		
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			if TempAbility.IsDetached:
+				TempAbility.use_on_target(AbilityRange.position)
+			else: 
+				TempAbility.use_on_self()
+			
+			AbilityRange.queue_free()
+			TempAbility = null
+			IsAiming = false
 	else:
 		AbilityRange = load(RangeTemplate).instantiate()
 		match TempAbility.RangeType:
@@ -118,9 +134,6 @@ func aim() -> void:
 				add_child(AbilityRange)
 			AbilityBase._RangeType.Square:
 				AbilityRange.use("square", TempAbility.RangeValue)
-				add_child(AbilityRange)
-			AbilityBase._RangeType.Line:
-				AbilityRange.use("line", TempAbility.RangeValue)
 				add_child(AbilityRange)
 			_:
 				print("ERROR: unrecognized ability range type")
@@ -147,9 +160,12 @@ func _on_turn_end() -> void:
 	
 	var Actor: ActorBase = TurnOrder[TurnNumber % TurnOrder.size()].Actor
 	
-	Camera.follow_target = Actor
-	await get_tree().create_timer(1).timeout
-	TurnStarted.emit(Actor)
+	if !TurnOrder.any(func(a: TurnElement): return !a.Actor.IsAlly):
+		end_combat()
+	else:
+		Camera.follow_target = Actor
+		await get_tree().create_timer(1).timeout
+		TurnStarted.emit(Actor)
 
 func _on_actor_removed(node: ActorBase) -> void:
 	if IsCombat:
@@ -161,6 +177,11 @@ func _on_actor_removed(node: ActorBase) -> void:
 		
 		element.Portrait.queue_free()
 		element.Card.queue_free()
+		
+		if !TurnOrder.any(func(a: TurnElement): return !a.Actor.IsAlly):
+			end_combat()
+		else:
+			TurnOrder.remove_at(TurnOrder.find(element))
 
 func _on_actor_updated(node: ActorBase) -> void:
 	if IsCombat:

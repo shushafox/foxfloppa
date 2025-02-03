@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dg3nia0uug64o"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/ObjTemplate.gd" id="1_0rl8n"]
-[ext_resource type="Texture2D" uid="uid://d38knyi6b0kdr" path="res://assets/Props/objects.png" id="2_xyq5i"]
+[ext_resource type="Texture2D" uid="uid://cv21rbtewbye0" path="res://Assets/Props/objects.png" id="2_xyq5i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_euhj0"]
 atlas = ExtResource("2_xyq5i")
@@ -66,6 +66,10 @@ shape = SubResource("RectangleShape2D_70rhu")
 
 [node name="Combat" type="Node2D" parent="."]
 process_mode = 4
+visible = false
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Combat"]
+vertices = PackedVector2Array(-24, 24, -24, -25, 24, -24, 24, 24)
 
 [node name="DetectionArea" type="Area2D" parent="Combat"]
 

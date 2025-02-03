@@ -29,7 +29,7 @@ size = Vector2(48, 144)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mw00"]
 radius = 24.0
 
-[node name="Corvi" type="CharacterBody2D"]
+[node name="Corvi" type="CharacterBody2D" groups=["nav_obj"]]
 script = ExtResource("1_nn8kv")
 DisplayName = "Corvi"
 DisplaySprite = ExtResource("2_iktbd")
@@ -45,6 +45,12 @@ shape = SubResource("RectangleShape2D_70rhu")
 
 [node name="Combat" type="Node2D" parent="."]
 process_mode = 4
+visible = false
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Combat"]
+radius = 1.0
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+affect_navigation_mesh = true
 
 [node name="DetectionArea" type="Area2D" parent="Combat"]
 

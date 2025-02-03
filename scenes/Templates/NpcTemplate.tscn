@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dscx3h8dkh6sm"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_tb7cw"]
-[ext_resource type="Texture2D" uid="uid://xqul8i1ken8s" path="res://Assets/angry.png" id="2_cvg4p"]
+[ext_resource type="Texture2D" uid="uid://j4t4y0iyj3m5" path="res://Assets/angry.png" id="2_cvg4p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -28,10 +28,11 @@ size = Vector2(48, 144)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mw00"]
 radius = 24.0
 
-[node name="Npc" type="CharacterBody2D"]
+[node name="Npc" type="CharacterBody2D" groups=["nav_obj"]]
 script = ExtResource("1_tb7cw")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gla6c")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -39,6 +40,7 @@ shape = SubResource("RectangleShape2D_70rhu")
 
 [node name="Combat" type="Node2D" parent="."]
 process_mode = 4
+visible = false
 
 [node name="DetectionArea" type="Area2D" parent="Combat"]
 
@@ -59,6 +61,9 @@ target_position = Vector2(0, 48)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Combat/TargetArea"]
 shape = SubResource("CircleShape2D_5oemy")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Combat"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 
 [node name="Peace" type="Node2D" parent="."]
 

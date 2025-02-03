@@ -28,6 +28,7 @@ func _process(_delta: float) -> void:
 				move(direction)
 		else:
 			IsCurrentTurn = false
+			_on_turn_end(self)
 			EndTurn.emit()
 
 func Animate():
@@ -105,10 +106,20 @@ func _on_turn_start(node: ActorBase) -> void:
 	if target == null:
 		target = Player
 	
+	var navObstacle = get_node("Combat/NavigationObstacle2D") as NavigationObstacle2D
+	navObstacle.affect_navigation_mesh = false
+	
+	Level.NavRegion.bake_navigation_polygon()
+	await Level.NavRegion.bake_finished
+	
 	NavAgent.target_position = target.global_position
 	
 	IsCurrentTurn = true
 	RemainingSpeed = Speed
+
+func _on_turn_end(_node: ActorBase) -> void:
+	var navObstacle = get_node("Combat/NavigationObstacle2D") as NavigationObstacle2D
+	navObstacle.affect_navigation_mesh = true
 
 func _on_npc_interract() -> void:
 	var bodies:Array[Node2D] = get_collider().get_overlapping_bodies()

@@ -19,7 +19,7 @@
 "portraits": {
 "Basic": {
 "export_overrides": {
-"image": "\"res://assets/Portraits/roi.png\""
+"image": "\"res://Assets/Portraits/roi.png\""
 },
 "ignore_char_scale": false,
 "mirror": false,

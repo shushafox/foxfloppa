@@ -180,6 +180,7 @@ shape = SubResource("RectangleShape2D_3qe4v")
 
 [node name="Combat" type="Node2D" parent="."]
 process_mode = 4
+visible = false
 
 [node name="RayCast" type="RayCast2D" parent="Combat"]
 target_position = Vector2(0, 48)

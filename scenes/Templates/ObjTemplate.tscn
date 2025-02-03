@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c1q2v801ir7ng"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/ObjTemplate.gd" id="1_hwwy8"]
-[ext_resource type="Texture2D" uid="uid://d38knyi6b0kdr" path="res://assets/Props/objects.png" id="2_736rx"]
+[ext_resource type="Texture2D" uid="uid://cv21rbtewbye0" path="res://Assets/Props/objects.png" id="2_736rx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpnqh"]
 atlas = ExtResource("2_736rx")
@@ -51,7 +51,7 @@ size = Vector2(144, 48)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mw00"]
 radius = 24.0
 
-[node name="Obj" type="StaticBody2D"]
+[node name="Obj" type="StaticBody2D" groups=["nav_obj"]]
 script = ExtResource("1_hwwy8")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
@@ -66,6 +66,7 @@ shape = SubResource("RectangleShape2D_70rhu")
 
 [node name="Combat" type="Node2D" parent="."]
 process_mode = 4
+visible = false
 
 [node name="DetectionArea" type="Area2D" parent="Combat"]
 
@@ -74,6 +75,9 @@ shape = SubResource("RectangleShape2D_7y1lm")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Combat/DetectionArea"]
 shape = SubResource("RectangleShape2D_omtdi")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Combat"]
+vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 
 [node name="Peace" type="Node2D" parent="."]
 

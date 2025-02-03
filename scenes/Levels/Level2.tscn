@@ -1,19 +1,19 @@
-[gd_scene load_steps=20 format=4 uid="uid://dftakksfdtt7q"]
+[gd_scene load_steps=21 format=4 uid="uid://dftakksfdtt7q"]
 
 [ext_resource type="Script" path="res://Scripts/Levels/level2.gd" id="1_68jvd"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_xoo07"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_supx1"]
-[ext_resource type="Texture2D" uid="uid://sro4ggijyo3p" path="res://assets/tiles.png" id="4_0s6j2"]
-[ext_resource type="Texture2D" uid="uid://d38knyi6b0kdr" path="res://assets/Props/objects.png" id="5_vcjlx"]
-[ext_resource type="Texture2D" uid="uid://dblun3m4k15nh" path="res://assets/fences.png" id="6_ume35"]
+[ext_resource type="Texture2D" uid="uid://dnvbxtmffmka4" path="res://Assets/tiles.png" id="4_0s6j2"]
+[ext_resource type="Texture2D" uid="uid://cv21rbtewbye0" path="res://Assets/Props/objects.png" id="5_vcjlx"]
+[ext_resource type="Texture2D" uid="uid://dtu3la8io3l51" path="res://Assets/fences.png" id="6_ume35"]
 [ext_resource type="Script" path="res://Scripts/overworld_camera.gd" id="7_vi0vv"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_ysf4q"]
-[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="9_rt4hv"]
-[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="11_8cpoj"]
-[ext_resource type="PackedScene" uid="uid://dg3nia0uug64o" path="res://scenes/Objs/Level2Box1.tscn" id="12_1rykn"]
-[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://scenes/Templates/ObjTemplate.tscn" id="12_37lia"]
-[ext_resource type="PackedScene" uid="uid://cf042d66l6pwn" path="res://scenes/Objs/Level2Box2.tscn" id="13_xoc71"]
+[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://Scenes/UI/UI.tscn" id="9_rt4hv"]
+[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="10_ga5ur"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="11_8cpoj"]
+[ext_resource type="PackedScene" uid="uid://dg3nia0uug64o" path="res://Scenes/Objs/Level2Box1.tscn" id="12_1rykn"]
+[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://Scenes/Templates/ObjTemplate.tscn" id="12_37lia"]
+[ext_resource type="PackedScene" uid="uid://cf042d66l6pwn" path="res://Scenes/Objs/Level2Box2.tscn" id="13_xoc71"]
 
 [sub_resource type="Resource" id="Resource_w0djv"]
 script = ExtResource("3_supx1")
@@ -288,6 +288,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_eoo66")
 sources/1 = SubResource("TileSetAtlasSource_gx5xa")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kikln"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3cop"]
 atlas = ExtResource("6_ume35")
 region = Rect2(0, 48, 16, 16)
@@ -298,7 +300,7 @@ LevelName = "Level2"
 
 [node name="PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(15, 8)
+position = Vector2(-166, -31)
 script = ExtResource("2_xoo07")
 follow_mode = 1
 follow_target = NodePath("../Player")
@@ -318,6 +320,9 @@ tile_set = SubResource("TileSet_qwvpv")
 
 [node name="OutlineMap" type="TileMapLayer" parent="Map"]
 
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
+navigation_polygon = SubResource("NavigationPolygon_kikln")
+
 [node name="Misc" type="Node2D" parent="."]
 
 [node name="MovingSprite" type="Sprite2D" parent="Misc"]
@@ -326,7 +331,7 @@ texture = SubResource("AtlasTexture_g3cop")
 
 [node name="OverworldCamera" type="Camera2D" parent="Misc"]
 physics_interpolation_mode = 1
-position = Vector2(15, 8)
+position = Vector2(-166, -31)
 zoom = Vector2(2, 2)
 process_callback = 0
 script = ExtResource("7_vi0vv")
@@ -362,4 +367,4 @@ position = Vector2(550, 96)
 DisplayName = "L2Box2"
 
 [node name="Player" parent="." instance=ExtResource("11_8cpoj")]
-position = Vector2(15, 8)
+position = Vector2(-166, -31)
