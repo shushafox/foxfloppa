@@ -3,6 +3,7 @@ extends ActorBase
 signal Interract
 
 @export var BaseSpeed = 250
+@export var can_talk: bool = true
 
 func _ready() -> void:
 	Level = get_parent()
@@ -12,6 +13,8 @@ func _ready() -> void:
 
 	Dialogic.timeline_ended.connect(set_process.bind(true))
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
+	Dialogic.timeline_ended.connect(_on_dialogic_ended)
+
 
 func _physics_process(_delta: float) -> void:
 	if Level.IsCombat && IsMoving:
@@ -23,7 +26,6 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:	
 	var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
-	
 	if(!Level.IsCombat):		
 		velocity = directions * BaseSpeed
 		move_and_slide()
@@ -36,12 +38,19 @@ func _process(_delta: float) -> void:
 	
 	_animate()
 	
-	if Input.is_action_pressed("ui_accept"):
+	if can_talk and Input.is_action_pressed("ui_accept"):
 		Interract.emit()
+		
 	if RemainingSpeed == 0:
 		set_process(false)
 		IsCurrentTurn = false
 		EndTurn.emit()
+		
+func _on_dialogic_ended():
+	can_talk = false
+	await get_tree().create_timer(0.2).timeout
+	can_talk = true
+	pass
 
 func move(direction: Vector2i) -> void:
 	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)

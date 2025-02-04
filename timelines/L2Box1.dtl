@@ -1,6 +1,6 @@
-if {Autoload.BoxesLooted["L2Box1"]} == true:
+if {LevelManager.obj_interaction_resolver("L2Box1")} == true:
 	Unless you need more sand and wet wood - there is nothing else.
-	- Pour one for others
+	- Pour one for others | [if {LevelManager.find_loot("A bottle of wine")}] [else="hide"]
 		do LevelManager.remove_loot("A bottle of wine")
 		Rest well, sailors.
 	- Go away
@@ -10,6 +10,6 @@ else:
 		After a couple of minutes, you manage to find a bottle of wine amidst it's broken friends.
 		Might be useful!
 		do LevelManager.add_loot("A bottle of wine")
-		set {Autoload.BoxesLooted["L2Box1"]} = true
+		do LevelManager.obj_interaction_switch("L2Box1")
 	- Stay away from it
 		Better safe than sorry.

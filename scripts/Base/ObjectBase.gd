@@ -5,6 +5,7 @@ class_name ObjectBase
 #region Non Combat attributes
 @export var DisplayName: String = ""
 @export var DisplaySprite: String = ""
+@export var InteractedWith: bool = false 
 #endregion
 
 #region PreLoad nodes
