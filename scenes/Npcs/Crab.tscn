@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://byyxxxfsu3rmg"]
+[gd_scene load_steps=9 format=3 uid="uid://b14d0l2ghm2dw"]
 
-[ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_klf2f"]
-[ext_resource type="Texture2D" uid="uid://div6v753p15ef" path="res://Assets/angry.png" id="2_h0tkm"]
-[ext_resource type="Texture2D" uid="uid://bjgebl6g0xf7g" path="res://Assets/outline.png" id="3_63k06"]
+[ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_iu2vj"]
+[ext_resource type="Texture2D" uid="uid://b8hxjdqygflp" path="res://assets/NPC/crab.png" id="2_wao0j"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_h0tkm")
+"texture": ExtResource("2_wao0j")
 }],
 "loop": true,
 "name": &"default",
@@ -18,24 +17,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70rhu"]
 size = Vector2(24, 24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0df4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnq2p"]
 size = Vector2(144, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3mj6"]
 size = Vector2(48, 144)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ubq48"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5oemy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0mw00"]
 radius = 24.0
 
-[node name="Amogus" type="CharacterBody2D" groups=["nav_obj"]]
-script = ExtResource("1_klf2f")
-IsAlly = false
-DisplayName = "Gato"
-DisplaySprite = ExtResource("2_h0tkm")
-DisplayPortrait = ExtResource("2_h0tkm")
-DisplayPortraitRim = ExtResource("3_63k06")
+[node name="Crab" type="CharacterBody2D" groups=["nav_obj"]]
+script = ExtResource("1_iu2vj")
+DisplayName = "Sen"
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -51,26 +46,25 @@ visible = false
 [node name="DetectionArea" type="Area2D" parent="Combat"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Combat/DetectionArea"]
-shape = SubResource("RectangleShape2D_c0df4")
+shape = SubResource("RectangleShape2D_nnq2p")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Combat/DetectionArea"]
 shape = SubResource("RectangleShape2D_h3mj6")
 
-[node name="NavigationAgent" type="NavigationAgent2D" parent="Combat"]
-path_max_distance = 96.0
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Combat"]
 simplify_path = true
 simplify_epsilon = 10.0
 
 [node name="RayCast" type="RayCast2D" parent="Combat"]
+target_position = Vector2(0, 48)
 
 [node name="TargetArea" type="Area2D" parent="Combat"]
 
 [node name="CollisionShape" type="CollisionShape2D" parent="Combat/TargetArea"]
-shape = SubResource("CircleShape2D_ubq48")
+shape = SubResource("CircleShape2D_5oemy")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Combat"]
 vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
-affect_navigation_mesh = true
 
 [node name="Peace" type="Node2D" parent="."]
 

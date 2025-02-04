@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c1q2v801ir7ng"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/ObjTemplate.gd" id="1_hwwy8"]
-[ext_resource type="Texture2D" uid="uid://cv21rbtewbye0" path="res://Assets/Props/objects.png" id="2_736rx"]
+[ext_resource type="Texture2D" uid="uid://d38knyi6b0kdr" path="res://Assets/Props/objects.png" id="2_736rx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpnqh"]
 atlas = ExtResource("2_736rx")
@@ -57,7 +57,6 @@ script = ExtResource("1_hwwy8")
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gla6c")
-frame = 1
 speed_scale = 0.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]

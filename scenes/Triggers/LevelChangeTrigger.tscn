@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Triggers/LevelChangeTrigger.gd" id="1_h0b8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxwao"]
+size = Vector2(20, 53)
 
 [node name="LevelChangeTrigger" type="Area2D"]
 script = ExtResource("1_h0b8a")

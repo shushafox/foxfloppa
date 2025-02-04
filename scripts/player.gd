@@ -13,6 +13,7 @@ func _ready() -> void:
 
 	Dialogic.timeline_ended.connect(set_process.bind(true))
 	Dialogic.timeline_ended.connect(set_process_input.bind(true))
+	Dialogic.timeline_started.connect(_on_dialogic_started)
 	Dialogic.timeline_ended.connect(_on_dialogic_ended)
 
 
@@ -46,6 +47,10 @@ func _process(_delta: float) -> void:
 		IsCurrentTurn = false
 		EndTurn.emit()
 		
+		
+func _on_dialogic_started():
+	AnimatedSprite.play("idle")
+	
 func _on_dialogic_ended():
 	can_talk = false
 	await get_tree().create_timer(0.2).timeout
