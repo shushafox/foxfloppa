@@ -29,9 +29,9 @@ directories/dch_directory={
 "Roi": "res://characters/Roi.dch"
 }
 directories/dtl_directory={
-"L2Beach": "res://timelines/L2Beach.dtl",
+"L2Beach": "res://Timelines/L2Beach.dtl",
 "L2Box1": "res://timelines/L2Box1.dtl",
-"L2LeaveBeach": "res://timelines/L2LeaveBeach.dtl",
+"L2LeaveBeach": "res://Timelines/L2LeaveBeach.dtl",
 "Sign_1_1": "res://timelines/Sign_1_1.dtl",
 "Timelines/L2Box1": "res://Timelines/L2Box1.dtl",
 "Timelines/Sign_1_1": "res://Timelines/Sign_1_1.dtl",

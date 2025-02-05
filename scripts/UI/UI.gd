@@ -104,9 +104,11 @@ func _on_ability_pressed() -> void:
 		button.text = ability.AbilityName
 		button.pressed.connect(_trigger_ability.bind(button.text))
 		List.add_child(button)
+	
+	ListMenu.visible = !ListMenu.visible
 
 func _on_attack_pressed() -> void:
-	pass # Replace with function body.
+	_trigger_ability("BasicAttack")
 
 func _trigger_ability(AbilityName: String) -> void:
 	#TODO: тут та же проблема что выше, надо уйти от игрока в общему персонажу (но пока похуй)
@@ -118,5 +120,3 @@ func _trigger_ability(AbilityName: String) -> void:
 			result = ability
 	
 	Level.start_aiming(result)
-	
-	ListMenu.visible = !ListMenu.visible

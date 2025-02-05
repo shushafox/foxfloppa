@@ -45,9 +45,9 @@ func _get_tiles(raster: Array):
 				# Create a ColorRect node
 				var color_rect = ColorRect.new()
 				color_rect.color = RECT_COLOR
-				color_rect.size = Vector2(RECT_SIZE - 8,RECT_SIZE - 8)
-				color_rect.position = position
-				color_rect.pivot_offset = Vector2(RECT_SIZE / 2, RECT_SIZE / 2)
+				color_rect.size = Vector2(CELL_SIZE - 4,CELL_SIZE - 4)
+				color_rect.position = position + Vector2(2,2)
+				color_rect.pivot_offset = Vector2(CELL_SIZE / 2.0, CELL_SIZE / 2.0)
 				
 				# Add the ColorRect to the array
 				rectangles.append(color_rect)
@@ -89,7 +89,7 @@ func _get_circle(radius: int) -> Array:
 	for i in range(RECT_SIZE):
 		for j in range(RECT_SIZE):
 			var distance = sqrt(pow(j - center_x, 2) + pow(i - center_y, 2))
-			if distance <= radius:
+			if distance <= radius - 1:
 				raster[i][j] = 1
 	
 	return raster
@@ -114,7 +114,7 @@ func _get_square(size: int) -> Array:
 	var center_x = RECT_SIZE / 2.0
 	var center_y = RECT_SIZE / 2.0
 
-	# Initialize a 2D array filled with 0s
+	# Initialize grid
 	var raster = []
 	for i in range(RECT_SIZE):
 		raster.append([])
@@ -127,12 +127,8 @@ func _get_square(size: int) -> Array:
 			var x = j - center_x
 			var y = i - center_y
 			
-			# Apply rotation
-			var rotated_x = x * cos(0) - y * sin(0)
-			var rotated_y = x * sin(0) + y * cos(0)
-			
-			# Check if the cell is within the square
-			if abs(rotated_x) <= size / 2.0 and abs(rotated_y) <= size / 2.0:
+			# Check if within the square boundaries
+			if abs(x) <= size - 0.5 and abs(y) <= size - 0.5:
 				raster[i][j] = 1
 	
 	return raster

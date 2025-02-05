@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm8now0ny2t7x"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_n08on"]
-[ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://scenes/UI/ActorCard.tscn" id="2_n68o6"]
-[ext_resource type="Texture2D" uid="uid://ogemp41u65l4" path="res://assets/Roi/Roi_Portrait.png" id="4_jufa5"]
-[ext_resource type="Texture2D" uid="uid://dgnt16iox2xgy" path="res://assets/UI/UI_button.png" id="4_mkoec"]
+[ext_resource type="PackedScene" uid="uid://dubpu0kexxt2x" path="res://Scenes/UI/ActorCard.tscn" id="2_n68o6"]
+[ext_resource type="Texture2D" uid="uid://b0f2yd52crde1" path="res://Assets/Roi/Roi_Portrait.png" id="4_jufa5"]
+[ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://Assets/UI/UI_button.png" id="4_mkoec"]
 
 [sub_resource type="Theme" id="Theme_ppved"]
 
@@ -432,6 +432,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="pressed" from="Combat/CombatActios/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Combat/CombatActios/Ability" to="." method="_on_ability_pressed"]
 [connection signal="pressed" from="Combat/CombatActios/EndTurn" to="." method="_on_end_turn_pressed"]
 [connection signal="pressed" from="Base/Actions/Menu" to="." method="_on_menu_pressed"]

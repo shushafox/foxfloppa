@@ -108,17 +108,34 @@ func aim() -> void:
 	if AbilityRange != null:
 		if TempAbility.IsDetached:
 			var mouse_pos = get_local_mouse_position()
-			var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(mouse_pos))
-			AbilityRange.position = snapped_pos + Vector2(-20,-20)
+			var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(mouse_pos)) + Vector2.ONE * -24
+			AbilityRange.position = snapped_pos
 		else:
+			var mouse_pos = get_local_mouse_position()
+			var dir = Player.position.direction_to(mouse_pos).normalized().round()
 			var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(TempAbility.Actor.position))
-			AbilityRange.position = snapped_pos + Vector2(-20,-20)
-		
+			AbilityRange.position = snapped_pos
+			
+			if TempAbility.RangeType == AbilityBase._RangeType.Line:
+				match dir:
+					Vector2(1,0),Vector2(1,1):
+						AbilityRange.rotation_degrees = 0
+						AbilityRange.position += Vector2(24, -24)
+					Vector2(0,1),Vector2(-1,1):
+						AbilityRange.rotation_degrees = 90
+						AbilityRange.position += Vector2(24, 24)
+					Vector2(-1,0),Vector2(-1,-1):
+						AbilityRange.rotation_degrees = 180
+						AbilityRange.position += Vector2(-24, 24)
+					Vector2(0,-1),Vector2(1,-1):
+						AbilityRange.rotation_degrees = 270
+						AbilityRange.position += Vector2(-24, -24)
+			
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			if TempAbility.IsDetached:
 				TempAbility.use_on_target(AbilityRange.position)
 			else: 
-				TempAbility.use_on_self()
+				TempAbility.use_on_self(AbilityRange.rotation_degrees)
 			
 			AbilityRange.queue_free()
 			TempAbility = null
@@ -128,7 +145,8 @@ func aim() -> void:
 			AbilityRange.queue_free()
 			TempAbility = null
 			IsAiming = false
-	else:
+		
+	else: # if we didnt create range 
 		AbilityRange = load(RangeTemplate).instantiate()
 		match TempAbility.RangeType:
 			AbilityBase._RangeType.Cross:
@@ -139,6 +157,9 @@ func aim() -> void:
 				add_child(AbilityRange)
 			AbilityBase._RangeType.Square:
 				AbilityRange.use("square", TempAbility.RangeValue)
+				add_child(AbilityRange)
+			AbilityBase._RangeType.Line:
+				AbilityRange.use("line", TempAbility.RangeValue)
 				add_child(AbilityRange)
 			_:
 				print("ERROR: unrecognized ability range type")

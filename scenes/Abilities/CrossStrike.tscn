@@ -6,4 +6,6 @@
 script = ExtResource("1_rqna7")
 AbilityName = "CrossStrike"
 IsDetached = true
+RangeType = 1
+RangeValue = 3
 BaseDamage = 10

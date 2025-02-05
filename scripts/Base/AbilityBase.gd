@@ -3,7 +3,7 @@ extends Node
 class_name AbilityBase
 
 #region Types
-enum _RangeType {Cross, Circle, Square}
+enum _RangeType {Cross, Circle, Square, Line}
 enum _TargetType {Ally, Enemy, Everyone}
 enum _Stats {Armor, Aim, Evasion, Speed}
 #endregion
@@ -22,11 +22,11 @@ enum _Stats {Armor, Aim, Evasion, Speed}
 
 #region Functions
 
-func use_on_self() -> void:
-	_use(Actor.global_position)
+func use_on_self(rotationDegrees: int = 0) -> void:
+	_use(Actor.position, rotationDegrees)
 
-func use_on_target(targetPosition: Vector2i) -> void:
-	_use(targetPosition)
+func use_on_target(targetPosition: Vector2i, rotationDegrees: int = 0) -> void:
+	_use(targetPosition, rotationDegrees)
 
 func affect(target: ActorBase) -> void:
 	if !can_hit(target.Evasion):
@@ -56,8 +56,8 @@ func get_damage() -> int:
 		_:
 			return BaseDamage
 
-func _use(targetPosition: Vector2i) -> void:
-	var actors: Array[ActorBase] = _get_targets(targetPosition)
+func _use(targetPosition: Vector2i, rotationDegrees: int = 0) -> void:
+	var actors: Array[ActorBase] = _get_targets(targetPosition, rotationDegrees)
 	
 	if TargetType == _TargetType.Ally:
 		actors = actors.filter(func(a: ActorBase): return a.IsAlly)
@@ -67,11 +67,11 @@ func _use(targetPosition: Vector2i) -> void:
 	for actor in actors:
 		affect(actor)
 
-func _get_targets(target: Vector2i) -> Array[ActorBase]:
+func _get_targets(target: Vector2, rotationDegrees: int = 0) -> Array[ActorBase]:
 	var shape: Shape2D
 	var shape_transform: Transform2D
+	var collider_position = target * 48 / 48 + Vector2(24,24)
 	var query = PhysicsShapeQueryParameters2D.new()
-	var collider_position: Vector2 = (target / 48) * 48 + Vector2i(24, 24)  # Ensuring snapping to the center of a tile
 	var space_state: PhysicsDirectSpaceState2D = Actor.get_world_2d().direct_space_state
 	
 	match RangeType:
@@ -83,6 +83,21 @@ func _get_targets(target: Vector2i) -> Array[ActorBase]:
 			shape = RectangleShape2D.new()
 			shape.size = Vector2((RangeValue + 1) * 48, (RangeValue + 1) * 48)
 			shape_transform = Transform2D.IDENTITY.translated(collider_position)
+		_RangeType.Line:
+			shape = RectangleShape2D.new()
+			
+			var rotation_rad = deg_to_rad(rotationDegrees)
+			var direction = Vector2.RIGHT.rotated(rotation_rad)
+			var length = 48 * RangeValue
+			var start_offset = direction * 24  # Edge of player's tile
+			var center_offset = direction * (length / 2)
+			
+			if rotationDegrees == 0 || rotationDegrees == 180:
+				shape.size = Vector2(length, 48)
+			elif rotationDegrees == 90 || rotationDegrees == 270:
+				shape.size = Vector2(48, length)
+			
+			shape_transform = Transform2D.IDENTITY.translated(target + start_offset + center_offset)
 		_RangeType.Cross:
 			var arm_length = RangeValue * 48
 			var arm_width = 48
@@ -100,7 +115,7 @@ func _get_targets(target: Vector2i) -> Array[ActorBase]:
 		if result.collider is ActorBase:
 			
 			if RangeType == _RangeType.Cross:
-				var offset: Vector2 = result.collider.global_position - collider_position
+				var offset: Vector2 = result.collider.global_position - target
 				if offset != Vector2.ZERO && abs(offset.x) == abs(offset.y):  
 					continue
 			
