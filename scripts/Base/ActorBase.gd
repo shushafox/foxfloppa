@@ -10,7 +10,9 @@ signal ActorUpdated(node: ActorBase)
 
 #region Combat stats
 @export var MaxHealth: int = 10
+@export var HealthRegen: int = 0
 @export var MaxMana: int = 5
+@export var ManaRegen: int = 1
 @export var Armor: int = 0
 @export var Aim: int = 75
 @export var Evasion: int = 0
@@ -74,6 +76,16 @@ func heal(value: int) -> void:
 	
 	ActorUpdated.emit(self)
 
+func change_mana(value: int) -> void:
+	Mana += value
+	
+	if Mana > MaxMana:
+		Mana = MaxMana
+	if Mana < 0:
+		Mana = 0
+	
+	ActorUpdated.emit(self)
+
 func get_ability_list() -> Array[AbilityBase]:
 	var result: Array[AbilityBase]
 	for ability in Abilities.get_children():
@@ -118,6 +130,9 @@ func _calculate_turn_abilities() -> void:
 func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
 		return
+	
+	heal(HealthRegen)
+	change_mana(ManaRegen)
 	
 	EndTurn.emit()
 

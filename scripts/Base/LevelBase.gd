@@ -189,6 +189,7 @@ func _on_turn_end() -> void:
 	if !TurnOrder.any(func(a: TurnElement): return !a.Actor.IsAlly):
 		end_combat()
 	else:
+		UI.advance_turns()
 		Camera.follow_target = Actor
 		await get_tree().create_timer(1).timeout
 		TurnStarted.emit(Actor)

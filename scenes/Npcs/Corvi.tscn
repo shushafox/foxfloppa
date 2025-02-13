@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkk6h2os2fp6k"]
+[gd_scene load_steps=11 format=3 uid="uid://bkk6h2os2fp6k"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_nn8kv"]
 [ext_resource type="Texture2D" uid="uid://cc0ajpg2kware" path="res://Assets/raven.png" id="2_iktbd"]
 [ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="3_gjgqn"]
+[ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://Scenes/Abilities/BasicAttack.tscn" id="4_343q0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -80,6 +81,8 @@ shape = SubResource("CircleShape2D_wk1fh")
 shape = SubResource("CircleShape2D_0mw00")
 
 [node name="Abilities" type="Node2D" parent="."]
+
+[node name="BasicAttack" parent="Abilities" instance=ExtResource("4_343q0")]
 
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]

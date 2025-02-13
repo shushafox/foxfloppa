@@ -16,7 +16,6 @@ func _ready() -> void:
 	Dialogic.timeline_started.connect(_on_dialogic_started)
 	Dialogic.timeline_ended.connect(_on_dialogic_ended)
 
-
 func _physics_process(_delta: float) -> void:
 	if Level.IsCombat && IsMoving:
 		if (Level.MovingTile.global_position == self.global_position):
@@ -41,16 +40,15 @@ func _process(_delta: float) -> void:
 	
 	if can_talk and Input.is_action_pressed("ui_accept"):
 		Interract.emit()
-		
-	if RemainingSpeed == 0:
+	
+	if RemainingSpeed == 0 && !CanAct:
 		set_process(false)
 		IsCurrentTurn = false
 		EndTurn.emit()
-		
-		
+
 func _on_dialogic_started():
 	AnimatedSprite.play("idle")
-	
+
 func _on_dialogic_ended():
 	can_talk = false
 	await get_tree().create_timer(0.2).timeout
@@ -82,6 +80,9 @@ func move(direction: Vector2i) -> void:
 func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
 		return
+	
+	heal(HealthRegen)
+	change_mana(ManaRegen)
 	
 	IsCurrentTurn = true
 	RemainingSpeed = Speed

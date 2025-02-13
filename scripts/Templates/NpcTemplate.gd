@@ -26,6 +26,8 @@ func _process(_delta: float) -> void:
 			if RemainingSpeed > 0:
 				var direction = to_local(NavAgent.get_next_path_position()).normalized().round()
 				move(direction)
+		elif CanAct:
+			act()
 		else:
 			IsCurrentTurn = false
 			_on_turn_end(self)
@@ -98,9 +100,45 @@ func move(direction: Vector2i) -> void:
 	
 	RemainingSpeed -= 1
 
+func act() -> void:
+	var dir: Vector2
+	var rotation_deg: int
+	var basic_ability = Abilities.get_node_or_null("BasicAttack") as AbilityBase
+	
+	for i in 4:
+		match i:
+			0:
+				dir = Vector2.UP
+				rotation_deg = 270
+			1:
+				dir = Vector2.DOWN
+				rotation_deg = 90
+			2: 
+				dir = Vector2.RIGHT
+				rotation_deg = 0
+			3:
+				dir = Vector2.LEFT
+				rotation_deg = 180
+		
+		Raycast.target_position = dir * 48
+		Raycast.force_raycast_update()
+		var collider = Raycast.get_collider()
+		if collider is not ActorBase:
+			continue
+		if collider.IsAlly == self.IsAlly:
+			continue
+		if basic_ability:
+			basic_ability.use_on_self(rotation_deg)
+			return
+	
+	CanAct = false
+
 func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
 		return
+	
+	heal(HealthRegen)
+	change_mana(ManaRegen)
 	
 	var target = _get_target()
 	if target == null:

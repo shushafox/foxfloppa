@@ -196,5 +196,6 @@ shape = SubResource("CircleShape2D_bxvjx")
 [node name="Abilities" type="Node2D" parent="."]
 
 [node name="CrossStrike" parent="Abilities" instance=ExtResource("4_isi1r")]
+RangeType = 0
 
 [node name="BasicAttack" parent="Abilities" instance=ExtResource("5_u8tp2")]

@@ -305,7 +305,7 @@ scale = Vector2(1, 10)
 
 [node name="Area2D" parent="Triggers" instance=ExtResource("11_itbd5")]
 position = Vector2(-192, -610)
-scale = Vector2(1, 10)
+scale = Vector2(1, 5)
 Destination = "res://Scenes/Levels/Level2.tscn"
 
 [node name="Objs" type="Node2D" parent="."]

@@ -16,6 +16,7 @@ enum _Stats {Armor, Aim, Evasion, Speed}
 @export var RangeValue: int = 1
 @export var BaseDamage: int = 1
 @export var DamageModifier: _Stats = _Stats.Aim
+@export var ManaCost: int = 1
 #endregion
 
 @onready var Actor: ActorBase = get_parent().get_parent()
@@ -63,6 +64,12 @@ func _use(targetPosition: Vector2i, rotationDegrees: int = 0) -> void:
 		actors = actors.filter(func(a: ActorBase): return a.IsAlly)
 	if TargetType == _TargetType.Enemy:
 		actors = actors.filter(func(a: ActorBase): return !a.IsAlly)
+	
+	if Actor.Mana < ManaCost:
+		return
+	
+	Actor.change_mana(-ManaCost)
+	Actor.CanAct = false
 	
 	for actor in actors:
 		affect(actor)

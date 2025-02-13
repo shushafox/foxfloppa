@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b14d0l2ghm2dw"]
+[gd_scene load_steps=10 format=3 uid="uid://b14d0l2ghm2dw"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_iu2vj"]
-[ext_resource type="Texture2D" uid="uid://b8hxjdqygflp" path="res://assets/NPC/crab.png" id="2_wao0j"]
+[ext_resource type="Texture2D" uid="uid://ckt2xklinkbdd" path="res://assets/NPC/crab.png" id="2_wao0j"]
+[ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://Scenes/Abilities/BasicAttack.tscn" id="3_72wf6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
 animations = [{
@@ -74,6 +75,8 @@ vertices = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 shape = SubResource("CircleShape2D_0mw00")
 
 [node name="Abilities" type="Node2D" parent="."]
+
+[node name="BasicAttack" parent="Abilities" instance=ExtResource("3_72wf6")]
 
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]

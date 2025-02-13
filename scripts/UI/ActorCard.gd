@@ -2,10 +2,10 @@ extends NinePatchRect
 
 @export var Rim: Texture2D
 @export var Portrait: Texture2D
-@export var MaxHealth: int
-@export var MaxMana: int
-@export var Health: float
-@export var Mana: float
+@export var MaxHealth: int = 100
+@export var MaxMana: int = 100
+@export var Health: float = 100
+@export var Mana: float = 100
 
 @onready var HealthBar: ProgressBar = $HBoxContainer/VBoxContainer/Health/ProgressBar
 @onready var HealthLabel: Label = $HBoxContainer/VBoxContainer/Health

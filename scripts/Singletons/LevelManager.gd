@@ -1,6 +1,5 @@
 extends Node
 
-
 func change_scene(levelPath: String) -> void:
 	call_deferred("_deferred_change_scene", levelPath)
 
@@ -11,20 +10,21 @@ func _deferred_change_scene(levelPath: String) -> void:
 	var level_instance = level_resource.instantiate()
 	get_tree().get_root().add_child(level_instance)
 	get_tree().current_scene = level_instance
-	
-func obj_interaction_resolver(objname: String):
+
+func obj_interaction_resolver(objname: String) -> bool:
 	var level_instance = get_tree().current_scene
 	var object = level_instance.find_child(objname)
 	return object.InteractedWith
-	#return level_instance.Objs.obj.InteractedWith
 
-func obj_interaction_switch(objname: String):
+# HUH: а может тут поставить передачу аргумента, а то вот ты потрогал ящик
+# он поинтеракчен, потрогал ещё, больше не поинтеракчен
+func obj_interaction_switch(objname: String) -> void:
 	var level_instance = get_tree().current_scene
 	var object = level_instance.find_child(objname)
 	object.InteractedWith = !object.InteractedWith
 
 func update_objective(newObj: String) -> void:
-	var level_instance = get_tree().current_scene
+	var level_instance = get_tree().current_scene as LevelBase
 	level_instance.UI.Objective.text = newObj
 
 func add_loot(itemName: String) -> void:
