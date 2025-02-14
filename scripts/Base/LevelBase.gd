@@ -80,10 +80,9 @@ func start_combat() -> void:
 	
 	# Gather everyone for combat
 	for child: ActorBase in Npcs.get_children():
-		if child.IsAutoamted:
-			var turnElement = TurnElement.new()
-			turnElement.Actor = child
-			TurnOrder.append(turnElement)
+		var turnElement = TurnElement.new()
+		turnElement.Actor = child
+		TurnOrder.append(turnElement)
 	
 	# Randomize enemy order
 	randomize()

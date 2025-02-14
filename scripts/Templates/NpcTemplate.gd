@@ -17,7 +17,10 @@ func _ready() -> void:
 	Animate()
 
 func _process(_delta: float) -> void:
-	if IsCurrentTurn && !IsActing && !IsMoving:
+	if !IsCurrentTurn || IsActing || IsMoving:
+		return
+	
+	if IsAutoamted:
 		_calculate_turn_abilities()
 		
 		if CanMove:
@@ -25,10 +28,25 @@ func _process(_delta: float) -> void:
 				CanMove = false
 			if RemainingSpeed > 0:
 				var direction = to_local(NavAgent.get_next_path_position()).normalized().round()
-				move(direction)
+				auto_move(direction)
 		elif CanAct:
 			act()
 		else:
+			IsCurrentTurn = false
+			_on_turn_end(self)
+			EndTurn.emit()
+	else:
+		var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
+		
+		if directions == Vector2.ZERO:
+			return
+
+		if !IsMoving && RemainingSpeed > 0:
+			manual_move(directions)
+		
+		if RemainingSpeed == 0 && !CanAct:
+			set_process(false)
+			set_physics_process(false)
 			IsCurrentTurn = false
 			_on_turn_end(self)
 			EndTurn.emit()
@@ -61,7 +79,7 @@ func get_collider() -> Area2D:
 	else:
 		return CombatCollider
 
-func move(direction: Vector2i) -> void:
+func auto_move(direction: Vector2i) -> void:
 	if (direction.x != 0 && direction.y != 0):
 		var vertical = Vector2(direction.x, 0)
 		
@@ -97,6 +115,28 @@ func move(direction: Vector2i) -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "position", Level.Tiles.map_to_local(targetTile), 0.5)
 	tween.finished.connect(func(): IsMoving = false)
+	
+	RemainingSpeed -= 1
+
+func manual_move(direction: Vector2i) -> void:
+	var currentTile: Vector2i = Level.Tiles.local_to_map(self.global_position)
+	var targetTile: Vector2i = Vector2(
+		currentTile.x + direction.x,
+		currentTile.y + direction.y
+	)
+	var tileData: TileData = Level.Tiles.get_cell_tile_data(targetTile)
+	
+	Raycast.target_position = direction * 48
+	Raycast.force_raycast_update()
+	
+	if Raycast.is_colliding():
+		return
+	if (tileData.get_custom_data("Walkable") == false):
+		return
+	
+	IsMoving = true
+	self.global_position = Level.Tiles.map_to_local(currentTile)
+	Level.MovingTile.global_position = Level.Tiles.map_to_local(targetTile)
 	
 	RemainingSpeed -= 1
 

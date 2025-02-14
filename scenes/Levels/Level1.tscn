@@ -251,6 +251,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Corvi" parent="Npcs" instance=ExtResource("13_vtoc5")]
 position = Vector2(120, -648)
+IsAutoamted = false
 
 [node name="Amogus" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-456, 24)

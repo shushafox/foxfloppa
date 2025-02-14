@@ -16,14 +16,6 @@ func _ready() -> void:
 	Dialogic.timeline_started.connect(_on_dialogic_started)
 	Dialogic.timeline_ended.connect(_on_dialogic_ended)
 
-func _physics_process(_delta: float) -> void:
-	if Level.IsCombat && IsMoving:
-		if (Level.MovingTile.global_position == self.global_position):
-			IsMoving = false
-			return
-		else:
-			self.global_position = self.global_position.move_toward(Level.MovingTile.global_position, 1)
-
 func _process(_delta: float) -> void:	
 	var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
 	if(!Level.IsCombat):		
@@ -43,6 +35,7 @@ func _process(_delta: float) -> void:
 	
 	if RemainingSpeed == 0 && !CanAct:
 		set_process(false)
+		set_physics_process(false)
 		IsCurrentTurn = false
 		EndTurn.emit()
 
@@ -88,6 +81,7 @@ func _on_turn_start(node: ActorBase) -> void:
 	RemainingSpeed = Speed
 	
 	set_process(true)
+	set_physics_process(true)
 
 func _animate() -> void:
 	if velocity != Vector2.ZERO:

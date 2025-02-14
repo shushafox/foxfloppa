@@ -54,6 +54,14 @@ var CanMove: bool = true
 
 #region Base functions
 
+func _physics_process(_delta: float) -> void:
+	if Level.IsCombat && IsMoving:
+		if (Level.MovingTile.global_position == self.global_position):
+			IsMoving = false
+			return
+		else:
+			self.global_position = self.global_position.move_toward(Level.MovingTile.global_position, 1)
+
 func hurt(value: int) -> void:
 	value -= Armor
 	
@@ -118,6 +126,10 @@ func _on_combat_end() -> void:
 	$Peace.visible = true
 	$Combat.process_mode = Node.PROCESS_MODE_DISABLED
 	$Combat.visible = false
+	
+	Health = MaxHealth
+	Mana = MaxMana
+	ActorUpdated.emit(self)
 	
 	self.set_process(true)
 
