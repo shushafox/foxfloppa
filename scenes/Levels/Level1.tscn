@@ -3,20 +3,20 @@
 [ext_resource type="Script" path="res://Scripts/Levels/level1.gd" id="1_cy0xy"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_ll34m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_e4317"]
-[ext_resource type="Texture2D" uid="uid://c06ednk2pb68b" path="res://Assets/plains.png" id="4_5728d"]
-[ext_resource type="Texture2D" uid="uid://dtu3la8io3l51" path="res://Assets/fences.png" id="5_4trq1"]
-[ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://Assets/outline.png" id="6_kwc70"]
+[ext_resource type="Texture2D" uid="uid://dqil13l4cw4ih" path="res://Assets/plains.png" id="4_5728d"]
+[ext_resource type="Texture2D" uid="uid://dblun3m4k15nh" path="res://Assets/fences.png" id="5_4trq1"]
+[ext_resource type="Texture2D" uid="uid://bjgebl6g0xf7g" path="res://Assets/outline.png" id="6_kwc70"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="8_eimch"]
-[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://Scenes/UI/UI.tscn" id="8_yw6rv"]
-[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://Scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
-[ext_resource type="Texture2D" uid="uid://b8rtcmv2gkd80" path="res://Assets/outline(le evil).png" id="11_6mk6w"]
-[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://Scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
-[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://Scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
-[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://Scenes/Player.tscn" id="12_6myqq"]
-[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://Scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
-[ext_resource type="PackedScene" uid="uid://byyxxxfsu3rmg" path="res://Scenes/Npcs/Amogus.tscn" id="14_k74xa"]
-[ext_resource type="Texture2D" uid="uid://r3uenuwfrdxh" path="res://Assets/Roi/Roi_32.png" id="15_kxo26"]
-[ext_resource type="Texture2D" uid="uid://b0f2yd52crde1" path="res://Assets/Roi/Roi_Portrait.png" id="16_7kn55"]
+[ext_resource type="PackedScene" uid="uid://bm8now0ny2t7x" path="res://scenes/UI/UI.tscn" id="8_yw6rv"]
+[ext_resource type="PackedScene" uid="uid://c1q2v801ir7ng" path="res://scenes/Templates/ObjTemplate.tscn" id="9_7ui60"]
+[ext_resource type="Texture2D" uid="uid://dtghv736il4ct" path="res://Assets/outline(le evil).png" id="11_6mk6w"]
+[ext_resource type="PackedScene" uid="uid://bgiboq2uf7h68" path="res://scenes/Triggers/CombarTrigger.tscn" id="11_gtgde"]
+[ext_resource type="PackedScene" uid="uid://bbrdrx30yyqfl" path="res://scenes/Triggers/LevelChangeTrigger.tscn" id="11_itbd5"]
+[ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="12_6myqq"]
+[ext_resource type="PackedScene" uid="uid://bkk6h2os2fp6k" path="res://scenes/Npcs/Corvi.tscn" id="13_vtoc5"]
+[ext_resource type="PackedScene" uid="uid://byyxxxfsu3rmg" path="res://scenes/Npcs/Amogus.tscn" id="14_k74xa"]
+[ext_resource type="Texture2D" uid="uid://beeg16av5ukwk" path="res://Assets/Roi/Roi_32.png" id="15_kxo26"]
+[ext_resource type="Texture2D" uid="uid://ogemp41u65l4" path="res://Assets/Roi/Roi_Portrait.png" id="16_7kn55"]
 
 [sub_resource type="Resource" id="Resource_rthbw"]
 script = ExtResource("3_e4317")
@@ -255,22 +255,27 @@ IsAutoamted = false
 
 [node name="Amogus" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-456, 24)
+DisplayName = "Evil"
 DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus2" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-24, 24)
+DisplayName = "Evil"
 DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus3" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(72, -24)
+DisplayName = "Evil"
 DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus4" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(24, -24)
+DisplayName = "Evil"
 DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Amogus5" parent="Npcs" instance=ExtResource("14_k74xa")]
 position = Vector2(-72, -24)
+DisplayName = "Evil"
 DisplayPortraitRim = ExtResource("11_6mk6w")
 
 [node name="Misc" type="Node2D" parent="."]

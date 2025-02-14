@@ -6,6 +6,7 @@ class_name ObjectBase
 @export var DisplayName: String = ""
 @export var DisplaySprite: String = ""
 @export var InteractedWith: bool = false 
+@export var IsInteractable: bool = true
 #endregion
 
 #region PreLoad nodes

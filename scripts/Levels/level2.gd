@@ -2,7 +2,7 @@ extends LevelBase
 
 func _ready() -> void:
 	bind_signals()
-	#LevelManager.obj_interaction_resolver("L2Box1")
+	#закомментил диалог чтобы упростить тестирование
 	#Dialogic.start("wake_up")
 
 

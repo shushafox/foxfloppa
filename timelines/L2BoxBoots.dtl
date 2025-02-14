@@ -1,0 +1,6 @@
+if {LevelManager.obj_interaction_resolver("L2BoxBoots")} == false:
+	You find a pair of boots!
+	Neat, isn't it?
+	do LevelManager.add_loot("New Boots")
+	do LevelManager.obj_interaction_switch("L2BoxBoots")
+else:

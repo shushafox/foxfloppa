@@ -1,0 +1,46 @@
+Pirate: Hey, lass! Haven't seen ye face around here. Maybe you just turn around and go away until somethin' bad happens to that face on yours?
+label Questions
+- What are you doing here?
+	Pirate: Guarding this damn cave, can't you see? And these jerks are getting all drunk and happy while all I've got is jerky, sand and these stupid crabs.
+	Pirate: They stole my new boots! I didn't even get to wear them!
+	Man proceeds to swear, stopping only to spit on the sand.
+	- [show boots] Do these look familiar | [if {LevelManager.find_loot("New Boots")}] [else="disable"]
+		Pirate: Shiver me timbers, it's really them!
+		Pirate: 'twas my part of the loot, and these god damn crabs took them from me! Maybe I can do you a favor for these babies?
+		- Some gold would be nice.
+			Pirate: No problem! Got plenty of that stuff, hehe.
+			do LevelManager.remove_loot("New Boots")
+			do LevelManager.remove_loot("10 coins")
+			Pirate: Thank ye, lass.
+		- Maybe you can let me through?
+			Pirate: Y'know what? No problem, sis.
+			Pirate: Ye did for me what none of them scumbags what do. And that I appreciate.
+			do LevelManager.remove_loot("New Boots")
+			[end_timeline]
+	
+	jump Questions
+- Have you seen the shipwreck?
+	Pirate: Sure as hell I've seen! Me and the boys looted that shattered booty like there is no tomorrow! But no survivors from the crew. Sucks to be them.
+	jump Questions
+- Let me in.
+	Pirate: Why the hell would I do that? I told ye already, I don't know who the heck are you!
+	- Dumbass, as with the crew! Did you hit your head? | [if {Personality.Intimidate} >= 1] [else="disable"]
+		Pirate: Hey-hey, hold on! Don't go all crazy on me, it's my first shift over here!
+		Pirate: Too many faces and too little time to remember everyone. What's your name?
+		- Roi.
+			Pirate: Thank ye.
+		- Ain't your fucking business!
+			Pirate: Y-yes mam!
+		Pirate: Alright, go in, just don't snitch about me, alright?
+	- I really, really need help. | [if {Personality.Persuade} >= 1] [else="disable"]
+		Pirate: Well, you definitely look like shit. Probably no harm in letting you in. One of our guys must be able to patch you up, unless he is too drunk to hold his tools.
+		Pirate: ...wait, are you one of the survivors from that ship?
+		- Yes.
+			Pirate: Lucky you. Seems like you are the only one. But if you value your ass - maybe don't go shouting about it everywhere.
+		- No.
+			Pirate: Lucky you. Sucks to be one of those who sailed on that piece of wood.
+	- [hand a bottle] Maybe this will refresh your memories? | [if {LevelManager.find_loot("A bottle of wine")}] [else="disable"]
+		do LevelManager.remove_loot("A bottle of wine")
+		Pirate: By Varrash's Palm, that's a hella good booze! Go in, quickly. But if they ask me something - I still don't know you, lass.
+	- Then time to get acquinted! [Punch him]
+		After a gasp and a small "Oof", the man falls unconscious. He left you no choice, right?

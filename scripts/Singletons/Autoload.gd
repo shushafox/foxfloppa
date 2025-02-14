@@ -26,13 +26,20 @@ var BoxesLooted = {
 
 func NpcTimeLineResolver(npcName: String) -> String:
 	match npcName:
+		#level 1 dialogue
+		"Evil": return _EvilGuy()
+		"Corvi": return _Corvi()
 		"Sign_1_1": return "Sign_1_1"
+		#level 2 dialogue
 		"L2Box1": return "L2Box1"
 		"L2Box2": return "L2Box2"
 		"Sign_2_1": return "sign_2_1"
-		"Evil": return _EvilGuy()
-		"Corvi": return _Corvi()
+		"GatePirate": return "L2GatePirate"
+		"L2BoxBoots": return "L2BoxBoots"
+		
+		
 		_: return "" # defaut
+		
 
 func _EvilGuy() -> String:
 	if (GlobalCounter < -11112):

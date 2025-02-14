@@ -21,7 +21,7 @@ func obj_interaction_resolver(objname: String) -> bool:
 func obj_interaction_switch(objname: String) -> void:
 	var level_instance = get_tree().current_scene
 	var object = level_instance.find_child(objname)
-	object.InteractedWith = !object.InteractedWith
+	object.InteractedWith = true
 
 func update_objective(newObj: String) -> void:
 	var level_instance = get_tree().current_scene as LevelBase

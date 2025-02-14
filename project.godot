@@ -26,22 +26,16 @@ LevelManager="*res://Scripts/Singletons/LevelManager.gd"
 
 directories/dch_directory={
 "De Buggy": "res://characters/De Buggy.dch",
+"Pirate": "res://characters/Pirate.dch",
 "Roi": "res://characters/Roi.dch"
 }
 directories/dtl_directory={
-"L2Beach": "res://Timelines/L2Beach.dtl",
+"L2Beach": "res://timelines/L2Beach.dtl",
 "L2Box1": "res://timelines/L2Box1.dtl",
-"L2LeaveBeach": "res://Timelines/L2LeaveBeach.dtl",
+"L2BoxBoots": "res://timelines/L2BoxBoots.dtl",
+"L2GatePirate": "res://timelines/L2GatePirate.dtl",
+"L2LeaveBeach": "res://timelines/L2LeaveBeach.dtl",
 "Sign_1_1": "res://timelines/Sign_1_1.dtl",
-"Timelines/L2Box1": "res://Timelines/L2Box1.dtl",
-"Timelines/Sign_1_1": "res://Timelines/Sign_1_1.dtl",
-"Timelines/angi": "res://Timelines/angi.dtl",
-"Timelines/choices": "res://Timelines/choices.dtl",
-"Timelines/corvi_1": "res://Timelines/corvi_1.dtl",
-"Timelines/corvi_2": "res://Timelines/corvi_2.dtl",
-"Timelines/sign_2_1": "res://Timelines/sign_2_1.dtl",
-"Timelines/testOne": "res://Timelines/testOne.dtl",
-"Timelines/wake_up": "res://Timelines/wake_up.dtl",
 "angi": "res://timelines/angi.dtl",
 "choices": "res://timelines/choices.dtl",
 "corvi_1": "res://timelines/corvi_1.dtl",
@@ -145,3 +139,7 @@ End={
 [physics]
 
 common/physics_interpolation=true
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"

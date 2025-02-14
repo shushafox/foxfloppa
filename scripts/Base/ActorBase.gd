@@ -26,6 +26,7 @@ var RemainingSpeed: int = Speed
 
 @export var IsAlly: bool = true
 @export var IsAutoamted: bool = true
+@export var IsInteractable: bool = true
 
 var IsCurrentTurn: bool = false
 var IsMoving: bool = false
