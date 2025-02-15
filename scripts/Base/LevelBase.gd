@@ -35,6 +35,7 @@ var TurnOrder: Array[TurnElement] = []
 var TurnNumber: int = 0
 
 var TempAbility: AbilityBase = null
+var CurrentCharacter: ActorBase = null
 var AbilityRange: Node2D = null
 
 const RangeTemplate: String = "res://Scenes/Templates/Ability/Range.tscn"
@@ -92,6 +93,7 @@ func start_combat() -> void:
 	var playerElem = TurnElement.new()
 	playerElem.Actor = Player	
 	TurnOrder.push_front(playerElem)
+	CurrentCharacter = Player
 	
 	UI.start_combat(TurnOrder)
 	
@@ -111,7 +113,7 @@ func aim() -> void:
 			AbilityRange.position = snapped_pos
 		else:
 			var mouse_pos = get_local_mouse_position()
-			var dir = Player.position.direction_to(mouse_pos).normalized().round()
+			var dir = CurrentCharacter.position.direction_to(mouse_pos).normalized().round()
 			var snapped_pos = Tiles.map_to_local(Tiles.local_to_map(TempAbility.Actor.position))
 			AbilityRange.position = snapped_pos
 			
@@ -184,6 +186,11 @@ func _on_turn_end() -> void:
 	TurnNumber += 1
 	
 	var Actor: ActorBase = TurnOrder[TurnNumber % TurnOrder.size()].Actor
+	
+	if Actor.IsAlly && !Actor.IsAutoamted:
+		CurrentCharacter = Actor
+	else:
+		CurrentCharacter = null
 	
 	if !TurnOrder.any(func(a: TurnElement): return !a.Actor.IsAlly):
 		end_combat()

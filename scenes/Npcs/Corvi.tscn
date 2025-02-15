@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkk6h2os2fp6k"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_nn8kv"]
-[ext_resource type="Texture2D" uid="uid://boytji0acrc77" path="res://assets/raven.png" id="2_iktbd"]
-[ext_resource type="Texture2D" uid="uid://bjgebl6g0xf7g" path="res://assets/outline.png" id="3_gjgqn"]
+[ext_resource type="Texture2D" uid="uid://boytji0acrc77" path="res://Assets/raven.png" id="2_iktbd"]
+[ext_resource type="Texture2D" uid="uid://bjgebl6g0xf7g" path="res://Assets/outline.png" id="3_gjgqn"]
 [ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://scenes/Abilities/BasicAttack.tscn" id="4_343q0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]

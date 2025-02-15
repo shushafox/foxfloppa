@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://y7otnqj6jlgm"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_sxxf3"]
-[ext_resource type="Texture2D" uid="uid://stcgfpn33pe1" path="res://assets/NPC/sen.png" id="2_o7cfh"]
+[ext_resource type="Texture2D" uid="uid://stcgfpn33pe1" path="res://Assets/NPC/sen.png" id="2_o7cfh"]
 [ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://Scenes/Abilities/BasicAttack.tscn" id="3_56msv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]

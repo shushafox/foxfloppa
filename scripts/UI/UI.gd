@@ -86,13 +86,15 @@ func _on_inventory_pressed() -> void:
 	InventoryMenu.visible = !InventoryMenu.visible
 	
 func _on_end_turn_pressed() -> void:
-	if Level.Player.IsCurrentTurn == true:
-		Level.Player.set_process(false)
-		Level.Player.IsCurrentTurn = false
-		EndTurn.emit()
+	if Level.CurrentCharacter == null || !Level.CurrentCharacter.IsCurrentTurn:
+		return
+	
+	Level.CurrentCharacter.set_process(false)
+	Level.CurrentCharacter.IsCurrentTurn = false
+	EndTurn.emit()
 
 func _on_ability_pressed() -> void:
-	if !Level.Player.CanAct:
+	if Level.CurrentCharacter == null || !Level.CurrentCharacter.CanAct:
 		return
 	
 	ListMenu.visible = !ListMenu.visible
@@ -101,8 +103,7 @@ func _on_ability_pressed() -> void:
 	for child in List.get_children():
 		child.free()
 	
-	#TODO: Вот тут надо бы убрать игрока и сделать так чтоб использовался конкретный персонаж на ком сейчас управлене
-	var abilities = Level.Player.get_ability_list()
+	var abilities = Level.CurrentCharacter.get_ability_list()
 	
 	for ability in abilities:
 		var button = Button.new()
@@ -111,15 +112,14 @@ func _on_ability_pressed() -> void:
 		List.add_child(button)
 
 func _on_attack_pressed() -> void:
-	if !Level.Player.CanAct:
+	if Level.CurrentCharacter == null || !Level.CurrentCharacter.CanAct:
 		return
 	
 	_trigger_ability("BasicAttack")
 
 func _trigger_ability(AbilityName: String) -> void:
-	#TODO: тут та же проблема что выше, надо уйти от игрока в общему персонажу (но пока похуй)
 	ListMenu.visible = !ListMenu.visible
-	var abilities = Level.Player.get_ability_list()
+	var abilities = Level.CurrentCharacter.get_ability_list()
 	var result: AbilityBase
 	
 	for ability in abilities:

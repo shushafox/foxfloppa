@@ -33,11 +33,8 @@ func _process(_delta: float) -> void:
 	if can_talk and Input.is_action_pressed("ui_accept"):
 		Interract.emit()
 	
-	if RemainingSpeed == 0 && !CanAct:
-		set_process(false)
-		set_physics_process(false)
-		IsCurrentTurn = false
-		EndTurn.emit()
+	if !CanMove && !CanAct:
+		_on_turn_end(self)
 
 func _on_dialogic_started():
 	AnimatedSprite.play("idle")
@@ -69,6 +66,9 @@ func move(direction: Vector2i) -> void:
 	Level.MovingTile.global_position = Level.Tiles.map_to_local(targetTile)
 	
 	RemainingSpeed -= 1
+	
+	if RemainingSpeed <= 0:
+		CanMove = false
 
 func _on_turn_start(node: ActorBase) -> void:
 	if node != self:
@@ -79,9 +79,17 @@ func _on_turn_start(node: ActorBase) -> void:
 	
 	IsCurrentTurn = true
 	RemainingSpeed = Speed
+	CanMove = true
+	CanAct = true
 	
 	set_process(true)
 	set_physics_process(true)
+
+func _on_turn_end(node: ActorBase) -> void:
+	set_process(false)
+	set_physics_process(false)
+	IsCurrentTurn = false
+	EndTurn.emit()
 
 func _animate() -> void:
 	if velocity != Vector2.ZERO:

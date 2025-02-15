@@ -1,10 +1,10 @@
 [gd_scene load_steps=29 format=3 uid="uid://gf61d1durb0j"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_81tla"]
-[ext_resource type="Texture2D" uid="uid://cyq4si8cdslk5" path="res://Assets/Roi/Roi_Idle-Sheet.png" id="2_odb2r"]
-[ext_resource type="Texture2D" uid="uid://d36gcmcbyt0nw" path="res://Assets/Roi/Roi_Run-Sheet.png" id="3_docd5"]
-[ext_resource type="PackedScene" uid="uid://b81srhj5i5bh0" path="res://scenes/Abilities/CrossStrike.tscn" id="4_isi1r"]
-[ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://scenes/Abilities/BasicAttack.tscn" id="5_u8tp2"]
+[ext_resource type="Texture2D" uid="uid://cd6b7iljhcxau" path="res://Assets/Roi/Roi_Idle-Sheet.png" id="2_odb2r"]
+[ext_resource type="Texture2D" uid="uid://d0iwsh36avgy5" path="res://Assets/Roi/Roi_Run-Sheet.png" id="3_docd5"]
+[ext_resource type="PackedScene" uid="uid://b81srhj5i5bh0" path="res://Scenes/Abilities/CrossStrike.tscn" id="4_isi1r"]
+[ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://Scenes/Abilities/BasicAttack.tscn" id="5_u8tp2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lx08j"]
 atlas = ExtResource("2_odb2r")

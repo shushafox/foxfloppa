@@ -32,24 +32,26 @@ func _process(_delta: float) -> void:
 		elif CanAct:
 			act()
 		else:
-			IsCurrentTurn = false
-			_on_turn_end(self)
-			EndTurn.emit()
-	else:
-		var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
-		
-		if directions == Vector2.ZERO:
-			return
-
-		if !IsMoving && RemainingSpeed > 0:
-			manual_move(directions)
-		
-		if RemainingSpeed == 0 && !CanAct:
 			set_process(false)
 			set_physics_process(false)
 			IsCurrentTurn = false
 			_on_turn_end(self)
 			EndTurn.emit()
+	else:
+		if !CanMove && !CanAct:
+			set_process(false)
+			set_physics_process(false)
+			IsCurrentTurn = false
+			_on_turn_end(self)
+			EndTurn.emit()
+		
+		var directions: Vector2 = Input.get_vector("left", "right", "up", "down")
+		
+		if directions == Vector2.ZERO:
+			return
+		
+		if !IsMoving && RemainingSpeed > 0:
+			manual_move(directions)
 
 func Animate():
 	if(animUp == 1):
@@ -139,6 +141,9 @@ func manual_move(direction: Vector2i) -> void:
 	Level.MovingTile.global_position = Level.Tiles.map_to_local(targetTile)
 	
 	RemainingSpeed -= 1
+	
+	if RemainingSpeed <= 0:
+		CanMove = false
 
 func act() -> void:
 	var dir: Vector2
@@ -180,20 +185,26 @@ func _on_turn_start(node: ActorBase) -> void:
 	heal(HealthRegen)
 	change_mana(ManaRegen)
 	
-	var target = _get_target()
-	if target == null:
-		target = Player
-	
-	var navObstacle = get_node("Combat/NavigationObstacle2D") as NavigationObstacle2D
-	navObstacle.affect_navigation_mesh = false
-	
-	Level.NavRegion.bake_navigation_polygon()
-	await Level.NavRegion.bake_finished
-	
-	NavAgent.target_position = target.global_position
-	
 	IsCurrentTurn = true
 	RemainingSpeed = Speed
+	CanMove = true
+	CanAct = true
+	
+	set_process(true)
+	set_physics_process(true)
+	
+	if IsAutoamted:
+		var target = _get_target()
+		if target == null:
+			target = Player
+		
+		var navObstacle = get_node("Combat/NavigationObstacle2D") as NavigationObstacle2D
+		navObstacle.affect_navigation_mesh = false
+		
+		Level.NavRegion.bake_navigation_polygon()
+		await Level.NavRegion.bake_finished
+		
+		NavAgent.target_position = target.global_position
 
 func _on_turn_end(_node: ActorBase) -> void:
 	var navObstacle = get_node("Combat/NavigationObstacle2D") as NavigationObstacle2D

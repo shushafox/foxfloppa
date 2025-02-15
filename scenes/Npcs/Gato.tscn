@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d0x4s20q80sjs"]
 
 [ext_resource type="Script" path="res://Scripts/Templates/NpcTemplate.gd" id="1_wxtnw"]
-[ext_resource type="Texture2D" uid="uid://cdqkva2tefeak" path="res://assets/NPC/gato.png" id="2_74ftd"]
+[ext_resource type="Texture2D" uid="uid://cdqkva2tefeak" path="res://Assets/NPC/gato.png" id="2_74ftd"]
 [ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://Scenes/Abilities/BasicAttack.tscn" id="3_bv7p3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gla6c"]
