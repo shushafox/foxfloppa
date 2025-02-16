@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ce60utjvu4upn"]
-
-[ext_resource type="Script" path="res://Scripts/Base/AbilityBase.gd" id="1_ji63b"]
-
-[node name="BasicAttack" type="Node"]
-script = ExtResource("1_ji63b")
-AbilityName = "BasicAttack"
-TargetType = 2
-RangeType = 3

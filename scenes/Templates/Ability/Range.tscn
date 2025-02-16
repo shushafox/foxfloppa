@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://blmygh362d7le"]
 
-[ext_resource type="Script" path="res://Scenes/Templates/Ability/Range.gd" id="1_yjeqa"]
+[ext_resource type="Script" path="res://scripts/templates/ability/range.gd" id="1_vw3g8"]
 
 [node name="Range" type="Node2D"]
-script = ExtResource("1_yjeqa")
+script = ExtResource("1_vw3g8")

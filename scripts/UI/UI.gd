@@ -13,10 +13,10 @@ signal EndTurn
 @onready var Cards: VBoxContainer = $Combat/TurnOrder/TurnOrderCards
 @onready var Level: LevelBase = get_parent().get_parent().get_parent()
 
-var PortraitNode: PackedScene = load("res://Scenes/UI/Portrait.tscn")
-var ActorCardNode: PackedScene = load("res://Scenes/UI/ActorCard.tscn")
-var DefaultRim: Texture2D = load("res://Assets/outline.png")
-var DefaultPortrait: Texture2D = load("res://Assets/Roi/Roi_Portrait.png")
+var PortraitNode: PackedScene = load("res://scenes/ui/portrait.tscn")
+var ActorCardNode: PackedScene = load("res://scenes/ui/actor_card.tscn")
+var DefaultRim: Texture2D = load("res://assets/outline.png")
+var DefaultPortrait: Texture2D = load("res://assets/roi/Roi_Portrait.png")
 
 func _process(_delta: float) -> void:
 	size = get_window().size / 2

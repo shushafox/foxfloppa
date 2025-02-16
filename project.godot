@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Daybreak_test"
-run/main_scene="res://Scenes/Levels/Level1.tscn"
+run/main_scene="res://scenes/levels/level1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Assets/Roi/Roi_Portrait.png"
+config/icon="res://assets/roi/Roi_Portrait.png"
 
 [autoload]
 
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-Autoload="*res://Scripts/Singletons/Autoload.gd"
+Autoload="*res://scripts/singletons/autoload.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-LevelManager="*res://Scripts/Singletons/LevelManager.gd"
+LevelManager="*res://scripts/singletons/level_manager.gd"
 
 [dialogic]
 
@@ -36,19 +36,19 @@ directories/dtl_directory={
 "L2GatePirate": "res://timelines/L2GatePirate.dtl",
 "L2LeaveBeach": "res://timelines/L2LeaveBeach.dtl",
 "Sign_1_1": "res://timelines/Sign_1_1.dtl",
-"Timelines/L2Beach": "res://Timelines/L2Beach.dtl",
-"Timelines/L2Box1": "res://Timelines/L2Box1.dtl",
-"Timelines/L2BoxBoots": "res://Timelines/L2BoxBoots.dtl",
-"Timelines/L2GatePirate": "res://Timelines/L2GatePirate.dtl",
-"Timelines/L2LeaveBeach": "res://Timelines/L2LeaveBeach.dtl",
-"Timelines/Sign_1_1": "res://Timelines/Sign_1_1.dtl",
-"Timelines/angi": "res://Timelines/angi.dtl",
-"Timelines/choices": "res://Timelines/choices.dtl",
-"Timelines/corvi_1": "res://Timelines/corvi_1.dtl",
-"Timelines/corvi_2": "res://Timelines/corvi_2.dtl",
-"Timelines/sign_2_1": "res://Timelines/sign_2_1.dtl",
-"Timelines/testOne": "res://Timelines/testOne.dtl",
-"Timelines/wake_up": "res://Timelines/wake_up.dtl",
+"Timelines/L2Beach": "res://timelines/L2Beach.dtl",
+"Timelines/L2Box1": "res://timelines/L2Box1.dtl",
+"Timelines/L2BoxBoots": "res://timelines/L2BoxBoots.dtl",
+"Timelines/L2GatePirate": "res://timelines/L2GatePirate.dtl",
+"Timelines/L2LeaveBeach": "res://timelines/L2LeaveBeach.dtl",
+"Timelines/Sign_1_1": "res://timelines/Sign_1_1.dtl",
+"Timelines/angi": "res://timelines/angi.dtl",
+"Timelines/choices": "res://timelines/choices.dtl",
+"Timelines/corvi_1": "res://timelines/corvi_1.dtl",
+"Timelines/corvi_2": "res://timelines/corvi_2.dtl",
+"Timelines/sign_2_1": "res://timelines/sign_2_1.dtl",
+"Timelines/testOne": "res://timelines/testOne.dtl",
+"Timelines/wake_up": "res://timelines/wake_up.dtl",
 "angi": "res://timelines/angi.dtl",
 "choices": "res://timelines/choices.dtl",
 "corvi_1": "res://timelines/corvi_1.dtl",
