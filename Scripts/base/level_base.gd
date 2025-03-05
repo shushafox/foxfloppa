@@ -141,7 +141,9 @@ func aim() -> void:
 				TempAbility.use_on_self(AbilityRange.rotation_degrees)
 			
 			AbilityRange.queue_free()
-			CastRange.queue_free()
+			
+			if CastRange:
+				CastRange.queue_free()
 			TempAbility = null
 			IsAiming = false
 		
