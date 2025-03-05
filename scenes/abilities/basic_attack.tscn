@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ce60utjvu4upn"]
 
-[ext_resource type="Script" path="res://scripts/base/ability_base.gd" id="1_ji63b"]
+[ext_resource type="Script" uid="uid://ci7vhkau8xuqb" path="res://scripts/base/ability_base.gd" id="1_ji63b"]
 
 [node name="BasicAttack" type="Node"]
 script = ExtResource("1_ji63b")

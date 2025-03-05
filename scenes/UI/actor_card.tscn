@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dubpu0kexxt2x"]
 
 [ext_resource type="Texture2D" uid="uid://douppsctnulc" path="res://assets/ui/UI_button.png" id="1_ia8st"]
-[ext_resource type="Script" path="res://scripts/ui/actor_card.gd" id="1_jabap"]
+[ext_resource type="Script" uid="uid://cq5vgmeldrrvh" path="res://scripts/ui/actor_card.gd" id="1_jabap"]
 [ext_resource type="PackedScene" uid="uid://dv2a4wc204024" path="res://scenes/ui/portrait.tscn" id="2_y7vno"]
 [ext_resource type="Texture2D" uid="uid://j4t4y0iyj3m5" path="res://assets/angry.png" id="3_77jem"]
 [ext_resource type="Texture2D" uid="uid://b0f2yd52crde1" path="res://assets/roi/Roi_Portrait.png" id="4_urfh2"]

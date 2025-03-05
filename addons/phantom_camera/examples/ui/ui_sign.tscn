@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://iq5xd1ob1res"]
 
-[ext_resource type="Texture2D" uid="uid://bloouh2jtndx1" path="res://addons/phantom_camera/examples/textures/2D/sign_prompt.png" id="1_tftrk"]
-[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="2_y5454"]
+[ext_resource type="Texture2D" uid="uid://bgm415tuax6pr" path="res://addons/phantom_camera/examples/textures/2D/sign_prompt.png" id="1_tftrk"]
+[ext_resource type="FontFile" uid="uid://bsa1l25u0v3ry" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="2_y5454"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4h3u"]
 bg_color = Color(0.470588, 0.6, 0.45098, 1)

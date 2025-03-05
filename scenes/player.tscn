@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://gf61d1durb0j"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_81tla"]
+[ext_resource type="Script" uid="uid://vaafbc43dhr0" path="res://scripts/player.gd" id="1_81tla"]
 [ext_resource type="Texture2D" uid="uid://cd6b7iljhcxau" path="res://assets/roi/Roi_Idle-Sheet.png" id="2_odb2r"]
 [ext_resource type="Texture2D" uid="uid://d0iwsh36avgy5" path="res://assets/roi/Roi_Run-Sheet.png" id="3_docd5"]
 [ext_resource type="PackedScene" uid="uid://b81srhj5i5bh0" path="res://scenes/abilities/cross_strike.tscn" id="4_isi1r"]

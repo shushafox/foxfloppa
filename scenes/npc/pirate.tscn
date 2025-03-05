@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d22huyjwtit2i"]
 
-[ext_resource type="Script" path="res://scripts/templates/тpc_еemplate.gd" id="1_ys67u"]
+[ext_resource type="Script" uid="uid://c3gd7hfa0hmsu" path="res://scripts/templates/тpc_еemplate.gd" id="1_ys67u"]
 [ext_resource type="Texture2D" uid="uid://do83v0h47go82" path="res://assets/npc/pirate_1.png" id="2_wqrfq"]
 [ext_resource type="Texture2D" uid="uid://vhkm7nd20lh3" path="res://assets/npc/pirate_brute.png" id="3_22xmk"]
 [ext_resource type="Texture2D" uid="uid://cf1wsa7ke6vys" path="res://assets/npc/pirate_gun.png" id="4_e5s5r"]

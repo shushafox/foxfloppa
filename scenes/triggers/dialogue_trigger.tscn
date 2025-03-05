@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dr7gw7s8kkcyw"]
 
-[ext_resource type="Script" path="res://scripts/triggers/dialogue_trigger.gd" id="1_klcuq"]
+[ext_resource type="Script" uid="uid://dar144k22x61d" path="res://scripts/triggers/dialogue_trigger.gd" id="1_klcuq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aork2"]
 

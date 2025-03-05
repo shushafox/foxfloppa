@@ -1,10 +1,10 @@
 [gd_scene load_steps=15 format=3 uid="uid://b25fl4usw0nlp"]
 
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/panel/updater/download_update_panel.gd" id="1_sx5xq"]
-[ext_resource type="Texture2D" uid="uid://cc0wmici0eic8" path="res://addons/phantom_camera/icons/phantom_camera_logo.png" id="2_f3yo7"]
-[ext_resource type="FontFile" uid="uid://c4mm3of2mc8o5" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="3_h8uk3"]
-[ext_resource type="FontFile" uid="uid://dve7mgsjik4dg" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="4_gwh4i"]
-[ext_resource type="Texture2D" uid="uid://censw3w53gldn" path="res://addons/phantom_camera/assets/PhantomCameraBtnPrimaryDefault.png" id="5_bonti"]
+[ext_resource type="Script" uid="uid://cyv2eybohllnu" path="res://addons/phantom_camera/scripts/panel/updater/download_update_panel.gd" id="1_sx5xq"]
+[ext_resource type="Texture2D" uid="uid://dys8ymvf1cjjl" path="res://addons/phantom_camera/icons/phantom_camera_logo.png" id="2_f3yo7"]
+[ext_resource type="FontFile" uid="uid://bsa1l25u0v3ry" path="res://addons/phantom_camera/fonts/Nunito-Black.ttf" id="3_h8uk3"]
+[ext_resource type="FontFile" uid="uid://cgpp50vo48d8y" path="res://addons/phantom_camera/fonts/Nunito-Regular.ttf" id="4_gwh4i"]
+[ext_resource type="Texture2D" uid="uid://b46ecns48536j" path="res://addons/phantom_camera/assets/PhantomCameraBtnPrimaryDefault.png" id="5_bonti"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_sjwi2"]
 

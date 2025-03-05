@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b81srhj5i5bh0"]
 
-[ext_resource type="Script" path="res://scripts/base/ability_base.gd" id="1_rqna7"]
+[ext_resource type="Script" uid="uid://ci7vhkau8xuqb" path="res://scripts/base/ability_base.gd" id="1_rqna7"]
 
 [node name="CrossStrike" type="Node"]
 script = ExtResource("1_rqna7")

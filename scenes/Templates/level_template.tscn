@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://rfnu6xw8urng"]
 
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_m6rnc"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_fvtl6"]
+[ext_resource type="Script" uid="uid://c8w3ecy1ncxcf" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="1_m6rnc"]
+[ext_resource type="Script" uid="uid://bwl2obv447bje" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="2_fvtl6"]
 [ext_resource type="Texture2D" uid="uid://dtu3la8io3l51" path="res://assets/fences.png" id="3_xkn7r"]
-[ext_resource type="Script" path="res://scripts/overworld_camera.gd" id="4_d4kt5"]
+[ext_resource type="Script" uid="uid://yaa1nrwcsmje" path="res://scripts/overworld_camera.gd" id="4_d4kt5"]
 [ext_resource type="PackedScene" uid="uid://gf61d1durb0j" path="res://scenes/player.tscn" id="6_s8qoa"]
 
 [sub_resource type="Resource" id="Resource_w0djv"]
