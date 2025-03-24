@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://byyxxxfsu3rmg"]
 
-[ext_resource type="Script" uid="uid://c3gd7hfa0hmsu" path="res://scripts/templates/тpc_еemplate.gd" id="1_klf2f"]
+[ext_resource type="Script" uid="uid://c3gd7hfa0hmsu" path="res://scripts/templates/npc_template.gd" id="1_klf2f"]
 [ext_resource type="Texture2D" uid="uid://j4t4y0iyj3m5" path="res://assets/angry.png" id="2_h0tkm"]
 [ext_resource type="Texture2D" uid="uid://l5n812frbxch" path="res://assets/outline.png" id="3_63k06"]
 [ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://scenes/abilities/basic_attack.tscn" id="4_6gnsm"]
@@ -87,5 +87,5 @@ shape = SubResource("CircleShape2D_0mw00")
 [connection signal="body_entered" from="Combat/DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Combat/DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="Peace/DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_exited" from="Peace/DetectionArea" to="." method="_on_area_2d_body_exited"]

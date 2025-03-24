@@ -62,13 +62,13 @@ func _use(targetPosition: Vector2i, rotationDegrees: int = 0) -> void:
 	var actors: Array[ActorBase] = _get_targets(targetPosition, rotationDegrees)
 	
 	if TargetType == _TargetType.Ally:
-		actors = actors.filter(func(a: ActorBase): return a.IsAlly)
+		actors = actors.filter(func(a: ActorBase): return Actor.IsAlly == a.IsAlly)
 	if TargetType == _TargetType.Enemy:
-		actors = actors.filter(func(a: ActorBase): return !a.IsAlly)
+		actors = actors.filter(func(a: ActorBase): return Actor.IsAlly != a.IsAlly)
 	
 	if Actor.Mana < ManaCost:
 		return
-	if Actor.position.distance_to(targetPosition) > CastRange:
+	if Actor.position.distance_to(targetPosition) > CastRange * 48:
 		return
 	
 	Actor.change_mana(-ManaCost)
@@ -80,53 +80,56 @@ func _use(targetPosition: Vector2i, rotationDegrees: int = 0) -> void:
 func _get_targets(target: Vector2, rotationDegrees: int = 0) -> Array[ActorBase]:
 	var shape: Shape2D
 	var shape_transform: Transform2D
-	var collider_position = target * 48 / 48 + Vector2(24,24)
+	const TILE_SIZE = 48
+	var collider_position = target * TILE_SIZE / TILE_SIZE + Vector2(TILE_SIZE / 2, TILE_SIZE / 2)
+	
 	var query = PhysicsShapeQueryParameters2D.new()
 	var space_state: PhysicsDirectSpaceState2D = Actor.get_world_2d().direct_space_state
 	
 	match RangeType:
 		_RangeType.Circle:
 			shape = CircleShape2D.new()
-			shape.radius = RangeValue * 24
+			shape.radius = RangeValue * TILE_SIZE / 2
 			shape_transform = Transform2D.IDENTITY.translated(collider_position)
+
 		_RangeType.Square:
 			shape = RectangleShape2D.new()
-			shape.size = Vector2((RangeValue + 1) * 48, (RangeValue + 1) * 48)
+			shape.size = Vector2((RangeValue + 1) * TILE_SIZE, (RangeValue + 1) * TILE_SIZE)
 			shape_transform = Transform2D.IDENTITY.translated(collider_position)
+
 		_RangeType.Line:
 			shape = RectangleShape2D.new()
-			
 			var rotation_rad = deg_to_rad(rotationDegrees)
 			var direction = Vector2.RIGHT.rotated(rotation_rad)
-			var length = 48 * RangeValue
-			var start_offset = direction * 24  # Edge of player's tile
+			var length = TILE_SIZE * RangeValue
+			var start_offset = direction * (TILE_SIZE / 2)
 			var center_offset = direction * (length / 2)
 			
 			if rotationDegrees == 0 || rotationDegrees == 180:
-				shape.size = Vector2(length, 48)
+				shape.size = Vector2(length, TILE_SIZE)
 			elif rotationDegrees == 90 || rotationDegrees == 270:
-				shape.size = Vector2(48, length)
+				shape.size = Vector2(TILE_SIZE, length)
 			
-			shape_transform = Transform2D.IDENTITY.translated(target + start_offset + center_offset)
+			shape_transform = Transform2D(rotation_rad, collider_position + start_offset + center_offset)
+
 		_RangeType.Cross:
-			var arm_length = RangeValue * 48
-			var arm_width = 48
+			var arm_length = RangeValue * TILE_SIZE
+			var arm_width = TILE_SIZE
 			shape = RectangleShape2D.new()
 			shape.size = Vector2(arm_length * 2 + arm_width, arm_length * 2 + arm_width)
 			shape_transform = Transform2D.IDENTITY.translated(collider_position)
 	
 	query.shape = shape
 	query.transform = shape_transform
-	query.collision_mask = 0b1  # Only first layer
+	query.collision_mask = 0b1  # Make this configurable if needed
 	query.exclude = [self]  # Don't hit yourself
 	
 	var actors: Array[ActorBase] = []
 	for result in space_state.intersect_shape(query):
 		if result.collider is ActorBase:
-			
 			if RangeType == _RangeType.Cross:
 				var offset: Vector2 = result.collider.global_position - target
-				if offset != Vector2.ZERO && abs(offset.x) == abs(offset.y):  
+				if offset != Vector2.ZERO and abs(offset.x) == abs(offset.y):  
 					continue
 			
 			actors.append(result.collider)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dscx3h8dkh6sm"]
 
-[ext_resource type="Script" uid="uid://c3gd7hfa0hmsu" path="res://scripts/templates/тpc_еemplate.gd" id="1_tb7cw"]
+[ext_resource type="Script" uid="uid://c3gd7hfa0hmsu" path="res://scripts/templates/npc_template.gd" id="1_tb7cw"]
 [ext_resource type="Texture2D" uid="uid://j4t4y0iyj3m5" path="res://assets/angry.png" id="2_cvg4p"]
 [ext_resource type="PackedScene" uid="uid://ce60utjvu4upn" path="res://scenes/abilities/basic_attack.tscn" id="3_vh62j"]
 

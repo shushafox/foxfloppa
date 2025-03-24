@@ -199,6 +199,7 @@ func _on_turn_end() -> void:
 	
 	if Actor.IsAlly && !Actor.IsAutoamted:
 		CurrentCharacter = Actor
+		MovingTile.position = Actor.position
 	else:
 		CurrentCharacter = null
 	
